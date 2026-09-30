@@ -291,3 +291,20 @@ Rough effort: M1 1 wk · M2 1–2 wk · M3 2 wk · M4 2 wk · M5 1 wk · M6 1 wk
 13. Domain ops: you control DNS and both repos, yes? OK to archive `tengmesk.github.io` after cutover?
 14. Budget: any for a commercial display font or award entry fees?
 15. Deadline or event you want this live for?
+
+---
+
+## Revision 1 · 2026-09-30 · Rebrand to Tengo / 10go
+
+Owner feedback after seeing the A/B mockups:
+
+- **Name:** Tengo Meskhi / თენგო მესხი (replaces Tengiz / თენგიზ everywhere).
+- **Motif:** Tengo reads as **10go**. Wordmark = `10go`, with **eyes inside the 0 and the o** that follow the cursor and blink (inspired by colin-moy.webflow.io). Alternative to test: eyes in the e's of "Tengo Meskhi".
+- **Intro:** counter 1 → 10, then "go" slides in, the eyes open, and the visitor chooses: **At work** (professional) or **The person** (personal). Skippable, remembered on return visits, instant under reduced motion.
+- **Two paths:**
+  - **Homepage = business** (inspired by jaybaer.com): clear offer, proof strip, ways to work together, testimonials, strong CTA. Keeps the Terrain contour hero + EN/KA name morph.
+  - **"Get to know me" page = personal and playful** (inspired by abdussalam.pk and nickvelten.nl): big fun type, sticker cards, stories, photos.
+- Direction is now **B "Terrain" for work + a playful personal layer**, tied together by the 10go eyes.
+- References could not be viewed from the build sandbox (network policy); mockup is based on the owner's description. Owner to confirm the look matches the references.
+
+Mockup: `docs/redesign/mockups/10go-intro.html`.
