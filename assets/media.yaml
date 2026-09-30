@@ -84,6 +84,10 @@ businesses:
   - name: Conceptdigital
     mentions:
       - https://forbes.ge/en/the-strategic-code-for-transformation/
+      - url: https://bm.ge/news/dijital-instituti-kursdamtavrebulebs-dasaqmebis-garantias-adzlevs/116219
+        outlet: BMG
+        lang: ka
+        note: "Headline (from URL): Digital Institute gives its graduates an employment guarantee"
   - name: Digital Institute
     mentions:
       - https://www.youtube.com/watch?v=UkPDCfSAWxQ
