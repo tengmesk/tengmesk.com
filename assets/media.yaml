@@ -1,0 +1,85 @@
+# Press, talks and links supplied by Tengo (2026-09-30). Not used on the site yet.
+# Later: becomes an Astro content collection (press / talks / socials).
+# lang: en | ka   ·   image: path under assets/press/ when we have one
+
+socials:
+  instagram: https://instagram.com/tengo.ai
+  linkedin: https://www.linkedin.com/in/tmeskhi
+  x: https://x.com/tengmesk
+
+interviews:
+  - title: AI Interconnect
+    url: https://www.youtube.com/watch?v=EYlAM8VECpE
+    lang: en
+  - title: Tevent Talks
+    url: https://www.youtube.com/watch?v=xJymHgXDfVo
+    lang: en
+    image: press/tevent-talks-guest.webp
+  - title: Alexander Mihalcea
+    url: https://www.youtube.com/watch?v=U6JXWmrFQGI
+    lang: en
+  - title: Globalize
+    url: https://www.facebook.com/watch/?v=5855646294481906
+    lang: ka
+  - title: BMG
+    url: https://www.youtube.com/watch?v=02qu5q6Flvw
+    lang: ka
+  - title: LK Podcast
+    url: https://www.youtube.com/watch?v=2Xv9rY86Dgg
+    lang: ka
+
+publications:
+  - outlet: McKinsey & Company
+    title: Becoming one of Georgia's first agile banks
+    url: https://www.mckinsey.com/industries/financial-services/our-insights/banking-matters/becoming-one-of-georgias-first-agile-banks
+    lang: en
+  - outlet: Forbes Georgia
+    title: The strategic code for transformation
+    url: https://forbes.ge/en/the-strategic-code-for-transformation/
+    lang: en
+    also: https://www.facebook.com/photo?fbid=1289467009854088&set=a.488219999978797
+    image: press/forbes-georgia-quote-ka.webp
+    note: Quote card in Georgian; credits "Co-founder, Conceptdigital".
+  - outlet: Georgian Journal
+    title: Forbes Georgia's 30 Under 30, class of 2020
+    url: https://georgianjournal.ge/society/37022-forbes-georgias-30-under-30-class-of-2020.html
+    lang: en
+  - outlet: BMG
+    title: Tengiz Meskhi and Pensight, a London story
+    url: https://bm.ge/news/tengiz-mesxis-da-kompania-pensight-londonuri-istoria/35501
+    lang: ka
+
+events:
+  - name: Global Tech Weekend Tbilisi 2025, Forbes stage
+    role: Moderator
+    session: Creativity Meets Tech
+    date: 2025-06-20
+    venue: Stamba Hotel, rooftop terrace, Tbilisi
+    url: https://forbes.ge/en/creativity-meets-tech-forbes-georgia-to-host-exclusive-event-on-june-20/
+    image: press/global-tech-weekend-2025-forbes-moderator.png
+    credited_as: CEO at Conceptdigital
+  - name: DEF-AI Conference 2025
+    role: Speaker
+    date: 2025-09-19
+    venue: Tbilisi, Georgia
+    url: https://www.dgfi.io/conference/def-ai-2025
+    image: press/def-ai-2025-speaker.webp
+    credited_as: CEO and Founder of Conceptdigital, CTO of Boon
+  - name: Globalize UK Conference
+    role: Speaker
+    date: 2022-11-18
+    venue: London, UK
+    image: press/globalize-uk-2022-speaker.webp
+    credited_as: Head of Growth, Pensight
+    partners_on_card: [Georgia's Innovation & Technology Agency, Bank of Georgia Business, USAID]
+
+businesses:
+  - name: Conceptdigital
+    mentions:
+      - https://forbes.ge/en/the-strategic-code-for-transformation/
+  - name: Digital Institute
+    mentions:
+      - https://www.youtube.com/watch?v=UkPDCfSAWxQ
+      - https://www.youtube.com/watch?v=kzJ08KHwanw
+      - https://www.youtube.com/watch?v=OAfHqPeRH-w
+      - https://www.youtube.com/watch?v=PJz6jjZhlyI
