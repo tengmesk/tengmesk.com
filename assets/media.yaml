@@ -58,6 +58,13 @@ events:
     url: https://forbes.ge/en/creativity-meets-tech-forbes-georgia-to-host-exclusive-event-on-june-20/
     image: press/global-tech-weekend-2025-forbes-moderator.png
     credited_as: CEO at Conceptdigital
+    panel: "Superstar Panel: Insights on Innovation and Technology"
+    panelists: [Helen Huang (Enrich Fiscal Fitness), Tomo Moriwaki (Hyperkinetic Studios), Dan Herman (University of Toronto)]
+    photos:
+      - photos/global-tech-weekend-2025/panel-wide-moderating.webp
+      - photos/global-tech-weekend-2025/audience-stamba-rooftop.webp
+      - photos/global-tech-weekend-2025/speaking-sunglasses-mic.webp
+      - photos/global-tech-weekend-2025/panel-with-tomo-moriwaki.webp
   - name: DEF-AI Conference 2025
     role: Speaker
     date: 2025-09-19
