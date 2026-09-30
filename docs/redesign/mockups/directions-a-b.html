@@ -1,0 +1,217 @@
+<title>Tengmesk Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Instrument+Serif:ital@0;1&family=Noto+Serif+Georgian:wght@300;500&family=Noto+Sans+Georgian:wght@400;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a quiet review page; two framed browser mockups (A, B) switched by tabs. Each mockup keeps its own fixed look. */
+:root {
+  --bg: #eeece8; --fg: #1a1a1c; --muted: #6b6a70; --line: #d3d0ca; --chip: #ffffff; --accent: #7a1e2b;
+  --f-ui: "Archivo", system-ui, sans-serif;
+  --f-mono: "JetBrains Mono", ui-monospace, monospace;
+  /* mockup-local palettes (fixed, not theme-driven) */
+  --paper: #f3efe6; --ink: #0b0b0c; --wine: #7a1e2b; --amber: #c98f2a; --ink-2: #141416;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #151517; --fg: #ecebe8; --muted: #9a99a0; --line: #2c2c30; --chip: #1f1f22; --accent: #d9677a; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #151517; --fg: #ecebe8; --muted: #9a99a0; --line: #2c2c30; --chip: #1f1f22; --accent: #d9677a; color-scheme: dark }
+
+body { background: var(--bg); color: var(--fg); font-family: var(--f-ui); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 28px 48px; display: grid; gap: 20px; }
+header.top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 24px; }
+header.top h1 { margin: 0; font-size: 22px; font-weight: 700; font-stretch: 90%; letter-spacing: -.01em; }
+header.top p { margin: 4px 0 0; color: var(--muted); font-size: 14px; max-width: 60ch; }
+.tabs { display: flex; gap: 6px; padding: 4px; background: var(--chip); border: 1px solid var(--line); border-radius: 999px; }
+.tabs button { font: 600 13px/1 var(--f-ui); color: var(--muted); background: none; border: 0; padding: 10px 16px; border-radius: 999px; cursor: pointer; }
+.tabs button[aria-selected="true"] { background: var(--fg); color: var(--bg); }
+.tabs button:focus-visible, .mock button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.note { display: flex; flex-wrap: wrap; gap: 8px 20px; font: 12px/1.5 var(--f-mono); color: var(--muted); }
+.note b { color: var(--fg); font-weight: 500; }
+
+/* browser frame */
+.frame { border: 1px solid var(--line); border-radius: 12px; overflow: hidden; background: var(--chip); box-shadow: 0 30px 60px -30px rgba(0,0,0,.35); }
+.bar { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.dots { display: flex; gap: 6px; } .dots i { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
+.url { flex: 1; min-width: 0; font: 12px var(--f-mono); color: var(--muted); background: var(--bg); border-radius: 6px; padding: 6px 10px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.mock { container-type: inline-size; position: relative; overflow: hidden; }
+
+/* ───────── A · The Ledger ───────── */
+.a { background: var(--paper); color: var(--ink); font-family: "Archivo", sans-serif; }
+.a nav { display: grid; grid-template-columns: 1fr auto auto; gap: 3cqw; align-items: center; padding: 2.2cqw 3cqw; border-bottom: 1px solid var(--ink); font-size: max(11px, 1.15cqw); text-transform: uppercase; letter-spacing: .08em; }
+.a nav .links { display: flex; gap: 2.4cqw; }
+.a nav .lang { font-weight: 700; color: var(--wine); }
+.a .grid { display: grid; grid-template-columns: repeat(12, 1fr); border-bottom: 1px solid var(--ink); }
+.a .name { grid-column: 1 / -1; padding: 1.5cqw 3cqw 0; font-weight: 900; font-stretch: 62%; font-size: 17.5cqw; line-height: .82; letter-spacing: -.02em; text-transform: uppercase; margin: 0; }
+.a .name span { display: block; }
+.a .name span:last-child { padding-left: 14cqw; }
+.a .name em { font-style: normal; color: var(--wine); }
+.a .meta { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); margin-top: 2cqw; }
+.a .meta div { padding: 1.6cqw 3cqw; border-right: 1px solid var(--ink); font-size: max(11px, 1.3cqw); line-height: 1.4; }
+.a .meta div:last-child { border-right: 0; }
+.a .meta small { display: block; font: 500 max(9px, .95cqw) var(--f-mono); letter-spacing: .06em; text-transform: uppercase; opacity: .6; margin-bottom: .5cqw; }
+.a .marquee { overflow: hidden; border-bottom: 1px solid var(--ink); background: var(--ink); color: var(--paper); white-space: nowrap; }
+.a .marquee div { display: inline-block; padding: 1cqw 0; font: 800 3.2cqw/1 "Noto Sans Georgian", sans-serif; animation: slide 22s linear infinite; }
+.a .marquee b { color: var(--amber); font-weight: 800; padding-inline: 2cqw; }
+@keyframes slide { to { transform: translateX(-50%); } }
+.a .rows { padding: 0 3cqw 3cqw; }
+.a .row { display: grid; grid-template-columns: 6cqw 1fr 1fr auto; gap: 2cqw; align-items: baseline; padding: 1.5cqw 0; border-bottom: 1px solid color-mix(in srgb, var(--ink) 25%, transparent); font-size: max(12px, 1.6cqw); }
+.a .row:first-child { padding-top: 2.2cqw; }
+.a .row .n { font: 500 max(10px, 1.1cqw) var(--f-mono); color: var(--wine); }
+.a .row .t { font-weight: 800; font-stretch: 75%; text-transform: uppercase; font-size: max(14px, 2.6cqw); line-height: 1; }
+.a .row .d { opacity: .7; }
+.a .row .arr { font-family: var(--f-mono); transition: transform .3s; }
+.a .row:hover .arr { transform: translateX(.6cqw); color: var(--wine); }
+
+/* ───────── B · Terrain ───────── */
+.b { background: var(--ink-2); color: var(--paper); aspect-ratio: 16 / 10; min-height: 420px; max-width: 100%; }
+.b canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.b nav { position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; padding: 2.4cqw 3.4cqw; font: 400 max(10px, 1.05cqw) var(--f-mono); letter-spacing: .1em; text-transform: uppercase; color: color-mix(in srgb, var(--paper) 70%, transparent); z-index: 2; }
+.b nav .links { display: flex; gap: 2.4cqw; }
+.b .hero { position: absolute; left: 3.4cqw; right: 3.4cqw; bottom: 4cqw; z-index: 2; display: grid; gap: 1.6cqw; }
+.b .eyebrow { font: 400 max(10px, 1.1cqw) var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--amber); }
+.b h2 { margin: 0; font-family: "Instrument Serif", "Noto Serif Georgian", serif; font-weight: 400; font-size: 11cqw; line-height: .9; letter-spacing: -.02em; min-height: 1em; }
+.b h2.ka { font-family: "Noto Serif Georgian", serif; font-weight: 300; font-size: 8.6cqw; letter-spacing: 0; line-height: 1.02; }
+.b h2 .g { display: inline-block; white-space: pre; transition: opacity .28s cubic-bezier(.2,.7,.2,1), transform .28s cubic-bezier(.2,.7,.2,1), filter .28s; }
+.b h2 .g.out { opacity: 0; transform: translateY(.18em) scale(.9); filter: blur(6px); }
+.b .row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 2cqw; }
+.b .row p { margin: 0; max-width: 46ch; font: 400 max(12px, 1.5cqw)/1.45 "Archivo", sans-serif; color: color-mix(in srgb, var(--paper) 78%, transparent); }
+.b .toggle { display: inline-flex; align-items: center; gap: 1cqw; font: 500 max(11px, 1.15cqw) var(--f-mono); color: var(--paper); background: color-mix(in srgb, var(--paper) 8%, transparent); border: 1px solid color-mix(in srgb, var(--paper) 30%, transparent); border-radius: 999px; padding: 1cqw 1.8cqw; cursor: pointer; backdrop-filter: blur(6px); }
+.b .toggle span[aria-current="true"] { color: var(--amber); }
+.b .hint { position: absolute; right: 3.4cqw; top: 50%; writing-mode: vertical-rl; font: 400 max(9px, .95cqw) var(--f-mono); letter-spacing: .2em; color: color-mix(in srgb, var(--paper) 45%, transparent); z-index: 2; text-transform: uppercase; }
+
+@container (max-width: 560px) {
+  .a nav .links { display: none; } .a nav { grid-template-columns: 1fr auto; }
+  .a .meta { grid-template-columns: 1fr; } .a .meta div { border-right: 0; border-bottom: 1px solid var(--ink); }
+  .a .row { grid-template-columns: 8cqw 1fr auto; } .a .row .d { display: none; }
+  .b { aspect-ratio: auto; min-height: 520px; } .b nav .links, .b .hint { display: none; }
+  .b h2 { font-size: 16cqw; } .b h2.ka { font-size: 12.5cqw; }
+}
+@media (prefers-reduced-motion: reduce) { .a .marquee div { animation: none; } .b h2 .g { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <h1>tengmesk.com · direction mockups</h1>
+      <p>Two small hero mockups from the redesign spec. Placeholder copy uses the facts on the current site; the 2026 role still needs confirming.</p>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Direction">
+      <button role="tab" id="tab-a" aria-controls="panel-a" aria-selected="false">A · The Ledger</button>
+      <button role="tab" id="tab-b" aria-controls="panel-b" aria-selected="true">B · Terrain</button>
+    </div>
+  </header>
+
+  <section id="panel-a" role="tabpanel" aria-labelledby="tab-a" hidden>
+    <div class="frame">
+      <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">tengmesk.com</div></div>
+      <div class="mock a">
+        <nav><strong>T—M</strong><div class="links"><span>Now</span><span>Layers</span><span>Work</span><span>Contact</span></div><span class="lang">EN / ქა</span></nav>
+        <div class="grid">
+          <h2 class="name"><span>Tengiz</span><span>Meskhi<em>.</em></span></h2>
+          <div class="meta">
+            <div><small>Now</small>Deputy CIO, Head of Agile<br>Bank of Georgia</div>
+            <div><small>Before</small>Digital McKinsey<br>Cambridge Bioengineering</div>
+            <div><small>Based in</small>Tbilisi, Georgia<br>GMT+4</div>
+          </div>
+        </div>
+        <div class="marquee" aria-hidden="true"><div>თენგიზ მესხი<b>✦</b>თენგიზ მესხი<b>✦</b>თენგიზ მესხი<b>✦</b>თენგიზ მესხი<b>✦</b>თენგიზ მესხი<b>✦</b>თენგიზ მესხი<b>✦</b></div></div>
+        <div class="rows">
+          <div class="row"><span class="n">L1</span><span class="t">Cambridge</span><span class="d">Bioengineering</span><span class="arr">→</span></div>
+          <div class="row"><span class="n">L2</span><span class="t">McKinsey</span><span class="d">Digital transformation</span><span class="arr">→</span></div>
+          <div class="row"><span class="n">L3</span><span class="t">Bank of Georgia</span><span class="d">Technology &amp; Agile</span><span class="arr">→</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="panel-b" role="tabpanel" aria-labelledby="tab-b">
+    <div class="frame">
+      <div class="bar"><div class="dots"><i></i><i></i><i></i></div><div class="url">tengmesk.com</div></div>
+      <div class="mock b" id="terrain">
+        <canvas id="cv" aria-hidden="true"></canvas>
+        <nav><span>T·M / Tbilisi 41.69°N</span><div class="links"><span>Now</span><span>Layers</span><span>Work</span><span>Contact</span></div></nav>
+        <span class="hint">Move to shape the terrain</span>
+        <div class="hero">
+          <span class="eyebrow" id="eb">Bioengineer → Consultant → Bank technologist</span>
+          <h2 id="nm" lang="en" aria-live="polite"></h2>
+          <div class="row">
+            <p id="bl">Deputy CIO and Head of Agile at Bank of Georgia. Cambridge bioengineering graduate and Digital McKinsey alum.</p>
+            <button class="toggle" id="tg" aria-label="Switch language"><span aria-current="true">EN</span>⇄<span>ქა</span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="note">
+    <span><b>A</b> sharp grid, condensed type, Georgian name marquee, wine accent</span>
+    <span><b>B</b> living contour lines follow the cursor · tap ⇄ or press K for the name morph</span>
+  </div>
+</div>
+
+<script>
+// tabs
+const tabs = [...document.querySelectorAll('[role=tab]')];
+tabs.forEach(t => t.addEventListener('click', () => {
+  tabs.forEach(x => { const on = x === t; x.setAttribute('aria-selected', on); document.getElementById(x.getAttribute('aria-controls')).hidden = !on; });
+  resize();
+}));
+
+// ── Terrain: value-noise field + marching squares contours
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const box = document.getElementById('terrain'), cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+let W = 0, H = 0, dpr = 1, mouse = { x: -1e4, y: -1e4, s: 0 }, lang = 'en';
+const P = new Uint8Array(512); { const p = [...Array(256).keys()]; for (let i = 255; i > 0; i--) { const j = (Math.sin(i * 91.7) * 43758.5453 % 1 + 1) % 1 * (i + 1) | 0; [p[i], p[j]] = [p[j], p[i]]; } for (let i = 0; i < 512; i++) P[i] = p[i & 255]; }
+const fade = t => t * t * (3 - 2 * t), lerp = (a, b, t) => a + (b - a) * t;
+function vn(x, y) { const xi = Math.floor(x), yi = Math.floor(y), xf = x - xi, yf = y - yi, X = xi & 255, Y = yi & 255;
+  const h = (i, j) => P[P[X + i] + Y + j] / 255; const u = fade(xf), v = fade(yf);
+  return lerp(lerp(h(0,0), h(1,0), u), lerp(h(0,1), h(1,1), u), v); }
+function field(x, y, t) {
+  let n = vn(x * .9 + t * .05, y * .9) * .6 + vn(x * 2.1 - t * .03, y * 2.1 + 7) * .28 + vn(x * 4.3, y * 4.3 - t * .04) * .12;
+  const dx = x * W / 3.2 - mouse.x, dy = y * W / 3.2 - mouse.y; n += .22 * mouse.s * Math.exp(-(dx * dx + dy * dy) / (2 * 110 * 110));
+  return n; }
+function resize() { const r = box.getBoundingClientRect(); if (!r.width) return; dpr = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; draw(performance.now()); }
+const LV = 14;
+function draw(ms) {
+  if (!W) return; const t = ms / 1000, cs = W < 600 ? 10 : 9, cols = Math.ceil(W / cs) + 1, rows = Math.ceil(H / cs) + 1, s = 3.2 / W;
+  const f = new Float32Array(cols * rows); for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) f[j * cols + i] = field(i * cs * s, j * cs * s, t);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0); ctx.clearRect(0, 0, W, H); ctx.lineWidth = 1;
+  const accent = lang === 'en' ? [201,143,42] : [217,103,122];
+  for (let k = 1; k < LV; k++) { const lv = .18 + k * .052, major = k % 4 === 0;
+    ctx.strokeStyle = major ? `rgba(${accent},.75)` : `rgba(243,239,230,${.1 + k * .012})`; ctx.lineWidth = major ? 1.2 : .8; ctx.beginPath();
+    for (let j = 0; j < rows - 1; j++) for (let i = 0; i < cols - 1; i++) {
+      const a = f[j*cols+i], b = f[j*cols+i+1], c = f[(j+1)*cols+i+1], d = f[(j+1)*cols+i];
+      const id = (a > lv) << 3 | (b > lv) << 2 | (c > lv) << 1 | (d > lv); if (id === 0 || id === 15) continue;
+      const x = i * cs, y = j * cs, e = [
+        [x + cs * (lv - a) / (b - a), y], [x + cs, y + cs * (lv - b) / (c - b)],
+        [x + cs * (lv - d) / (c - d), y + cs], [x, y + cs * (lv - a) / (d - a)]];
+      const seg = { 1:[[2,3]],2:[[1,2]],3:[[1,3]],4:[[0,1]],5:[[0,3],[1,2]],6:[[0,2]],7:[[0,3]],8:[[0,3]],9:[[0,2]],10:[[0,1],[2,3]],11:[[0,1]],12:[[1,3]],13:[[1,2]],14:[[2,3]] }[id];
+      for (const [p, q] of seg) { ctx.moveTo(e[p][0], e[p][1]); ctx.lineTo(e[q][0], e[q][1]); } }
+    ctx.stroke(); }
+}
+let last = 0; function loop(ms) { if (!document.getElementById('panel-b').hidden && ms - last > 33) { mouse.s += ((mouse.x > -1e3 ? 1 : 0) - mouse.s) * .08; draw(ms); last = ms; } requestAnimationFrame(loop); }
+box.addEventListener('pointermove', e => { const r = box.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+box.addEventListener('pointerleave', () => { mouse.x = mouse.y = -1e4; });
+addEventListener('resize', resize); document.fonts?.ready.then(resize); resize(); if (!reduce) requestAnimationFrame(loop);
+
+// ── Bilingual name morph
+const NAMES = { en: 'Tengiz Meskhi', ka: 'თენგიზ მესხი' };
+const COPY = {
+  en: { eb: 'Bioengineer → Consultant → Bank technologist', bl: 'Deputy CIO and Head of Agile at Bank of Georgia. Cambridge bioengineering graduate and Digital McKinsey alum.' },
+  ka: { eb: 'ბიოინჟინერი → კონსულტანტი → საბანკო ტექნოლოგი', bl: 'საქართველოს ბანკის CIO-ს მოადგილე და Agile-ის ხელმძღვანელი. კემბრიჯის ბიოინჟინერიის კურსდამთავრებული, Digital McKinsey-ის ალუმნი.' } };
+const nm = document.getElementById('nm');
+function setName(s) { nm.innerHTML = ''; [...s].forEach(ch => { const g = document.createElement('span'); g.className = 'g'; g.textContent = ch; nm.append(g); }); }
+setName(NAMES.en);
+function swap() {
+  const next = lang === 'en' ? 'ka' : 'en', gs = [...nm.children], dur = reduce ? 0 : 280, st = reduce ? 0 : 32;
+  gs.forEach((g, i) => setTimeout(() => g.classList.add('out'), i * st));
+  setTimeout(() => {
+    lang = next; nm.lang = next; nm.classList.toggle('ka', next === 'ka'); setName(NAMES[next]);
+    document.getElementById('eb').textContent = COPY[next].eb; const bl = document.getElementById('bl'); bl.textContent = COPY[next].bl; bl.lang = next;
+    const tg = document.getElementById('tg').children; tg[0].setAttribute('aria-current', next === 'en'); tg[1].setAttribute('aria-current', next === 'ka');
+    const ng = [...nm.children]; ng.forEach(g => g.classList.add('out')); void nm.offsetWidth;
+    ng.forEach((g, i) => setTimeout(() => g.classList.remove('out'), i * st));
+    if (reduce) draw(performance.now());
+  }, gs.length * st + dur);
+}
+document.getElementById('tg').addEventListener('click', swap);
+addEventListener('keydown', e => { if ((e.key === 'k' || e.key === 'K') && !document.getElementById('panel-b').hidden && !e.metaKey && !e.ctrlKey) swap(); });
+</script>
