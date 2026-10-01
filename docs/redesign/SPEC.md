@@ -308,3 +308,15 @@ Owner feedback after seeing the A/B mockups:
 - References could not be viewed from the build sandbox (network policy); mockup is based on the owner's description. Owner to confirm the look matches the references.
 
 Mockup: `docs/redesign/mockups/10go-intro.html`.
+
+## Revision 2 · 2026-10-01 · Professional, light, no eyes
+
+- **Eyes dropped:** too playful. 10go stays as a story on the About page, not a UI device.
+- **Intro chooser dropped.** The homepage is the professional page. The personal side lives at **/about**.
+- **Light mode** is the default and only theme for now.
+- **Homepage order:** hero (roles, name, one-line pitch, CTAs) → featured-in / on-stage proof strip → Now (Conceptdigital, Digital Institute, Boon) → Track record (Cambridge → McKinsey → Bank of Georgia → Pensight → own companies, Forbes 30U30) → Where I can help (transformation & agile · AI & digital products · speaking & moderating) → On stage (event photos) → Press & interviews → About teaser → Contact → footer.
+- **Language:** EN/ქართული selector in the footer, and in the hamburger menu on mobile.
+- **Hero background:** still open. Mockup compares Contours, Dot field, Flow, Aurora and a photo (Stamba rooftop).
+- Type: Instrument Serif display + Geist body/mono; Noto Georgian faces for KA. Accent: Tbilisi amber on near-white.
+
+Mockup: `docs/redesign/mockups/home-professional.html` (images resolve from `img/` when published; sources in `assets/photos/`).

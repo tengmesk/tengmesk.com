@@ -1,0 +1,444 @@
+<title>Tengo Meskhi Home</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&family=Noto+Serif+Georgian:wght@300;400;500&family=Noto+Sans+Georgian:wght@400;500;600&display=swap">
+<style>
+/* Layout: light, editorial-professional single column; full-bleed hero with swappable generative backgrounds,
+   then proof → now → track record → help → on stage → press → about teaser → contact → footer (language).
+   Deliberately light-only (owner's request), so every colour is set explicitly. */
+:root {
+  color-scheme: light;
+  --bg: #fafaf8; --surface: #ffffff; --ink: #121316; --ink-2: #3c3e44; --muted: #6e7078;
+  --line: #e4e3df; --amber: #e2902a; --amber-ink: #9a5a0c; --wash: rgba(250,250,248,.86);
+  --f-display: "Instrument Serif", "Noto Serif Georgian", Georgia, serif;
+  --f-body: "Geist", "Noto Sans Georgian", system-ui, sans-serif;
+  --f-mono: "Geist Mono", ui-monospace, monospace;
+  --gut: clamp(16px, 4vw, 56px);
+}
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font: 16px/1.55 var(--f-body); margin: 0; }
+:lang(ka) { --f-display: "Noto Serif Georgian", Georgia, serif; }
+a { color: inherit; }
+button { font: inherit; color: inherit; cursor: pointer; }
+:focus-visible { outline: 2px solid var(--amber); outline-offset: 3px; border-radius: 4px; }
+.mono { font-family: var(--f-mono); }
+.eyebrow { font: 500 12px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--amber-ink); }
+.todo { display: inline-block; font: 500 10px var(--f-mono); letter-spacing: .1em; text-transform: uppercase; padding: 2px 6px; border: 1px dashed currentColor; border-radius: 4px; color: var(--muted); vertical-align: middle; white-space: nowrap; }
+
+/* Nav */
+.nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 30; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px var(--gut); background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.scrolled { border-bottom-color: var(--line); }
+.brand { font: 400 26px/1 var(--f-display); letter-spacing: -.01em; text-decoration: none; }
+.brand b { font-weight: 400; color: var(--amber); }
+.links { display: flex; align-items: center; gap: 26px; font-size: 14px; }
+.links a { text-decoration: none; color: var(--ink-2); }
+.links a:hover { color: var(--ink); }
+.links .cta { color: var(--surface); background: var(--ink); padding: 9px 16px; border-radius: 999px; }
+.burger { display: none; width: 42px; height: 42px; border: 1px solid var(--line); background: var(--surface); border-radius: 999px; place-items: center; }
+.burger span, .burger span::before, .burger span::after { display: block; width: 16px; height: 1.5px; background: var(--ink); position: relative; content: ""; transition: transform .25s; }
+.burger span::before { position: absolute; top: -5px; } .burger span::after { position: absolute; top: 5px; }
+.menu { position: fixed; inset: 0; z-index: 40; background: var(--bg); padding: calc(80px + env(safe-area-inset-top, 0px)) var(--gut) calc(24px + env(safe-area-inset-bottom, 0px)); display: flex; flex-direction: column; gap: 6px; }
+.menu a { font: 400 40px/1.2 var(--f-display); text-decoration: none; }
+.menu .close { position: absolute; top: calc(14px + env(safe-area-inset-top, 0px)); right: var(--gut); width: 42px; height: 42px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 20px; }
+.menu .langsel { margin-top: auto; }
+
+/* Hero */
+.hero { position: relative; overflow: hidden; padding: clamp(72px, 11vw, 150px) var(--gut) clamp(40px, 6vw, 72px); border-bottom: 1px solid var(--line); isolation: isolate; }
+.bg { position: absolute; inset: 0; z-index: -2; }
+.bg canvas { width: 100%; height: 100%; display: block; }
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--wash) 0%, rgba(250,250,248,.55) 46%, rgba(250,250,248,0) 75%); pointer-events: none; }
+.aurora { position: absolute; inset: -20%; filter: blur(60px) saturate(115%); }
+.aurora i { position: absolute; border-radius: 50%; opacity: .55; animation: drift 18s ease-in-out infinite alternate; }
+.aurora i:nth-child(1) { width: 46%; height: 60%; left: 48%; top: 10%; background: #f4b25e; }
+.aurora i:nth-child(2) { width: 40%; height: 50%; left: 66%; top: 46%; background: #9cc4f0; animation-duration: 22s; animation-delay: -6s; }
+.aurora i:nth-child(3) { width: 34%; height: 44%; left: 38%; top: 52%; background: #c9b6f2; animation-duration: 26s; animation-delay: -11s; }
+.aurora i:nth-child(4) { width: 26%; height: 36%; left: 80%; top: 0%; background: #f7d9a8; animation-duration: 20s; animation-delay: -3s; }
+@keyframes drift { 0% { transform: translate(0,0) scale(1); } 50% { transform: translate(-8%, 6%) scale(1.15); } 100% { transform: translate(6%, -4%) scale(.92); } }
+.grain { position: absolute; inset: 0; opacity: .18; mix-blend-mode: multiply; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E"); }
+.photo { position: absolute; inset: 0; background: center 35% / cover no-repeat; filter: grayscale(.25) contrast(1.05); }
+.photo::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(250,250,248,.96) 0%, rgba(250,250,248,.75) 45%, rgba(250,250,248,.15) 100%); }
+.hero-in { max-width: 1240px; margin: 0 auto; display: grid; gap: 22px; }
+.hero h1 { margin: 0; font: 400 clamp(64px, 11.5vw, 168px)/.9 var(--f-display); letter-spacing: -.03em; }
+.hero h1:lang(ka) { font-weight: 300; font-size: clamp(48px, 8.4vw, 124px); letter-spacing: 0; line-height: 1.05; }
+.roles { display: flex; flex-wrap: wrap; gap: 8px; }
+.roles span { font: 500 13px var(--f-body); padding: 7px 12px; border-radius: 999px; background: rgba(255,255,255,.8); border: 1px solid var(--line); backdrop-filter: blur(6px); }
+.roles span b { font-weight: 600; }
+.lead { margin: 0; max-width: 34ch; font: 400 clamp(20px, 2.3vw, 28px)/1.35 var(--f-body); letter-spacing: -.01em; color: var(--ink-2); text-wrap: balance; }
+.ctas { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 6px; }
+.btn { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; padding: 14px 22px; border-radius: 999px; font: 500 15px var(--f-body); border: 1px solid var(--ink); }
+.btn.primary { background: var(--ink); color: var(--surface); }
+.btn.primary:hover { background: #000; }
+.btn.ghost { background: rgba(255,255,255,.7); }
+.bgpick { position: absolute; right: var(--gut); bottom: 18px; display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 4px; padding: 4px; border-radius: 999px; background: rgba(255,255,255,.85); border: 1px solid var(--line); backdrop-filter: blur(8px); font: 500 11px var(--f-mono); max-width: calc(100% - 2 * var(--gut)); }
+.bgpick > span { padding: 0 8px; color: var(--muted); letter-spacing: .08em; text-transform: uppercase; }
+.bgpick button { border: 0; background: none; padding: 7px 10px; border-radius: 999px; }
+.bgpick button[aria-pressed="true"] { background: var(--ink); color: var(--surface); }
+
+/* Sections */
+.wrap { max-width: 1240px; margin: 0 auto; padding-inline: var(--gut); }
+section.s { padding-block: clamp(56px, 8vw, 112px); border-bottom: 1px solid var(--line); }
+.s-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 24px 48px; align-items: end; margin-bottom: clamp(28px, 4vw, 48px); }
+.s-head h2 { margin: 0; font: 400 clamp(38px, 5.4vw, 72px)/1 var(--f-display); letter-spacing: -.02em; text-wrap: balance; }
+.s-head h2:lang(ka) { font-size: clamp(30px, 4vw, 54px); line-height: 1.15; letter-spacing: 0; }
+.s-head p { margin: 0; color: var(--ink-2); max-width: 52ch; font-size: 17px; }
+
+.proof { display: grid; grid-template-columns: auto 1fr; gap: 14px 28px; align-items: baseline; padding-block: 26px; border-bottom: 1px solid var(--line); }
+.proof .lbl { font: 500 11px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.proof .row { display: flex; flex-wrap: wrap; gap: 8px 34px; font: 500 clamp(15px, 1.5vw, 18px) var(--f-body); color: var(--ink-2); }
+
+.now { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 26px; display: grid; gap: 10px; align-content: start; min-width: 0; transition: transform .3s cubic-bezier(.2,.8,.2,1), box-shadow .3s; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 18px 40px -24px rgba(18,19,22,.35); }
+.card .k { font: 500 11px var(--f-mono); letter-spacing: .12em; text-transform: uppercase; color: var(--amber-ink); }
+.card h3 { margin: 0; font: 400 34px/1.05 var(--f-display); letter-spacing: -.01em; }
+.card p { margin: 0; color: var(--ink-2); }
+
+.timeline { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.timeline li { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr) minmax(0, 1.6fr); gap: 8px 32px; padding: 22px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+.timeline .org { font: 400 clamp(26px, 3vw, 38px)/1.05 var(--f-display); letter-spacing: -.01em; }
+.timeline .role { font-weight: 500; }
+.timeline .what { color: var(--ink-2); }
+.timeline .what a { color: var(--amber-ink); text-underline-offset: 3px; }
+.award { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin-top: 22px; padding: 18px 22px; border-radius: 16px; background: #fff6e8; border: 1px solid #f2dcb6; }
+.award b { font: 400 26px var(--f-display); }
+
+.help { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 0; border-top: 1px solid var(--ink); }
+.help > div { padding: 26px 26px 30px 0; display: grid; gap: 12px; align-content: start; min-width: 0; }
+.help > div + div { padding-left: 26px; border-left: 1px solid var(--line); }
+.help .n { font: 500 12px var(--f-mono); color: var(--amber-ink); }
+.help h3 { margin: 0; font: 600 22px/1.2 var(--f-body); letter-spacing: -.01em; }
+.help p { margin: 0; color: var(--ink-2); }
+.help ul { margin: 0; padding-left: 18px; color: var(--ink-2); display: grid; gap: 4px; }
+
+.stage { display: grid; grid-template-columns: 1.4fr 1fr; grid-template-rows: auto auto; gap: 14px; }
+.stage figure { margin: 0; position: relative; border-radius: 18px; overflow: hidden; background: var(--line); min-width: 0; }
+.stage figure:first-child { grid-row: span 2; }
+.stage img { display: block; width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4 / 3; max-width: 100%; }
+.stage figure:first-child img { aspect-ratio: auto; min-height: 100%; }
+.stage figcaption { position: absolute; left: 12px; bottom: 12px; right: 12px; font: 500 12px/1.35 var(--f-body); color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.5); }
+.events { margin-top: 18px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0; border-top: 1px solid var(--line); }
+.events div { padding: 16px 16px 16px 0; display: grid; gap: 2px; min-width: 0; }
+.events b { font-weight: 600; }
+.events span { color: var(--muted); font-size: 14px; }
+
+.press { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.press li a { display: grid; grid-template-columns: 140px minmax(0, 1fr) auto auto; gap: 16px; align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--line); text-decoration: none; transition: padding .25s; }
+.press li a:hover { padding-left: 8px; }
+.press .t { font-size: 17px; }
+.press .o { font: 500 12px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.press .lg { font: 500 11px var(--f-mono); padding: 2px 6px; border-radius: 4px; border: 1px solid var(--line); color: var(--ink-2); }
+.press .arr { color: var(--amber-ink); }
+
+.about { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px; align-items: center; }
+.about img { width: 100%; max-width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 20px; display: block; }
+.about h2 { margin: 0 0 12px; font: 400 clamp(38px, 5vw, 64px)/1 var(--f-display); letter-spacing: -.02em; }
+.about h2:lang(ka) { font-size: clamp(30px, 3.6vw, 48px); line-height: 1.15; }
+.about p { margin: 0 0 22px; color: var(--ink-2); max-width: 46ch; font-size: 17px; }
+
+.contact { padding-block: clamp(64px, 9vw, 128px); text-align: left; }
+.contact h2 { margin: 0; font: 400 clamp(48px, 8vw, 116px)/.95 var(--f-display); letter-spacing: -.03em; max-width: 14ch; text-wrap: balance; }
+.contact h2:lang(ka) { font-size: clamp(36px, 5.6vw, 80px); line-height: 1.1; letter-spacing: 0; }
+.contact h2 em { color: var(--amber); }
+.contact .ctas { margin-top: 28px; }
+
+footer { background: var(--ink); color: #d9d9d6; padding-block: 40px calc(28px + env(safe-area-inset-bottom, 0px)); }
+footer .wrap { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr); gap: 32px; }
+footer .brand { color: #fff; }
+footer h4 { margin: 0 0 10px; font: 500 11px var(--f-mono); letter-spacing: .14em; text-transform: uppercase; color: #8d8f96; }
+footer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+footer a { text-decoration: none; } footer a:hover { color: #fff; }
+footer .small { grid-column: 1 / -1; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding-top: 22px; border-top: 1px solid #2a2b30; font: 400 12px var(--f-mono); color: #8d8f96; }
+.langsel { display: inline-flex; gap: 4px; padding: 4px; border-radius: 999px; border: 1px solid currentColor; }
+.langsel button { border: 0; background: none; padding: 8px 14px; border-radius: 999px; font: 500 14px var(--f-body); }
+footer .langsel { border-color: #3a3b41; }
+footer .langsel button[aria-pressed="true"] { background: #fff; color: var(--ink); }
+.menu .langsel { border-color: var(--line); align-self: flex-start; }
+.menu .langsel button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+@media (max-width: 860px) {
+  .links { display: none; } .burger { display: grid; }
+  .s-head, .about, footer .wrap { grid-template-columns: 1fr; }
+  .timeline li { grid-template-columns: 1fr; gap: 4px; }
+  .help > div, .help > div + div { padding: 22px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  .stage { grid-template-columns: 1fr; } .stage figure:first-child { grid-row: auto; } .stage figure:first-child img { aspect-ratio: 4 / 3; }
+  .press li a { grid-template-columns: minmax(0, 1fr) auto; } .press .o { grid-column: 1 / -1; order: -1; } .press .arr { display: none; }
+  .proof { grid-template-columns: 1fr; }
+  .bgpick { position: static; margin-top: 28px; justify-content: flex-start; max-width: 100%; border-radius: 16px; }
+}
+@media (prefers-reduced-motion: reduce) { .aurora i { animation: none; } *, *::before, *::after { transition-duration: .01ms !important; } }
+</style>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">Tengo Meskhi<b>.</b></a>
+  <nav class="links" aria-label="Main">
+    <a href="#help" data-i="nav.help">How I help</a>
+    <a href="#track" data-i="nav.track">Track record</a>
+    <a href="#stage" data-i="nav.stage">Speaking</a>
+    <a href="#press" data-i="nav.press">Press</a>
+    <a href="#about" data-i="nav.about">About</a>
+    <a href="#contact" class="cta" data-i="nav.contact">Get in touch</a>
+  </nav>
+  <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span></button>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <button class="close" id="close" aria-label="Close menu">×</button>
+  <a href="#help" data-i="nav.help">How I help</a>
+  <a href="#track" data-i="nav.track">Track record</a>
+  <a href="#stage" data-i="nav.stage">Speaking</a>
+  <a href="#press" data-i="nav.press">Press</a>
+  <a href="#about" data-i="nav.about">About</a>
+  <a href="#contact" data-i="nav.contact">Get in touch</a>
+  <div class="langsel" role="group" aria-label="Language"><button data-lang="en" aria-pressed="true">English</button><button data-lang="ka" aria-pressed="false">ქართული</button></div>
+</div>
+
+<main id="top">
+  <section class="hero" id="hero">
+    <div class="bg" id="bg"><canvas id="cv" aria-hidden="true"></canvas></div>
+    <div class="hero-in">
+      <div class="roles">
+        <span><b>CEO &amp; Founder</b> · Conceptdigital</span>
+        <span><b>CTO</b> · Boon</span>
+        <span data-i="hero.forbes">Forbes Georgia 30 Under 30</span>
+      </div>
+      <h1 id="name">Tengo Meskhi</h1>
+      <p class="lead" data-i="hero.lead">I help companies change how they build, from agile teams to AI products, and I've done it from the inside of a bank, a consultancy and my own startups.</p>
+      <div class="ctas">
+        <a class="btn primary" href="#contact" data-i="hero.cta1">Work with me →</a>
+        <a class="btn ghost" href="#stage" data-i="hero.cta2">Book me to speak</a>
+      </div>
+    </div>
+    <div class="bgpick" role="group" aria-label="Hero background (mockup only)">
+      <span>Background</span>
+      <button data-bg="contours">Contours</button><button data-bg="dots">Dot field</button><button data-bg="flow">Flow</button><button data-bg="aurora">Aurora</button><button data-bg="photo">Photo</button>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="proof">
+      <span class="lbl" data-i="proof.seen">Featured in</span>
+      <div class="row"><span>McKinsey &amp; Company</span><span>Forbes Georgia</span><span>Georgian Journal</span><span>BMG</span></div>
+      <span class="lbl" data-i="proof.stage">On stage at</span>
+      <div class="row"><span>Global Tech Weekend × Forbes</span><span>DEF-AI 2025</span><span>Globalize UK</span></div>
+    </div>
+  </div>
+
+  <section class="s" id="now">
+    <div class="wrap">
+      <div class="s-head"><span class="eyebrow" data-i="now.eb">Now</span><div><h2 data-i="now.h">What I'm building today</h2></div></div>
+      <div class="now">
+        <div class="card"><span class="k" data-i="now.c1k">Founder &amp; CEO</span><h3>Conceptdigital</h3><p data-i="now.c1">Digital transformation and product partner for companies in Georgia and beyond. <span class="todo">one-line tbc</span></p></div>
+        <div class="card"><span class="k" data-i="now.c2k">Founder</span><h3>Digital Institute</h3><p data-i="now.c2">Tech education with a job guarantee for graduates. <span class="todo">confirm</span></p></div>
+        <div class="card"><span class="k">CTO</span><h3>Boon</h3><p data-i="now.c3">Leading technology and product. <span class="todo">one-line tbc</span></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="track">
+    <div class="wrap">
+      <div class="s-head"><span class="eyebrow" data-i="track.eb">Track record</span><div><h2 data-i="track.h">Science, strategy, banking, startups</h2></div></div>
+      <ol class="timeline">
+        <li><span class="org">University of Cambridge</span><span class="role" data-i="track.r1">Bioengineering</span><span class="what" data-i="track.w1">Trained as an engineer. Learned to model complex systems before I ever managed one.</span></li>
+        <li><span class="org">McKinsey &amp; Company</span><span class="role">Digital McKinsey</span><span class="what" data-i="track.w2">Advised banks and corporates on digital strategy and transformation.</span></li>
+        <li><span class="org">Bank of Georgia</span><span class="role" data-i="track.r3">Deputy CIO, Head of Agile</span><span class="what"><span data-i="track.w3">Helped turn it into one of Georgia's first agile banks.</span> <a href="https://www.mckinsey.com/industries/financial-services/our-insights/banking-matters/becoming-one-of-georgias-first-agile-banks" target="_blank" rel="noopener" data-i="track.l3">McKinsey case ↗</a></span></li>
+        <li><span class="org">Pensight · London</span><span class="role">Head of Growth</span><span class="what" data-i="track.w4">Scaled a London tech startup's growth.</span></li>
+        <li><span class="org">Conceptdigital · Boon</span><span class="role" data-i="track.r5">Founder &amp; CEO · CTO</span><span class="what" data-i="track.w5">Building companies of my own.</span></li>
+      </ol>
+      <div class="award"><span class="eyebrow">2020</span><b>Forbes Georgia 30 Under 30</b><a class="mono" style="font-size:13px;color:var(--amber-ink)" href="https://georgianjournal.ge/society/37022-forbes-georgias-30-under-30-class-of-2020.html" target="_blank" rel="noopener">Georgian Journal ↗</a><span class="todo">dates &amp; order tbc</span></div>
+    </div>
+  </section>
+
+  <section class="s" id="help">
+    <div class="wrap">
+      <div class="s-head"><span class="eyebrow" data-i="help.eb">Where I can help</span><div><h2 data-i="help.h">Three ways to work together</h2><p data-i="help.p">For boards, executive teams and founders who need someone who has done it, not just advised on it.</p></div></div>
+      <div class="help">
+        <div><span class="n">01</span><h3 data-i="help.1h">Transformation &amp; agile at scale</h3><p data-i="help.1p">Operating model, team design and delivery for organisations that need to move faster.</p></div>
+        <div><span class="n">02</span><h3 data-i="help.2h">AI &amp; digital products</h3><p data-i="help.2p">From strategy to shipped product: AI agents, platforms and the teams that run them.</p></div>
+        <div><span class="n">03</span><h3 data-i="help.3h">Speaking &amp; moderating</h3><p data-i="help.3p">Keynotes, panels and workshops on technology, AI and transformation, in English or Georgian.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="stage">
+    <div class="wrap">
+      <div class="s-head"><span class="eyebrow" data-i="stage.eb">Speaking</span><div><h2 data-i="stage.h">On stage</h2></div></div>
+      <div class="stage">
+        <figure><img src="img/panel-wide-moderating.webp" alt="Tengo moderating a panel on innovation and technology at Global Tech Weekend 2025" loading="lazy"><figcaption>Moderating the Superstar Panel · Global Tech Weekend × Forbes, Tbilisi 2025</figcaption></figure>
+        <figure><img src="img/speaking-sunglasses-mic.webp" alt="Tengo speaking with a microphone" loading="lazy"><figcaption>Global Tech Weekend 2025</figcaption></figure>
+        <figure><img src="img/audience-stamba-rooftop.webp" alt="Full audience under the timber roof at Stamba" loading="lazy"><figcaption>Stamba rooftop, Tbilisi</figcaption></figure>
+      </div>
+      <div class="events">
+        <div><b>Global Tech Weekend × Forbes</b><span data-i="ev.1">Moderator · Tbilisi · Jun 2025</span></div>
+        <div><b>DEF-AI 2025</b><span data-i="ev.2">Speaker · Tbilisi · Sep 2025</span></div>
+        <div><b>Globalize UK Conference</b><span data-i="ev.3">Speaker · London · Nov 2022</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="press">
+    <div class="wrap">
+      <div class="s-head"><span class="eyebrow" data-i="press.eb">Press &amp; interviews</span><div><h2 data-i="press.h">In the media</h2></div></div>
+      <ul class="press">
+        <li><a href="https://forbes.ge/en/the-strategic-code-for-transformation/" target="_blank" rel="noopener"><span class="o">Forbes Georgia</span><span class="t">The strategic code for transformation</span><span class="lg">EN</span><span class="arr">↗</span></a></li>
+        <li><a href="https://www.mckinsey.com/industries/financial-services/our-insights/banking-matters/becoming-one-of-georgias-first-agile-banks" target="_blank" rel="noopener"><span class="o">McKinsey</span><span class="t">Becoming one of Georgia's first agile banks</span><span class="lg">EN</span><span class="arr">↗</span></a></li>
+        <li><a href="https://www.youtube.com/watch?v=EYlAM8VECpE" target="_blank" rel="noopener"><span class="o">AI Interconnect</span><span class="t">Interview</span><span class="lg">EN</span><span class="arr">↗</span></a></li>
+        <li><a href="https://www.youtube.com/watch?v=xJymHgXDfVo" target="_blank" rel="noopener"><span class="o">Tevent Talks</span><span class="t">Special guest</span><span class="lg">EN</span><span class="arr">↗</span></a></li>
+        <li><a href="https://www.youtube.com/watch?v=U6JXWmrFQGI" target="_blank" rel="noopener"><span class="o">Alexander Mihalcea</span><span class="t">Interview</span><span class="lg">EN</span><span class="arr">↗</span></a></li>
+        <li><a href="https://www.youtube.com/watch?v=2Xv9rY86Dgg" target="_blank" rel="noopener"><span class="o">LK Podcast</span><span class="t">Podcast episode</span><span class="lg">KA</span><span class="arr">↗</span></a></li>
+        <li><a href="https://bm.ge/news/tengiz-mesxis-da-kompania-pensight-londonuri-istoria/35501" target="_blank" rel="noopener"><span class="o">BMG</span><span class="t">Pensight: a London story</span><span class="lg">KA</span><span class="arr">↗</span></a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="s" id="about">
+    <div class="wrap about">
+      <img src="img/panel-with-tomo-moriwaki.webp" alt="Tengo in conversation on stage" loading="lazy">
+      <div>
+        <span class="eyebrow" data-i="about.eb">About</span>
+        <h2 data-i="about.h">There's more than the CV</h2>
+        <p data-i="about.p">Why Tengo is sometimes 10go, what a bioengineer is doing in banking, and life in Tbilisi.</p>
+        <a class="btn ghost" href="#about" data-i="about.cta">Read my story →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <span class="eyebrow" data-i="contact.eb">Get in touch</span>
+      <h2 data-i="contact.h">Let's build something <em>worth talking about.</em></h2>
+      <div class="ctas">
+        <a class="btn primary" href="https://www.linkedin.com/in/tmeskhi" target="_blank" rel="noopener" data-i="contact.li">Message me on LinkedIn →</a>
+        <span class="btn ghost"><span data-i="contact.email">Email</span>&nbsp;<span class="todo">address tbc</span></span>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><a class="brand" href="#top">Tengo Meskhi<b>.</b></a><p data-i="foot.tag" style="margin:10px 0 0;max-width:32ch;color:#a3a4a9">Technology leader and founder, based in Tbilisi.</p></div>
+    <div><h4 data-i="foot.elsewhere">Elsewhere</h4><ul><li><a href="https://www.linkedin.com/in/tmeskhi" target="_blank" rel="noopener">LinkedIn ↗</a></li><li><a href="https://x.com/tengmesk" target="_blank" rel="noopener">X / Twitter ↗</a></li><li><a href="https://instagram.com/tengo.ai" target="_blank" rel="noopener">Instagram ↗</a></li></ul></div>
+    <div><h4 data-i="foot.lang">Language</h4><div class="langsel" role="group" aria-label="Language"><button data-lang="en" aria-pressed="true">English</button><button data-lang="ka" aria-pressed="false">ქართული</button></div></div>
+    <div class="small"><span>© 2026 Tengo Meskhi</span><span data-i="foot.mock">Mockup · Georgian is a draft translation</span></div>
+  </div>
+</footer>
+
+<script>
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const store = { get(k) { try { return localStorage.getItem(k); } catch { return null; } }, set(k, v) { try { localStorage.setItem(k, v); } catch {} } };
+
+// nav + mobile menu
+addEventListener('scroll', () => $('#nav').classList.toggle('scrolled', scrollY > 10), { passive: true });
+const menu = $('#menu'), burger = $('#burger');
+const openMenu = o => { menu.hidden = !o; burger.setAttribute('aria-expanded', o); document.body.style.overflow = o ? 'hidden' : ''; };
+burger.onclick = () => openMenu(true); $('#close').onclick = () => openMenu(false);
+menu.addEventListener('click', e => { if (e.target.closest('a')) openMenu(false); });
+
+// ── i18n (draft Georgian)
+const KA = {
+  'nav.help': 'როგორ დაგეხმარებით', 'nav.track': 'გამოცდილება', 'nav.stage': 'გამოსვლები', 'nav.press': 'მედია', 'nav.about': 'ჩემ შესახებ', 'nav.contact': 'დამიკავშირდით',
+  'hero.forbes': 'Forbes Georgia 30 Under 30',
+  'hero.lead': 'ვეხმარები კომპანიებს შეცვალონ, როგორ ქმნიან პროდუქტებს, Agile გუნდებიდან AI პროდუქტებამდე. ეს გამოცდილება მაქვს ბანკიდან, საკონსულტაციო კომპანიიდან და ჩემი სტარტაპებიდან.',
+  'hero.cta1': 'ვითანამშრომლოთ →', 'hero.cta2': 'მომიწვიეთ სპიკერად',
+  'proof.seen': 'მედიაში', 'proof.stage': 'სცენაზე',
+  'now.eb': 'ახლა', 'now.h': 'რას ვაშენებ დღეს', 'now.c1k': 'დამფუძნებელი და CEO', 'now.c2k': 'დამფუძნებელი',
+  'now.c1': 'ციფრული ტრანსფორმაციისა და პროდუქტის პარტნიორი კომპანიებისთვის საქართველოში და მის ფარგლებს გარეთ.',
+  'now.c2': 'ტექნოლოგიური განათლება დასაქმების გარანტიით.', 'now.c3': 'ტექნოლოგიისა და პროდუქტის ხელმძღვანელობა.',
+  'track.eb': 'გამოცდილება', 'track.h': 'მეცნიერება, სტრატეგია, ბანკი, სტარტაპები',
+  'track.r1': 'ბიოინჟინერია', 'track.w1': 'ინჟინრად ჩამოვყალიბდი: რთული სისტემების მოდელირება ვისწავლე, სანამ მათ მართვას დავიწყებდი.',
+  'track.w2': 'ბანკებსა და კორპორაციებს ციფრულ სტრატეგიასა და ტრანსფორმაციაში ვურჩევდი.',
+  'track.r3': 'CIO-ს მოადგილე, Agile-ის ხელმძღვანელი', 'track.w3': 'დავეხმარე ბანკს, გამხდარიყო საქართველოს ერთ-ერთი პირველი Agile ბანკი.', 'track.l3': 'McKinsey-ის ქეისი ↗',
+  'track.w4': 'ლონდონური ტექ სტარტაპის ზრდას ვხელმძღვანელობდი.', 'track.r5': 'დამფუძნებელი და CEO · CTO', 'track.w5': 'ვაშენებ საკუთარ კომპანიებს.',
+  'help.eb': 'სად შემიძლია დახმარება', 'help.h': 'თანამშრომლობის სამი გზა', 'help.p': 'ბორდებისთვის, აღმასრულებელი გუნდებისა და დამფუძნებლებისთვის, ვისაც სჭირდება ადამიანი, ვინც ეს თავად გააკეთა.',
+  'help.1h': 'ტრანსფორმაცია და Agile მასშტაბურად', 'help.1p': 'ოპერაციული მოდელი, გუნდების დიზაინი და მიწოდება ორგანიზაციებისთვის, რომლებსაც სისწრაფე სჭირდებათ.',
+  'help.2h': 'AI და ციფრული პროდუქტები', 'help.2p': 'სტრატეგიიდან გაშვებულ პროდუქტამდე: AI აგენტები, პლატფორმები და გუნდები.',
+  'help.3h': 'გამოსვლები და მოდერაცია', 'help.3p': 'მოხსენებები, პანელები და ვორქშოფები ტექნოლოგიაზე, AI-სა და ტრანსფორმაციაზე, ქართულად ან ინგლისურად.',
+  'stage.eb': 'გამოსვლები', 'stage.h': 'სცენაზე', 'ev.1': 'მოდერატორი · თბილისი · ივნ 2025', 'ev.2': 'სპიკერი · თბილისი · სექ 2025', 'ev.3': 'სპიკერი · ლონდონი · ნოე 2022',
+  'press.eb': 'მედია და ინტერვიუები', 'press.h': 'მედიაში',
+  'about.eb': 'ჩემ შესახებ', 'about.h': 'CV-ზე მეტი', 'about.p': 'რატომ არის თენგო ზოგჯერ 10go, რას აკეთებს ბიოინჟინერი ბანკში და ცხოვრება თბილისში.', 'about.cta': 'ჩემი ისტორია →',
+  'contact.eb': 'დამიკავშირდით', 'contact.h': 'მოდი, შევქმნათ ის, <em>რაზეც ილაპარაკებენ.</em>', 'contact.li': 'მომწერეთ LinkedIn-ზე →', 'contact.email': 'ელფოსტა',
+  'foot.tag': 'ტექნოლოგიური ლიდერი და დამფუძნებელი, თბილისიდან.', 'foot.elsewhere': 'სოციალური ქსელები', 'foot.lang': 'ენა', 'foot.mock': 'მაკეტი · ქართული თარგმანი სამუშაო ვერსიაა'
+};
+const EN = {}; $$('[data-i]').forEach(el => { EN[el.dataset.i] ??= el.innerHTML; });
+function setLang(l) {
+  document.documentElement.lang = l;
+  $$('[data-i]').forEach(el => { const v = (l === 'ka' ? KA : EN)[el.dataset.i]; if (v != null) el.innerHTML = v; });
+  $('#name').textContent = l === 'ka' ? 'თენგო მესხი' : 'Tengo Meskhi';
+  $$('.brand').forEach(b => b.innerHTML = (l === 'ka' ? 'თენგო მესხი' : 'Tengo Meskhi') + '<b>.</b>');
+  $$('[data-lang]').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
+  store.set('lang', l); resize();
+}
+$$('[data-lang]').forEach(b => b.onclick = () => setLang(b.dataset.lang));
+
+// ── Hero backgrounds
+const bg = $('#bg'), cv = $('#cv'), ctx = cv.getContext('2d'), hero = $('#hero');
+let W = 0, H = 0, dpr = 1, mode = 'contours', mouse = { x: -1e4, y: -1e4, s: 0 };
+const P = new Uint8Array(512); { const p = [...Array(256).keys()]; for (let i = 255; i > 0; i--) { const j = (Math.sin(i * 91.7) * 43758.5453 % 1 + 1) % 1 * (i + 1) | 0; [p[i], p[j]] = [p[j], p[i]]; } for (let i = 0; i < 512; i++) P[i] = p[i & 255]; }
+const fade = t => t * t * (3 - 2 * t), lerp = (a, b, t) => a + (b - a) * t;
+function vn(x, y) { const xi = Math.floor(x), yi = Math.floor(y), X = xi & 255, Y = yi & 255, u = fade(x - xi), v = fade(y - yi), h = (i, j) => P[P[X + i] + Y + j] / 255; return lerp(lerp(h(0,0), h(1,0), u), lerp(h(0,1), h(1,1), u), v); }
+hero.addEventListener('pointermove', e => { const r = hero.getBoundingClientRect(); mouse.x = e.clientX - r.left; mouse.y = e.clientY - r.top; });
+hero.addEventListener('pointerleave', () => { mouse.x = mouse.y = -1e4; });
+
+function resize() { const r = hero.getBoundingClientRect(); dpr = Math.min(devicePixelRatio || 1, 2); W = r.width; H = r.height; cv.width = W * dpr; cv.height = H * dpr; ctx.setTransform(dpr, 0, 0, dpr, 0, 0); if (mode === 'flow') seedFlow(); frame(performance.now(), true); }
+
+// contours
+const SEG = { 1:[[2,3]],2:[[1,2]],3:[[1,3]],4:[[0,1]],5:[[0,3],[1,2]],6:[[0,2]],7:[[0,3]],8:[[0,3]],9:[[0,2]],10:[[0,1],[2,3]],11:[[0,1]],12:[[1,3]],13:[[1,2]],14:[[2,3]] };
+function contours(t) {
+  const cs = W < 600 ? 11 : 9, cols = Math.ceil(W / cs) + 1, rows = Math.ceil(H / cs) + 1, s = 3.2 / W, f = new Float32Array(cols * rows);
+  for (let j = 0; j < rows; j++) for (let i = 0; i < cols; i++) { const x = i * cs, y = j * cs, dx = x - mouse.x, dy = y - mouse.y;
+    f[j * cols + i] = vn(x * s * .9 + t * .05, y * s * .9) * .6 + vn(x * s * 2.1 - t * .03, y * s * 2.1 + 7) * .28 + vn(x * s * 4.3, y * s * 4.3 - t * .04) * .12 + .22 * mouse.s * Math.exp(-(dx * dx + dy * dy) / 24200); }
+  ctx.clearRect(0, 0, W, H);
+  for (let k = 1; k < 14; k++) { const lv = .18 + k * .052, major = k % 4 === 0;
+    ctx.strokeStyle = major ? 'rgba(226,144,42,.85)' : `rgba(18,19,22,${.08 + k * .008})`; ctx.lineWidth = major ? 1.3 : .8; ctx.beginPath();
+    for (let j = 0; j < rows - 1; j++) for (let i = 0; i < cols - 1; i++) {
+      const a = f[j*cols+i], b = f[j*cols+i+1], c = f[(j+1)*cols+i+1], d = f[(j+1)*cols+i], id = (a > lv) << 3 | (b > lv) << 2 | (c > lv) << 1 | (d > lv);
+      if (id === 0 || id === 15) continue; const x = i * cs, y = j * cs;
+      const e = [[x + cs * (lv - a) / (b - a), y], [x + cs, y + cs * (lv - b) / (c - b)], [x + cs * (lv - d) / (c - d), y + cs], [x, y + cs * (lv - a) / (d - a)]];
+      for (const [p, q] of SEG[id]) { ctx.moveTo(e[p][0], e[p][1]); ctx.lineTo(e[q][0], e[q][1]); } }
+    ctx.stroke(); }
+}
+// dot field
+function dots(t) {
+  ctx.clearRect(0, 0, W, H); const g = W < 600 ? 18 : 22;
+  for (let y = g / 2; y < H; y += g) for (let x = g / 2; x < W; x += g) {
+    const n = vn(x * .006 + t * .12, y * .006 - t * .06); let dx = x - mouse.x, dy = y - mouse.y; const d = Math.hypot(dx, dy), push = mouse.s * Math.max(0, 1 - d / 160) * 18;
+    const px = x + (d ? dx / d * push : 0), py = y + (d ? dy / d * push : 0), r = .5 + Math.pow(n, 2.2) * 3.4 + push * .08;
+    ctx.fillStyle = n > .72 ? 'rgba(226,144,42,.95)' : `rgba(18,19,22,${.12 + n * .32})`;
+    ctx.beginPath(); ctx.arc(px, py, r, 0, 6.2832); ctx.fill(); }
+}
+// flow field
+let parts = [];
+function seedFlow() { parts = Array.from({ length: Math.round(W * H / 900) }, () => ({ x: Math.random() * W, y: Math.random() * H, a: Math.random() * 200 | 0, c: Math.random() < .12 })); ctx.clearRect(0, 0, W, H); }
+function flow(t, steps = 1) {
+  for (let s = 0; s < steps; s++) {
+    ctx.fillStyle = 'rgba(250,250,248,.035)'; ctx.fillRect(0, 0, W, H);
+    for (const p of parts) {
+      let ang = vn(p.x * .0028, p.y * .0028 + t * .05) * 12.566; const dx = p.x - mouse.x, dy = p.y - mouse.y, d = Math.hypot(dx, dy);
+      if (mouse.s > .1 && d < 180) ang += (1 - d / 180) * 2.2;
+      const nx = p.x + Math.cos(ang) * 1.3, ny = p.y + Math.sin(ang) * 1.3;
+      ctx.strokeStyle = p.c ? 'rgba(226,144,42,.8)' : 'rgba(18,19,22,.38)'; ctx.lineWidth = p.c ? 1.4 : .9;
+      ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(nx, ny); ctx.stroke();
+      p.x = nx; p.y = ny; if (++p.a > 260 || nx < 0 || ny < 0 || nx > W || ny > H) { p.x = Math.random() * W; p.y = Math.random() * H; p.a = 0; } }
+  }
+}
+function frame(ms, still) {
+  const t = ms / 1000; mouse.s += ((mouse.x > -1e3 ? 1 : 0) - mouse.s) * .08;
+  if (mode === 'contours') contours(t); else if (mode === 'dots') dots(t); else if (mode === 'flow') flow(t, still ? (reduce ? 200 : 90) : 1);
+}
+let last = 0; (function loop(ms = 0) { const vis = hero.getBoundingClientRect().bottom > 0; if (!reduce && vis && ms - last > 30 && ['contours','dots','flow'].includes(mode)) { frame(ms); last = ms; } requestAnimationFrame(loop); })();
+
+function setBg(m) {
+  mode = m; store.set('bg', m);
+  bg.querySelectorAll('.aurora,.grain,.photo').forEach(n => n.remove());
+  cv.hidden = !['contours','dots','flow'].includes(m);
+  if (m === 'aurora') bg.insertAdjacentHTML('beforeend', '<div class="aurora"><i></i><i></i><i></i><i></i></div><div class="grain"></div>');
+  if (m === 'photo') bg.insertAdjacentHTML('beforeend', '<div class="photo" style="background-image:url(img/audience-stamba-rooftop.webp)"></div>');
+  $$('[data-bg]').forEach(b => b.setAttribute('aria-pressed', b.dataset.bg === m));
+  resize();
+}
+$$('[data-bg]').forEach(b => b.onclick = () => setBg(b.dataset.bg));
+addEventListener('resize', resize); document.fonts?.ready.then(resize);
+setBg(store.get('bg') || 'contours');
+if (store.get('lang') === 'ka') setLang('ka');
+</script>
