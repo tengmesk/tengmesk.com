@@ -80,6 +80,14 @@ events:
     credited_as: Head of Growth, Pensight
     partners_on_card: [Georgia's Innovation & Technology Agency, Bank of Georgia Business, USAID]
 
+teaching:
+  - institution: Kutaisi International University
+    role: Guest lecturer
+    topics: [Data Science for Business, Digital Transformation]
+  - institution: Grigol Robakidze University
+    role: Guest lecturer
+    topics: [Data Science for Business, Digital Transformation]
+
 businesses:
   - name: Conceptdigital
     mentions:
