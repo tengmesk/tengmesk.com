@@ -1,0 +1,45 @@
+---
+import LangSwitch from './LangSwitch.astro';
+import { media } from '../content/media';
+import { pick, useT, type Lang } from '../i18n';
+import { href, route, type PageId } from '../lib/url';
+
+interface Props {
+  lang: Lang;
+  page: PageId | '404';
+}
+const { lang, page } = Astro.props;
+const t = useT(lang);
+const socials = media.socials.filter((s) => s.featured);
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href={href(route('home', lang))}>{t('brand')}<b>.</b></a>
+      <p class="footer__tag">{pick(lang, media.person.headline.en, media.person.headline.ka)}</p>
+    </div>
+    <div>
+      <h2>{t('footer.elsewhere')}</h2>
+      <ul>
+        {
+          socials.map((s) => (
+            <li>
+              <a href={s.url} target="_blank" rel="noopener me">
+                {s.label} <span aria-hidden="true">↗</span>
+                <span class="vh">({t('external')})</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <LangSwitch lang={lang} page={page} />
+    </div>
+    <div class="footer__small">
+      <span>{t('footer.copyright')}</span>
+      <span>{media.person.location.city}</span>
+    </div>
+  </div>
+</footer>

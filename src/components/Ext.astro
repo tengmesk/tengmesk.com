@@ -1,0 +1,12 @@
+---
+/** External-link suffix: visual arrow plus a screen-reader note. */
+import { useT, type Lang } from '../i18n';
+interface Props {
+  lang: Lang;
+  class?: string;
+}
+const { lang, class: cls = 'ext' } = Astro.props;
+const t = useT(lang);
+---
+
+<span class={cls} aria-hidden="true">↗</span><span class="vh"> ({t('external')})</span>

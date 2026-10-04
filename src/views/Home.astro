@@ -1,0 +1,417 @@
+---
+/**
+ * Home page (SITE-PLAN §2), rendered for both languages. Every fact comes
+ * from assets/media.yaml; every string from the i18n dictionary.
+ */
+import { Picture } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import ContourField from '../components/ContourField.astro';
+import SectionHead from '../components/SectionHead.astro';
+import Ext from '../components/Ext.astro';
+import PersonJsonLd from '../components/PersonJsonLd.astro';
+import {
+  HERO_ROLES,
+  INTERVIEW_ORDER,
+  OWN_COMPANY_ROLES,
+  PRESS_ORDER,
+  PROOF_PRESS_EXCLUDE,
+  TRACK_ORDER,
+  interview,
+  media,
+  press,
+  recognition,
+  role,
+  unique,
+  venturesHaveSummaries,
+} from '../content/media';
+import { photoAsset } from '../content/photos';
+import { pick, useT, type Lang } from '../i18n';
+import { dots, monthYear } from '../lib/format';
+import { href, route } from '../lib/url';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+
+// Hero
+const chips = HERO_ROLES.map(role);
+const award = recognition('forbes-30u30-2020');
+
+// Proof strip (text only; McKinsey held back until confirmed, §10)
+const proofPress = unique(
+  media.press.filter((p) => p.featured && !PROOF_PRESS_EXCLUDE.has(p.id)).map((p) => p.outlet),
+);
+const talks = media.talks.filter((x) => x.featured);
+const teaching = media.teaching.filter((x) => x.featured);
+const proofStage = talks.map((x) => pick(lang, x.event_short, x.event_ka));
+const proofTeach = teaching.map((x) => pick(lang, x.institution, x.institution_ka));
+
+// Now
+const ventures = media.ventures.filter((v) => v.featured).sort((a, b) => a.order - b.order);
+
+// Track record
+const trackWhat: Record<string, string> = {
+  'cambridge-bioengineering': t('track.cambridge.what'),
+  'mckinsey-digital': t('track.mckinsey.what'),
+  'bank-of-georgia': t('track.bog.what'),
+  'pensight-growth': t('track.pensight.what'),
+};
+const trackRows = TRACK_ORDER.map((id) => {
+  const r = role(id);
+  const org = id === 'pensight-growth' ? t('track.pensight.org') : pick(lang, r.org, r.org_ka);
+  return {
+    id,
+    org,
+    role: pick(lang, r.title, r.title_ka),
+    what: trackWhat[id],
+    period: r.period,
+    link: id === 'bank-of-georgia' ? { url: press('press-mckinsey-agile-bank').url, label: t('track.bog.link') } : undefined,
+  };
+});
+const own = OWN_COMPANY_ROLES.map(role);
+trackRows.push({
+  id: 'own',
+  org: own.map((r) => pick(lang, r.org, r.org_ka)).join(' · '),
+  role: own.map((r) => pick(lang, r.title, r.title_ka)).join(' · '),
+  what: t('track.own.what'),
+  period: undefined,
+  link: undefined,
+});
+const dated = trackRows.some((r) => r.period);
+const awardSource = award.source ? press(award.source) : undefined;
+
+// Help
+const help = [
+  { n: '01', h3: t('help.1.h3'), p: t('help.1.p') },
+  { n: '02', h3: t('help.2.h3'), p: t('help.2.p') },
+  { n: '03', h3: t('help.3.h3'), p: t('help.3.p') },
+];
+
+// On stage
+const stagePhotos = [
+  { ...photoAsset('photo-gtw-panel-wide'), caption: t('stage.cap.large'), sizes: '(min-width: 1240px) 817px, (min-width: 900px) 64vw, 100vw', widths: [480, 768, 1200, 1600] },
+  { ...photoAsset('photo-gtw-speaking'), caption: t('stage.cap.small1'), sizes: '(min-width: 1240px) 409px, (min-width: 900px) 32vw, 100vw', widths: [480, 768, 1200] },
+  { ...photoAsset('photo-gtw-audience'), caption: t('stage.cap.small2'), sizes: '(min-width: 1240px) 409px, (min-width: 900px) 32vw, 100vw', widths: [480, 768, 1200] },
+];
+const events = [
+  ...talks.map((x) => ({
+    name: pick(lang, x.event_short, x.event_ka),
+    url: x.url,
+    meta: dots(pick(lang, x.role, x.role_ka), pick(lang, x.city, x.city_ka), monthYear(x.date, lang)),
+  })),
+  ...teaching.map((x) => ({
+    name: pick(lang, x.institution, x.institution_ka),
+    url: x.url,
+    meta: dots(pick(lang, x.role, x.role_ka), pick(lang, x.topics, x.topics_ka).join(', ')),
+  })),
+];
+
+// Press
+const pressRows = PRESS_ORDER.map(press).map((p) => ({
+  outlet: p.outlet_short ?? p.outlet,
+  title: pick(lang, p.title, p.title_ka),
+  url: p.url,
+  lang: p.lang,
+}));
+const interviewRows = INTERVIEW_ORDER.map(interview).map((p) => ({
+  outlet: p.outlet,
+  title: pick(lang, p.title, p.title_ka),
+  url: p.url,
+  lang: p.lang,
+}));
+const pressGroups = [
+  { heading: t('press.group.articles'), items: pressRows },
+  { heading: t('press.group.interviews'), items: interviewRows },
+];
+
+// About teaser + contact
+const teaser = photoAsset('photo-gtw-with-tomo');
+const linkedin = media.socials.find((s) => s.id === 'linkedin')!;
+const x = media.socials.find((s) => s.id === 'x')!;
+const email = media.person.email;
+const cv = media.person.cv_pdf;
+---
+
+<Layout
+  lang={lang}
+  page="home"
+  title={t('seo.home.title')}
+  description={t('seo.home.description')}
+  ogImage={`/og/home-${lang}.png`}
+  ogType="profile"
+>
+  <Fragment slot="head"><PersonJsonLd /></Fragment>
+
+  <section class="hero" id="hero" aria-labelledby="name">
+    <ContourField />
+    <div class="wrap hero__in">
+      <ul class="chips" style="--i:0">
+        {
+          chips.map((r) => (
+            <li>
+              <b>{pick(lang, r.title, r.title_ka)}</b> · {pick(lang, r.org, r.org_ka)}
+            </li>
+          ))
+        }
+        <li>{pick(lang, award.title, award.title_ka)}</li>
+      </ul>
+      <h1 id="name" style="--i:1">{t('hero.h1')}</h1>
+      <p class="lead" style="--i:2">{t('hero.lead')}</p>
+      <div class="ctas ctas--stack" style="--i:3">
+        <a class="btn btn--primary" href="#contact">{t('hero.cta.primary')}<span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="#stage">{t('hero.cta.secondary')}</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <dl class="proof" id="proof">
+      <dt>{t('proof.press')}</dt>
+      <dd><ul>{proofPress.map((o) => <li>{o}</li>)}</ul></dd>
+      <dt>{t('proof.stage')}</dt>
+      <dd><ul>{proofStage.map((o) => <li>{o}</li>)}</ul></dd>
+      <dt>{t('proof.teach')}</dt>
+      <dd><ul>{proofTeach.map((o) => <li>{o}</li>)}</ul></dd>
+    </dl>
+  </div>
+
+  <section class="s" id="now" aria-labelledby="now-h">
+    <div class="wrap">
+      <SectionHead eyebrow={t('now.eyebrow')} title={t('now.h2')} id="now-h" />
+      {
+        venturesHaveSummaries ? (
+          <ul class="cards">
+            {ventures.map((v) => (
+              <li class="card" data-reveal>
+                <span class="eyebrow">{pick(lang, v.role, v.role_ka)}</span>
+                <h3>{v.name}</h3>
+                {pick(lang, v.summary.en, v.summary.ka) && <p>{pick(lang, v.summary.en, v.summary.ka)}</p>}
+                {v.url && (
+                  <a href={v.url} target="_blank" rel="noopener">
+                    {t('now.card.visit')}
+                    <Ext lang={lang} />
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <ol class="now-list">
+            {ventures.map((v, i) => (
+              <li data-reveal style={`--d:${i * 40}ms`}>
+                <span class="name">{v.name}</span>
+                <span class="role">{pick(lang, v.role, v.role_ka)}</span>
+                {v.url ? (
+                  <a class="meta" href={v.url} target="_blank" rel="noopener">
+                    {t('now.card.visit')}
+                    <Ext lang={lang} />
+                  </a>
+                ) : (
+                  <span class="meta">{String(i + 1).padStart(2, '0')}</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        )
+      }
+    </div>
+  </section>
+
+  <section class="s" id="track" aria-labelledby="track-h">
+    <div class="wrap">
+      <SectionHead eyebrow={t('track.eyebrow')} title={t('track.h2')} id="track-h" />
+      <ol class:list={['timeline', { 'timeline--dated': dated }]}>
+        {
+          trackRows.map((r, i) => (
+            <li data-reveal style={`--d:${i * 40}ms`}>
+              {dated && <span class="meta">{r.period ?? ''}</span>}
+              <span class="org">{r.org}</span>
+              <span class="role">{r.role}</span>
+              <span class="what">
+                {r.what}
+                {r.link && (
+                  <>
+                    {' '}
+                    <a href={r.link.url} target="_blank" rel="noopener">
+                      {r.link.label}
+                      <Ext lang={lang} />
+                    </a>
+                  </>
+                )}
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+      <div class="award" data-reveal style={`--d:${trackRows.length * 40}ms`}>
+        <span class="year">{award.year}</span>
+        <span class="title">{pick(lang, award.title, award.title_ka)}</span>
+        {
+          awardSource && (
+            <a href={awardSource.url} target="_blank" rel="noopener">
+              {t('track.award.link')}
+              <Ext lang={lang} />
+            </a>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="help" aria-labelledby="help-h">
+    <div class="wrap">
+      <SectionHead eyebrow={t('help.eyebrow')} title={t('help.h2')} intro={t('help.intro')} id="help-h" />
+      <ol class="help">
+        {
+          help.map((h, i) => (
+            <li data-reveal style={`--d:${i * 60}ms`}>
+              <span class="n">{h.n}</span>
+              <h3>{h.h3}</h3>
+              <p>{h.p}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="s" id="stage" aria-labelledby="stage-h">
+    <div class="wrap">
+      <SectionHead eyebrow={t('stage.eyebrow')} title={t('stage.h2')} id="stage-h" />
+      <div class="stage">
+        {
+          stagePhotos.map((p, i) => (
+            <figure data-reveal="scale" style={`--d:${i * 60}ms`}>
+              <Picture
+                src={p.src}
+                alt={pick(lang, p.meta.alt.en, p.meta.alt.ka)}
+                widths={p.widths}
+                sizes={p.sizes}
+                formats={['avif']}
+                fallbackFormat="webp"
+                loading="lazy"
+                decoding="async"
+                style={`object-position:${p.meta.focal}`}
+              />
+              <figcaption>{p.caption}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+      <ul class="events">
+        {
+          events.map((e) => (
+            <li>
+              <b>
+                {e.url ? (
+                  <a href={e.url} target="_blank" rel="noopener">
+                    {e.name}
+                    <Ext lang={lang} />
+                  </a>
+                ) : (
+                  e.name
+                )}
+              </b>
+              <span>{e.meta}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="s" id="press" aria-labelledby="press-h">
+    <div class="wrap">
+      <SectionHead eyebrow={t('press.eyebrow')} title={t('press.h2')} id="press-h" />
+      {
+        pressGroups.map((g) => (
+          <div class="press-group">
+            <h3>{g.heading}</h3>
+            <ul class="press">
+              {g.items.map((p) => (
+                <li>
+                  <a href={p.url} target="_blank" rel="noopener">
+                    <span class="o">{p.outlet}</span>
+                    <span class="t">{p.title}</span>
+                    <span class="lg" aria-label={p.lang === 'en' ? 'English' : 'ქართული'}>{p.lang.toUpperCase()}</span>
+                    <span class="arr" aria-hidden="true">↗</span>
+                    <span class="vh">({t('external')})</span>
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="s" id="about" aria-labelledby="about-h">
+    <div class="wrap teaser">
+      <div data-reveal="scale">
+        <Picture
+          src={teaser.src}
+          alt={pick(lang, teaser.meta.alt.en, teaser.meta.alt.ka)}
+          widths={[480, 768, 1200]}
+          sizes="(min-width: 1240px) 590px, (min-width: 900px) 48vw, 100vw"
+          formats={['avif']}
+          fallbackFormat="webp"
+          loading="lazy"
+          decoding="async"
+          style={`object-position:${teaser.meta.focal}`}
+        />
+      </div>
+      <div>
+        <span class="eyebrow">{t('about.eyebrow')}</span>
+        <h2 id="about-h">{t('about.h2')}</h2>
+        <p>{t('about.p')}</p>
+        <a class="btn btn--ghost" href={href(route('about', lang))}>{t('about.cta')}<span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact" aria-labelledby="contact-h">
+    <div class="wrap">
+      <span class="eyebrow">{t('contact.eyebrow')}</span>
+      <h2 id="contact-h">{t('contact.h2')}</h2>
+      <p>{t('contact.p')}</p>
+      <div class="ctas ctas--stack">
+        {
+          email ? (
+            <>
+              <a class="btn btn--primary magnetic" data-magnetic href={`mailto:${email}`}>{t('contact.email')}<span class="arrow" aria-hidden="true">→</span></a>
+              <a class="btn btn--ghost" href={linkedin.url} target="_blank" rel="noopener">{t('contact.linkedin')}</a>
+            </>
+          ) : (
+            <a class="btn btn--primary magnetic" data-magnetic href={linkedin.url} target="_blank" rel="noopener">
+              {t('contact.linkedin')}<span class="arrow" aria-hidden="true">→</span>
+            </a>
+          )
+        }
+        <a class="btn btn--ghost" href={x.url} target="_blank" rel="noopener">{t('contact.x')}</a>
+        {cv && <a class="btn btn--ghost" href={href(cv)}>{t('contact.cv')}</a>}
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Magnetic primary button: fine pointers only, off under reduced motion.
+    if (matchMedia('(hover: hover) and (pointer: fine)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.querySelectorAll<HTMLElement>('[data-magnetic]').forEach((btn) => {
+        btn.addEventListener('pointermove', (e) => {
+          const r = btn.getBoundingClientRect();
+          const dx = (e.clientX - (r.left + r.width / 2)) / (r.width / 2);
+          const dy = (e.clientY - (r.top + r.height / 2)) / (r.height / 2);
+          btn.style.transition = 'transform 120ms linear';
+          btn.style.transform = `translate(${(dx * 4).toFixed(1)}px, ${(dy * 4).toFixed(1)}px)`;
+        });
+        btn.addEventListener('pointerleave', () => {
+          btn.style.transition = '';
+          btn.style.transform = '';
+        });
+      });
+    }
+  </script>
+</Layout>

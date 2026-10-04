@@ -1,0 +1,201 @@
+---
+/** About page (SITE-PLAN §3), rendered for both languages. */
+import { Picture } from 'astro:assets';
+import Layout from '../layouts/Layout.astro';
+import Ext from '../components/Ext.astro';
+import { media, press, role } from '../content/media';
+import { photoAsset } from '../content/photos';
+import { pick, useT, type Lang } from '../i18n';
+import { href, route } from '../lib/url';
+
+interface Props {
+  lang: Lang;
+}
+const { lang } = Astro.props;
+const t = useT(lang);
+
+const hero = photoAsset('photo-gtw-speaking');
+const band = photoAsset('photo-gtw-audience');
+const mckinsey = press('press-mckinsey-agile-bank');
+const forbes = press('press-forbes-strategic-code');
+const quoteKa = forbes.quote_ka;
+const gloss = t('about.london.quote.gloss');
+const teaching = media.teaching.filter((x) => x.featured);
+const socials = media.socials.filter((s) => s.featured);
+
+const path = [
+  { id: 'cambridge-bioengineering', text: t('about.path.cambridge') },
+  { id: 'mckinsey-digital', text: t('about.path.mckinsey') },
+  { id: 'bank-of-georgia', text: t('about.path.bog'), link: { url: mckinsey.url, label: t('about.path.bog.link') } },
+].map((x) => {
+  const r = role(x.id);
+  return { ...x, org: pick(lang, r.org, r.org_ka), role: pick(lang, r.title, r.title_ka) };
+});
+---
+
+<Layout
+  lang={lang}
+  page="about"
+  title={t('seo.about.title')}
+  description={t('seo.about.description')}
+  ogImage={`/og/about-${lang}.jpg`}
+  ogType="website"
+>
+  <section class="page-hero" aria-labelledby="about-title">
+    <div class="wrap">
+      <span class="eyebrow">{t('about.eyebrow')}</span>
+      <h1 id="about-title">{t('about.title.h1')}</h1>
+      <p class="lead">{t('about.lead')}</p>
+      <div class="page-hero__img">
+        <Picture
+          src={hero.src}
+          alt={pick(lang, hero.meta.alt.en, hero.meta.alt.ka)}
+          widths={[480, 768, 1200, 1600, 2000]}
+          sizes="(min-width: 1240px) 1128px, 100vw"
+          formats={['avif']}
+          fallbackFormat="webp"
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          style={`object-position:${hero.meta.focal}`}
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="s" aria-labelledby="name-h">
+    <div class="wrap two">
+      <div>
+        <span class="eyebrow">{t('about.name.eyebrow')}</span>
+        <h2 id="name-h">{t('about.name.h2')}</h2>
+      </div>
+      <div class="prose">
+        <p>{t('about.name.p1')}</p>
+        <p>{t('about.name.p2')}</p>
+        <div class="name-pair" data-reveal>
+          <span class="latin" lang="en">{media.person.name.en}</span>
+          <span class="name-ka" lang="ka">{media.person.name.ka}</span>
+        </div>
+        <p>{t('about.name.p3')}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" aria-labelledby="path-h">
+    <div class="wrap">
+      <div class="two" style="margin-bottom: clamp(28px, 4vw, 48px)">
+        <div>
+          <span class="eyebrow">{t('about.path.eyebrow')}</span>
+          <h2 id="path-h">{t('about.path.h2')}</h2>
+        </div>
+      </div>
+      <ol class="path">
+        {
+          path.map((x, i) => (
+            <li data-reveal style={`--d:${i * 40}ms`}>
+              <span class="org">{x.org}</span>
+              <p>
+                {x.text}
+                {x.link && (
+                  <>
+                    {' '}
+                    <a href={x.link.url} target="_blank" rel="noopener">
+                      {x.link.label}
+                      <Ext lang={lang} />
+                    </a>
+                  </>
+                )}
+              </p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section class="s" aria-labelledby="london-h">
+    <div class="wrap two">
+      <div>
+        <span class="eyebrow">{t('about.london.eyebrow')}</span>
+        <h2 id="london-h">{t('about.london.h2')}</h2>
+      </div>
+      <div class="prose">
+        <p>{t('about.london.p')}</p>
+        {
+          quoteKa && (
+            <figure class="quote" data-reveal>
+              <blockquote lang="ka">{quoteKa}</blockquote>
+              <figcaption>
+                <cite>
+                  <a href={forbes.url} target="_blank" rel="noopener">
+                    {t('about.london.quote.source')}
+                    <Ext lang={lang} />
+                  </a>
+                </cite>
+              </figcaption>
+              {gloss && <p class="gloss">{gloss}</p>}
+            </figure>
+          )
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="s" aria-labelledby="tbilisi-h">
+    <div class="wrap">
+      <div class="two">
+        <div>
+          <span class="eyebrow">{t('about.tbilisi.eyebrow')}</span>
+          <h2 id="tbilisi-h">{t('about.tbilisi.h2')}</h2>
+        </div>
+        <div class="prose">
+          <p>{t('about.tbilisi.p')}</p>
+          <ul class="teach-list">
+            {
+              teaching.map((x) => (
+                <li>
+                  <b>{pick(lang, x.institution, x.institution_ka)}</b>
+                  <span>{pick(lang, x.topics, x.topics_ka).join(', ')}</span>
+                </li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="photo-band" data-reveal="scale">
+        <Picture
+          src={band.src}
+          alt={pick(lang, band.meta.alt.en, band.meta.alt.ka)}
+          widths={[480, 768, 1200, 1600, 2000]}
+          sizes="(min-width: 1240px) 1128px, 100vw"
+          formats={['avif']}
+          fallbackFormat="webp"
+          loading="lazy"
+          decoding="async"
+          style={`object-position:${band.meta.focal}`}
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="s" aria-labelledby="elsewhere-h">
+    <div class="wrap elsewhere">
+      <div>
+        <h2 class="eyebrow" id="elsewhere-h">{t('about.elsewhere.h2')}</h2>
+        <ul style="margin-top: 14px">
+          {
+            socials.map((s) => (
+              <li>
+                <a href={s.url} target="_blank" rel="noopener me">
+                  {s.label}
+                  <Ext lang={lang} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <a class="btn btn--ghost" href={href(`${route('home', lang)}#contact`)}>{t('about.work.cta')}<span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</Layout>

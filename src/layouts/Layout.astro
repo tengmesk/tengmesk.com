@@ -1,0 +1,111 @@
+---
+/**
+ * Page shell: html[lang], head (SEO, hreflang, OG, fonts), skip link, nav,
+ * footer and the two tiny site scripts (nav/menu, reveals).
+ */
+import '../styles/fonts.css';
+import '../styles/global.css';
+import instrumentSerif from '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url';
+import notoSerifGeorgian from '@fontsource/noto-serif-georgian/files/noto-serif-georgian-georgian-300-normal.woff2?url';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { HTML_LANG, OG_LOCALE, useT, type Lang } from '../i18n';
+import { ROUTES, absolute, href, type PageId } from '../lib/url';
+
+interface Props {
+  lang: Lang;
+  page: PageId | '404';
+  title: string;
+  description?: string;
+  ogImage: string;
+  ogType?: 'profile' | 'website';
+  noindex?: boolean;
+}
+
+const { lang, page, title, description, ogImage, ogType = 'website', noindex = false } = Astro.props;
+const t = useT(lang);
+const site = Astro.site;
+const routed = page !== '404' ? ROUTES[page] : undefined;
+const canonical = routed ? absolute(routed[lang], site) : undefined;
+const onHome = page === 'home';
+const preloadFont = lang === 'ka' ? notoSerifGeorgian : instrumentSerif;
+const ogAbs = absolute(ogImage, site);
+---
+
+<!doctype html>
+<html lang={HTML_LANG[lang]}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {noindex && <meta name="robots" content="noindex" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    {
+      routed && (
+        <>
+          <link rel="alternate" hreflang="en" href={absolute(routed.en, site)} />
+          <link rel="alternate" hreflang="ka" href={absolute(routed.ka, site)} />
+          <link rel="alternate" hreflang="x-default" href={absolute(routed.en, site)} />
+        </>
+      )
+    }
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <link rel="icon" href={href('/favicon.svg')} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={href('/apple-touch-icon.png')} />
+    <link rel="sitemap" href={href('/sitemap-index.xml')} />
+    <link rel="preload" href={preloadFont} as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Tengo Meskhi" />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogAbs} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={OG_LOCALE[lang]} />
+    <meta property="og:locale:alternate" content={OG_LOCALE[lang === 'en' ? 'ka' : 'en']} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@tengmesk" />
+    <meta name="twitter:title" content={title} />
+    {description && <meta name="twitter:description" content={description} />}
+    <meta name="twitter:image" content={ogAbs} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#main">{t('skip')}</a>
+    <Nav lang={lang} onHome={onHome} page={page} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} page={page} />
+    <script>
+      // Scroll reveals: once, at 15% visibility. The `js` class is set here,
+      // by the module that will also remove the hiding, so content is never
+      // hidden when scripts are blocked or unsupported. Elements already in
+      // view are marked synchronously to avoid a one-frame flash.
+      if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const els = [...document.querySelectorAll('[data-reveal]')];
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.15 },
+        );
+        const vh = innerHeight;
+        for (const el of els) {
+          const r = el.getBoundingClientRect();
+          if (r.top < vh && r.bottom > 0) el.classList.add('in');
+          else io.observe(el);
+        }
+        document.documentElement.classList.add('js');
+      }
+    </script>
+  </body>
+</html>

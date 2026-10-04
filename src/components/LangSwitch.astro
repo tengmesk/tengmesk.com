@@ -1,0 +1,21 @@
+---
+/** Segmented EN / ქართული links to the same page in the other language. */
+import { useT, type Lang } from '../i18n';
+import { ROUTES, href, type PageId } from '../lib/url';
+
+interface Props {
+  lang: Lang;
+  page: PageId | '404';
+}
+const { lang, page } = Astro.props;
+const t = useT(lang);
+const routes = page === '404' ? ROUTES.home : ROUTES[page];
+---
+
+<div class="lang">
+  <span class="lang__label" aria-hidden="true">{t('lang.label')}</span>
+  <nav class="lang__seg" aria-label={t('lang.label')}>
+    <a href={href(routes.en)} lang="en" hreflang="en" data-lang="en" aria-current={lang === 'en' ? 'page' : undefined}>{t('lang.en')}</a>
+    <a href={href(routes.ka)} lang="ka" hreflang="ka" data-lang="ka" aria-current={lang === 'ka' ? 'page' : undefined}>{t('lang.ka')}</a>
+  </nav>
+</div>

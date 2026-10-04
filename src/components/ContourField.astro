@@ -1,0 +1,43 @@
+---
+/**
+ * Hero background (SITE-PLAN §6). The static SVG is generated at build time
+ * from the same seed as the canvas and is in the first paint; the canvas
+ * island loads after fonts are ready and only when the hero is in view.
+ */
+import { contourSvg } from '../lib/contours-svg.ts';
+const svg = contourSvg({ className: 'hero__svg' });
+---
+
+<div class="hero__bg" aria-hidden="true">
+  <Fragment set:html={svg} />
+  <canvas class="hero__canvas"></canvas>
+</div>
+<div class="hero__wash" aria-hidden="true"></div>
+
+<script>
+  const hero = document.getElementById('hero');
+  const canvas = hero?.querySelector<HTMLCanvasElement>('.hero__canvas');
+  const nav = navigator as Navigator & { connection?: { saveData?: boolean } };
+  const ok =
+    hero &&
+    canvas &&
+    'requestAnimationFrame' in window &&
+    !matchMedia('(prefers-reduced-motion: reduce)').matches &&
+    !nav.connection?.saveData &&
+    !(navigator.hardwareConcurrency && navigator.hardwareConcurrency <= 4);
+  if (ok) {
+    let started = false;
+    const start = () => {
+      if (started) return;
+      started = true;
+      import('../scripts/contour-field').then((m) => m.mount(hero, canvas)).catch(() => {});
+    };
+    const io = new IntersectionObserver((entries) => {
+      if (entries.some((e) => e.isIntersecting)) {
+        io.disconnect();
+        (document.fonts?.ready ?? Promise.resolve()).then(start);
+      }
+    });
+    io.observe(hero);
+  }
+</script>

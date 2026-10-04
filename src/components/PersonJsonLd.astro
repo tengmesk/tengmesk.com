@@ -1,0 +1,31 @@
+---
+/** JSON-LD Person (SITE-PLAN §9). One block, EN values, KA as alternateName. */
+import { HERO_ROLES, media, recognition, role } from '../content/media';
+import { absolute } from '../lib/url';
+
+const site = Astro.site;
+const p = media.person;
+const current = HERO_ROLES.map(role); // Conceptdigital + Boon, per SITE-PLAN §9
+const award = recognition('forbes-30u30-2020');
+const cambridge = role('cambridge-bioengineering');
+
+const data: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  '@id': `${absolute('/', site)}#person`,
+  name: p.name.en,
+  alternateName: [p.name.ka, p.former_name.en],
+  url: absolute('/', site),
+  image: absolute('/img/tengo-meskhi.jpg', site),
+  jobTitle: [...new Set(current.map((r) => r.title))],
+  worksFor: current.map((r) => ({ '@type': 'Organization', name: r.org })),
+  alumniOf: [{ '@type': 'CollegeOrUniversity', name: cambridge.org }],
+  award: `${award.title} (${award.year})`,
+  knowsLanguage: ['en', 'ka'],
+  address: { '@type': 'PostalAddress', addressLocality: p.location.city, addressCountry: 'GE' },
+  sameAs: media.socials.map((s) => s.url),
+};
+if (p.email) data.email = p.email;
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(data)} />

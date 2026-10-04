@@ -1,0 +1,29 @@
+---
+/** Bilingual not-found page; one page serves both languages (SITE-PLAN §4.4). */
+import Layout from '../layouts/Layout.astro';
+import { useT } from '../i18n';
+import { href, route } from '../lib/url';
+
+const en = useT('en');
+const ka = useT('ka');
+---
+
+<Layout lang="en" page="404" title={`${en('404.title')} — Tengo Meskhi`} ogImage="/og/home-en.png" noindex>
+  <div class="wrap nf">
+    <div class="nf__block">
+      <span class="eyebrow">404</span>
+      <h1>{en('404.h1')}</h1>
+      <p>{en('404.p')}</p>
+      <div class="ctas">
+        <a class="btn btn--primary" href={href(route('home', 'en'))}>{en('404.cta')}<span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="nf__block" lang="ka">
+      <h1 lang="ka">{ka('404.h1')}</h1>
+      <p lang="ka">{ka('404.p')}</p>
+      <div class="ctas">
+        <a class="btn btn--ghost" lang="ka" href={href(route('home', 'ka'))}>{ka('404.cta')}<span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</Layout>

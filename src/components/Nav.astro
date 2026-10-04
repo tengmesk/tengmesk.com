@@ -1,0 +1,87 @@
+---
+import LangSwitch from './LangSwitch.astro';
+import { useT, type Lang } from '../i18n';
+import { homeAnchor, href, route, type PageId } from '../lib/url';
+
+interface Props {
+  lang: Lang;
+  onHome: boolean;
+  page: PageId | '404';
+}
+const { lang, onHome, page } = Astro.props;
+const t = useT(lang);
+
+const links = [
+  { id: 'help', label: t('nav.help') },
+  { id: 'track', label: t('nav.track') },
+  { id: 'stage', label: t('nav.stage') },
+  { id: 'press', label: t('nav.press') },
+];
+const aboutHref = href(route('about', lang));
+const contactHref = homeAnchor('contact', lang, onHome);
+const brandHref = href(route('home', lang));
+const anchor = (id: string) => (onHome ? `#${id}` : href(homeAnchor(id, lang, false)));
+---
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href={brandHref} aria-label={t('brand')}>{t('brand')}<b>.</b></a>
+    <nav class="nav__links" aria-label={t('nav.label')}>
+      {links.map((l) => <a href={anchor(l.id)}>{l.label}</a>)}
+      <a href={aboutHref} aria-current={page === 'about' ? 'page' : undefined}>{t('nav.about')}</a>
+      <a class="nav__cta" href={onHome ? contactHref : href(contactHref)}>{t('nav.contact')}</a>
+    </nav>
+    <button class="burger" id="burger" type="button" aria-label={t('nav.menu.open')} aria-expanded="false" aria-controls="menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<dialog class="menu" id="menu" aria-label={t('nav.label')}>
+  <button class="menu__close" id="menu-close" type="button" aria-label={t('nav.menu.close')}>×</button>
+  <nav class="menu__links" aria-label={t('nav.label')}>
+    {links.map((l) => <a href={anchor(l.id)}>{l.label}</a>)}
+    <a href={aboutHref} aria-current={page === 'about' ? 'page' : undefined}>{t('nav.about')}</a>
+    <a class="nav__cta" href={onHome ? contactHref : href(contactHref)}>{t('nav.contact')}</a>
+  </nav>
+  <LangSwitch lang={lang} page={page} />
+</dialog>
+
+<script>
+  const nav = document.getElementById('nav')!;
+  const onScroll = () => nav.classList.toggle('is-scrolled', scrollY > 10);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const menu = document.getElementById('menu') as HTMLDialogElement | null;
+  const burger = document.getElementById('burger');
+  if (menu && burger && typeof menu.showModal === 'function') {
+    const root = document.documentElement;
+    const open = () => {
+      menu.showModal();
+      root.classList.add('menu-open');
+      burger.setAttribute('aria-expanded', 'true');
+    };
+    burger.addEventListener('click', open);
+    document.getElementById('menu-close')?.addEventListener('click', () => menu.close());
+    menu.addEventListener('close', () => {
+      root.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+    menu.addEventListener('click', (e) => {
+      if ((e.target as Element).closest('a')) menu.close();
+    });
+    matchMedia('(min-width: 900px)').addEventListener('change', (e) => {
+      if (e.matches && menu.open) menu.close();
+    });
+  }
+
+  // Remember the visitor's language choice (pre-highlight only; no redirects).
+  document.querySelectorAll<HTMLAnchorElement>('[data-lang]').forEach((a) =>
+    a.addEventListener('click', () => {
+      try {
+        localStorage.setItem('lang', a.dataset.lang || 'en');
+      } catch {}
+    }),
+  );
+</script>
