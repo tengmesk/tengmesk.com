@@ -1,104 +1,496 @@
-# Press, talks and links supplied by Tengo (2026-09-30). Not used on the site yet.
-# Later: becomes an Astro content collection (press / talks / socials).
-# lang: en | ka   ·   image: path under assets/press/ when we have one
+# tengmesk.com — content source of truth
+# Supplied by Tengo (2026-09-30), tidied 2026-10-04 for v2.0.
+#
+# Shape: one top-level key per future Astro content collection. Every entry has a
+# stable `id` (never rename: the site plan and the KA copy point at them), and the
+# same keys wherever they apply:
+#   id · kind · title · title_ka · outlet · url · lang (en|ka) · date (YYYY-MM-DD)
+#   image (path under assets/) · featured (true = shown on the homepage) · note
+# Unknown values are the literal string `tbc`. The site never renders `tbc`:
+# see SITE-PLAN.md §10 (placeholder strategy). Nothing the owner sent was dropped;
+# the Forbes article, listed twice before, now lives once under `press` and is
+# referenced by id from `ventures`.
+#
+# Astro: load with the `file()` loader (one collection per key) or split into
+# src/content/<collection>/<id>.yaml. Either way the ids stay as they are here.
+
+person:
+  id: tengo-meskhi
+  name:
+    en: Tengo Meskhi
+    ka: თენგო მესხი
+  former_name: # how older press credits him; keep original titles as published
+    en: Tengiz Meskhi
+    ka: თენგიზ მესხი
+  headline:
+    en: Technology leader and founder, based in Tbilisi.
+    ka: ტექნოლოგიური ლიდერი და დამფუძნებელი, თბილისიდან.
+  location:
+    city: Tbilisi
+    country: Georgia
+    timezone: Asia/Tbilisi
+  email: tbc
+  cv_pdf: tbc # replaces the old OneDrive link once the owner sends a PDF
+  portrait: tbc # original studio headshot (grey shirt, plain background) requested
+  portrait_interim: assets/press/def-ai-2025-speaker.webp # crop the headshot region; see SITE-PLAN.md §8
 
 socials:
-  instagram: https://instagram.com/tengo.ai
-  linkedin: https://www.linkedin.com/in/tmeskhi
-  x: https://x.com/tengmesk
+  - id: linkedin
+    label: LinkedIn
+    url: https://www.linkedin.com/in/tmeskhi
+    handle: tmeskhi
+    featured: true
+    primary_contact: true # until an email address is confirmed
+  - id: x
+    label: X
+    url: https://x.com/tengmesk
+    handle: tengmesk
+    featured: true
+  - id: instagram
+    label: Instagram
+    url: https://instagram.com/tengo.ai
+    handle: tengo.ai
+    featured: true
 
-interviews:
-  - title: AI Interconnect
-    url: https://www.youtube.com/watch?v=EYlAM8VECpE
-    lang: en
-  - title: Tevent Talks
-    url: https://www.youtube.com/watch?v=xJymHgXDfVo
-    lang: en
-    image: press/tevent-talks-guest.webp
-  - title: Alexander Mihalcea
-    url: https://www.youtube.com/watch?v=U6JXWmrFQGI
-    lang: en
-  - title: Globalize
-    url: https://www.facebook.com/watch/?v=5855646294481906
-    lang: ka
-  - title: BMG
-    url: https://www.youtube.com/watch?v=02qu5q6Flvw
-    lang: ka
-  - title: LK Podcast
-    url: https://www.youtube.com/watch?v=2Xv9rY86Dgg
-    lang: ka
+# Career, newest first. `period` is tbc everywhere: v2.0 omits dates (SITE-PLAN §10).
+roles:
+  - id: conceptdigital-ceo
+    org: Conceptdigital
+    org_ka: Conceptdigital
+    title: CEO & Founder
+    title_ka: CEO და დამფუძნებელი
+    status: current
+    period: tbc
+    location: Tbilisi
+    venture: conceptdigital
+    note: "DEF-AI 2025 and Global Tech Weekend credit him as CEO and Founder; the Forbes Georgia quote card (KA) says co-founder. Confirm wording."
+    featured: true
+  - id: boon-cto
+    org: Boon
+    org_ka: Boon
+    title: CTO
+    title_ka: CTO
+    status: current
+    period: tbc
+    location: tbc
+    venture: boon
+    featured: true
+  - id: digital-institute-founder
+    org: Digital Institute
+    org_ka: Digital Institute
+    title: Founder
+    title_ka: დამფუძნებელი
+    status: current
+    period: tbc
+    location: Tbilisi
+    venture: digital-institute
+    note: "Owner's note says 'his business'. Exact title tbc (Founder / Co-founder / Director)."
+    featured: true
+  - id: pensight-growth
+    org: Pensight
+    org_ka: Pensight
+    title: Head of Growth
+    title_ka: ზრდის ხელმძღვანელი
+    status: past
+    period: tbc # on stage with this title Nov 2022 (talk-globalize-uk-2022)
+    location: London
+    sources: [press-bmg-pensight-london, talk-globalize-uk-2022]
+    featured: true
+  - id: bank-of-georgia
+    org: Bank of Georgia
+    org_ka: საქართველოს ბანკი
+    title: Deputy CIO & Head of Agile
+    title_ka: CIO-ს მოადგილე და Agile-ის ხელმძღვანელი
+    status: past
+    period: tbc # title on the 2019 site; Forbes 30 Under 30 (2020) honoured with this title
+    location: Tbilisi
+    sources: [press-mckinsey-agile-bank]
+    featured: true
+  - id: mckinsey-digital
+    org: McKinsey & Company
+    org_ka: McKinsey & Company
+    title: Digital McKinsey
+    title_ka: Digital McKinsey
+    status: past
+    period: tbc
+    location: tbc
+    featured: true
+  - id: cambridge-bioengineering
+    org: University of Cambridge
+    org_ka: კემბრიჯის უნივერსიტეტი
+    title: Bioengineering
+    title_ka: ბიოინჟინერია
+    kind: education
+    status: past
+    period: tbc
+    location: Cambridge
+    featured: true
 
-publications:
-  - outlet: McKinsey & Company
-    title: Becoming one of Georgia's first agile banks
-    url: https://www.mckinsey.com/industries/financial-services/our-insights/banking-matters/becoming-one-of-georgias-first-agile-banks
-    lang: en
-  - outlet: Forbes Georgia
-    title: The strategic code for transformation
-    url: https://forbes.ge/en/the-strategic-code-for-transformation/
-    lang: en
-    also: https://www.facebook.com/photo?fbid=1289467009854088&set=a.488219999978797
-    image: press/forbes-georgia-quote-ka.webp
-    note: Quote card in Georgian; credits "Co-founder, Conceptdigital".
-  - outlet: Georgian Journal
-    title: Forbes Georgia's 30 Under 30, class of 2020
-    url: https://georgianjournal.ge/society/37022-forbes-georgias-30-under-30-class-of-2020.html
-    lang: en
-  - outlet: BMG
-    title: Tengiz Meskhi and Pensight, a London story
-    url: https://bm.ge/news/tengiz-mesxis-da-kompania-pensight-londonuri-istoria/35501
-    lang: ka
+ventures:
+  - id: conceptdigital
+    name: Conceptdigital
+    role: CEO & Founder
+    role_ka: დამფუძნებელი და CEO
+    url: tbc
+    summary:
+      en: tbc # one line in the owner's words
+      ka: tbc
+    mentions: [press-forbes-strategic-code] # was duplicated under `publications` before
+    featured: true
+    order: 1
+  - id: digital-institute
+    name: Digital Institute
+    role: Founder
+    role_ka: დამფუძნებელი
+    url: tbc
+    summary:
+      en: tbc # BMG headline: gives its graduates an employment guarantee (press-bmg-digital-institute)
+      ka: tbc
+    mentions: [press-bmg-digital-institute]
+    videos: # YouTube links supplied as "Digital Institute mentions"; titles unknown
+      - id: di-video-1
+        url: https://www.youtube.com/watch?v=UkPDCfSAWxQ
+        title: tbc
+        lang: tbc
+      - id: di-video-2
+        url: https://www.youtube.com/watch?v=kzJ08KHwanw
+        title: tbc
+        lang: tbc
+      - id: di-video-3
+        url: https://www.youtube.com/watch?v=OAfHqPeRH-w
+        title: tbc
+        lang: tbc
+      - id: di-video-4
+        url: https://www.youtube.com/watch?v=PJz6jjZhlyI
+        title: tbc
+        lang: tbc
+    note: "The BMG article was filed under Conceptdigital in the original list. Is Digital Institute a Conceptdigital venture? Confirm."
+    featured: true
+    order: 2
+  - id: boon
+    name: Boon
+    role: CTO
+    role_ka: CTO
+    url: tbc
+    summary:
+      en: tbc
+      ka: tbc
+    mentions: []
+    featured: true
+    order: 3
 
-events:
-  - name: Global Tech Weekend Tbilisi 2025, Forbes stage
+recognition:
+  - id: forbes-30u30-2020
+    title: Forbes Georgia 30 Under 30
+    title_ka: Forbes Georgia 30 Under 30
+    by: Forbes Georgia
+    year: 2020
+    category: Technology # from the 2020 under30.ge snippet; unverified
+    source: press-georgian-journal-30u30
+    featured: true
+
+talks:
+  - id: talk-gtw-forbes-2025
+    kind: panel
+    event: Global Tech Weekend Tbilisi 2025 × Forbes Georgia
+    event_short: Global Tech Weekend × Forbes
+    event_ka: Global Tech Weekend × Forbes
     role: Moderator
+    role_ka: მოდერატორი
     session: Creativity Meets Tech
-    date: 2025-06-20
-    venue: Stamba Hotel, rooftop terrace, Tbilisi
-    url: https://forbes.ge/en/creativity-meets-tech-forbes-georgia-to-host-exclusive-event-on-june-20/
-    image: press/global-tech-weekend-2025-forbes-moderator.png
-    credited_as: CEO at Conceptdigital
     panel: "Superstar Panel: Insights on Innovation and Technology"
-    panelists: [Helen Huang (Enrich Fiscal Fitness), Tomo Moriwaki (Hyperkinetic Studios), Dan Herman (University of Toronto)]
-    photos:
-      - photos/global-tech-weekend-2025/panel-wide-moderating.webp
-      - photos/global-tech-weekend-2025/audience-stamba-rooftop.webp
-      - photos/global-tech-weekend-2025/speaking-sunglasses-mic.webp
-      - photos/global-tech-weekend-2025/panel-with-tomo-moriwaki.webp
-  - name: DEF-AI Conference 2025
+    panelists:
+      - Helen Huang (Enrich Fiscal Fitness)
+      - Tomo Moriwaki (Hyperkinetic Studios)
+      - Dan Herman (University of Toronto)
+    date: 2025-06-20
+    city: Tbilisi
+    city_ka: თბილისი
+    venue: Stamba Hotel, rooftop terrace
+    url: https://forbes.ge/en/creativity-meets-tech-forbes-georgia-to-host-exclusive-event-on-june-20/
+    credited_as: CEO at Conceptdigital
+    image: assets/press/global-tech-weekend-2025-forbes-moderator.png
+    photos: [photo-gtw-panel-wide, photo-gtw-audience, photo-gtw-speaking, photo-gtw-with-tomo]
+    featured: true
+  - id: talk-def-ai-2025
+    kind: talk
+    event: DEF-AI Conference 2025
+    event_short: DEF-AI 2025
+    event_ka: DEF-AI 2025
     role: Speaker
+    role_ka: სპიკერი
     date: 2025-09-19
-    venue: Tbilisi, Georgia
+    city: Tbilisi
+    city_ka: თბილისი
+    venue: tbc
     url: https://www.dgfi.io/conference/def-ai-2025
-    image: press/def-ai-2025-speaker.webp
     credited_as: CEO and Founder of Conceptdigital, CTO of Boon
-  - name: Globalize UK Conference
+    image: assets/press/def-ai-2025-speaker.webp
+    photos: []
+    featured: true
+  - id: talk-globalize-uk-2022
+    kind: talk
+    event: Globalize UK Conference
+    event_short: Globalize UK
+    event_ka: Globalize UK კონფერენცია
     role: Speaker
+    role_ka: სპიკერი
     date: 2022-11-18
-    venue: London, UK
-    image: press/globalize-uk-2022-speaker.webp
+    city: London
+    city_ka: ლონდონი
+    venue: tbc
+    url: tbc
     credited_as: Head of Growth, Pensight
-    partners_on_card: [Georgia's Innovation & Technology Agency, Bank of Georgia Business, USAID]
+    partners_on_card: ["Georgia's Innovation & Technology Agency", Bank of Georgia Business, USAID]
+    image: assets/press/globalize-uk-2022-speaker.webp
+    photos: []
+    featured: true
 
 teaching:
-  - institution: Kutaisi International University
+  - id: teach-kiu
+    institution: Kutaisi International University
+    institution_short: KIU
+    institution_ka: ქუთაისის საერთაშორისო უნივერსიტეტი
     role: Guest lecturer
+    role_ka: მოწვეული ლექტორი
     topics: [Data Science for Business, Digital Transformation]
-  - institution: Grigol Robakidze University
+    topics_ka: [მონაცემთა მეცნიერება ბიზნესისთვის, ციფრული ტრანსფორმაცია]
+    url: tbc
+    period: tbc
+    featured: true
+  - id: teach-gru
+    institution: Grigol Robakidze University
+    institution_short: GRU
+    institution_ka: გრიგოლ რობაქიძის სახელობის უნივერსიტეტი
     role: Guest lecturer
+    role_ka: მოწვეული ლექტორი
     topics: [Data Science for Business, Digital Transformation]
+    topics_ka: [მონაცემთა მეცნიერება ბიზნესისთვის, ციფრული ტრანსფორმაცია]
+    url: tbc
+    period: tbc
+    featured: true
 
-businesses:
-  - name: Conceptdigital
-    mentions:
-      - https://forbes.ge/en/the-strategic-code-for-transformation/
-      - url: https://bm.ge/news/dijital-instituti-kursdamtavrebulebs-dasaqmebis-garantias-adzlevs/116219
-        outlet: BMG
-        lang: ka
-        note: "Headline (from URL): Digital Institute gives its graduates an employment guarantee"
-  - name: Digital Institute
-    mentions:
-      - https://www.youtube.com/watch?v=UkPDCfSAWxQ
-      - https://www.youtube.com/watch?v=kzJ08KHwanw
-      - https://www.youtube.com/watch?v=OAfHqPeRH-w
-      - https://www.youtube.com/watch?v=PJz6jjZhlyI
+# Written press. Titles are as published (older pieces say Tengiz).
+press:
+  - id: press-mckinsey-agile-bank
+    kind: article
+    outlet: McKinsey & Company
+    outlet_short: McKinsey
+    title: Becoming one of Georgia's first agile banks
+    title_ka: tbc
+    url: https://www.mckinsey.com/industries/financial-services/our-insights/banking-matters/becoming-one-of-georgias-first-agile-banks
+    lang: en
+    date: tbc
+    image: null
+    about: [bank-of-georgia]
+    note: "Case on Bank of Georgia's agile transformation. Confirm Tengo is named/quoted before the proof strip says 'Featured in McKinsey'."
+    featured: true
+  - id: press-forbes-strategic-code
+    kind: article
+    outlet: Forbes Georgia
+    outlet_short: Forbes Georgia
+    title: The strategic code for transformation
+    title_ka: tbc
+    url: https://forbes.ge/en/the-strategic-code-for-transformation/
+    also: https://www.facebook.com/photo?fbid=1289467009854088&set=a.488219999978797
+    lang: en
+    date: tbc
+    image: assets/press/forbes-georgia-quote-ka.webp
+    about: [conceptdigital, pensight-growth]
+    quote_ka: "ლონდონის ტექნოლოგიური ეკოსისტემა საკმაოდ მოთხოვნადი და შესაძლებლობებით სავსეა. საოცრად ამაღელვებელია და საინტერესო, როდესაც ამ დინამიკურ გარემოში მუშაობ."
+    quote_en: "London's tech ecosystem is demanding and full of opportunity. It is genuinely exciting to work in such a dynamic environment." # draft translation, tbc
+    note: "Quote card in Georgian; credits 'Co-founder, Conceptdigital'."
+    featured: true
+  - id: press-georgian-journal-30u30
+    kind: article
+    outlet: Georgian Journal
+    outlet_short: Georgian Journal
+    title: Forbes Georgia's 30 Under 30, class of 2020
+    title_ka: tbc
+    url: https://georgianjournal.ge/society/37022-forbes-georgias-30-under-30-class-of-2020.html
+    lang: en
+    date: 2020 # year only; exact date tbc
+    image: null
+    about: [forbes-30u30-2020]
+    featured: true
+  - id: press-bmg-pensight-london
+    kind: article
+    outlet: BMG
+    outlet_short: BMG
+    title: Tengiz Meskhi and Pensight, a London story
+    title_ka: თენგიზ მესხის და კომპანია Pensight-ის ლონდონური ისტორია
+    url: https://bm.ge/news/tengiz-mesxis-da-kompania-pensight-londonuri-istoria/35501
+    lang: ka
+    date: tbc
+    image: null
+    about: [pensight-growth]
+    featured: true
+  - id: press-bmg-digital-institute
+    kind: article
+    outlet: BMG
+    outlet_short: BMG
+    title: Digital Institute gives its graduates an employment guarantee
+    title_ka: დიჯითალ ინსტიტუტი კურსდამთავრებულებს დასაქმების გარანტიას აძლევს
+    url: https://bm.ge/news/dijital-instituti-kursdamtavrebulebs-dasaqmebis-garantias-adzlevs/116219
+    lang: ka
+    date: tbc
+    image: null
+    about: [digital-institute]
+    note: "Headline reconstructed from the URL; confirm against the page."
+    featured: true
+
+# Video and audio appearances.
+interviews:
+  - id: int-ai-interconnect
+    kind: video
+    outlet: AI Interconnect
+    title: Interview
+    title_ka: ინტერვიუ
+    url: https://www.youtube.com/watch?v=EYlAM8VECpE
+    lang: en
+    date: tbc
+    image: null
+    featured: true
+  - id: int-tevent-talks
+    kind: video
+    outlet: Tevent Talks
+    title: Special guest
+    title_ka: სპეციალური სტუმარი
+    url: https://www.youtube.com/watch?v=xJymHgXDfVo
+    lang: en
+    date: tbc
+    image: assets/press/tevent-talks-guest.webp
+    featured: true
+  - id: int-alexander-mihalcea
+    kind: video
+    outlet: Alexander Mihalcea
+    title: Interview
+    title_ka: ინტერვიუ
+    url: https://www.youtube.com/watch?v=U6JXWmrFQGI
+    lang: en
+    date: tbc
+    image: null
+    note: "Channel/host name only; episode title tbc."
+    featured: true
+  - id: int-globalize
+    kind: video
+    outlet: Globalize
+    title: Interview
+    title_ka: ინტერვიუ
+    url: https://www.facebook.com/watch/?v=5855646294481906
+    lang: ka
+    date: tbc
+    image: null
+    featured: true
+  - id: int-bmg
+    kind: video
+    outlet: BMG
+    title: Interview
+    title_ka: ინტერვიუ
+    url: https://www.youtube.com/watch?v=02qu5q6Flvw
+    lang: ka
+    date: tbc
+    image: null
+    featured: true
+  - id: int-lk-podcast
+    kind: podcast
+    outlet: LK Podcast
+    title: Podcast episode
+    title_ka: პოდკასტის ეპიზოდი
+    url: https://www.youtube.com/watch?v=2Xv9rY86Dgg
+    lang: ka
+    date: tbc
+    image: null
+    featured: true
+
+# Photography. `slots` names where SITE-PLAN.md places each file.
+photos:
+  - id: photo-gtw-panel-wide
+    file: assets/photos/global-tech-weekend-2025/panel-wide-moderating.webp
+    talk: talk-gtw-forbes-2025
+    width: 2000
+    height: 1330
+    focal: "55% 50%"
+    alt:
+      en: Tengo Meskhi, microphone in hand, moderating the Superstar Panel on innovation and technology at Global Tech Weekend 2025, with three panelists and the session screen under the timber roof of the Stamba rooftop.
+      ka: თენგო მესხი მიკროფონით ხელში უძღვება პანელს ინოვაციასა და ტექნოლოგიაზე Global Tech Weekend 2025-ზე, სამ პანელისტთან ერთად, სტამბის სახურავის ხის კონსტრუქციის ქვეშ.
+    slots: [home.stage.large]
+    featured: true
+  - id: photo-gtw-audience
+    file: assets/photos/global-tech-weekend-2025/audience-stamba-rooftop.webp
+    talk: talk-gtw-forbes-2025
+    width: 2000
+    height: 1085
+    focal: "50% 45%"
+    alt:
+      en: A full audience seated under the warm, amber-lit timber roof of the Stamba Hotel rooftop in Tbilisi, facing the panel screen.
+      ka: სავსე დარბაზი თბილისში, სასტუმრო სტამბის სახურავზე, თბილი ქარვისფერი შუქით განათებული ხის სახურავის ქვეშ, პანელის ეკრანისკენ მიმართული.
+    slots: [home.stage.small-2]
+    featured: true
+  - id: photo-gtw-speaking
+    file: assets/photos/global-tech-weekend-2025/speaking-sunglasses-mic.webp
+    talk: talk-gtw-forbes-2025
+    width: 2000
+    height: 1333
+    focal: "50% 35%"
+    alt:
+      en: Tengo Meskhi speaking into a handheld microphone, gesturing with one hand, in a white shirt and sunglasses, in front of the timber columns of the Stamba rooftop.
+      ka: თენგო მესხი საუბრობს ხელის მიკროფონში, თეთრ პერანგსა და მზის სათვალეში, სტამბის სახურავის ხის სვეტების ფონზე.
+    slots: [home.stage.small-1, about.hero, about.og]
+    featured: true
+  - id: photo-gtw-with-tomo
+    file: assets/photos/global-tech-weekend-2025/panel-with-tomo-moriwaki.webp
+    talk: talk-gtw-forbes-2025
+    width: 2000
+    height: 1333
+    focal: "75% 50%"
+    alt:
+      en: Tengo Meskhi listening on stage beside panelist Tomo Moriwaki, both seated in tan leather chairs with a small table between them.
+      ka: თენგო მესხი სცენაზე უსმენს პანელისტ ტომო მორივაკის, ორივე ყავისფერ ტყავის სავარძლებში ზის, შუაში პატარა მაგიდით.
+    slots: [home.about-teaser]
+    featured: true
+
+# Event and press graphics as received. Kept as source material; v2.0 does not
+# render them (third-party branding, older "Tengiz" credits, clashing palettes).
+# The DEF-AI card doubles as the interim portrait source (clean studio headshot).
+press_cards:
+  - id: card-forbes-quote-ka
+    file: assets/press/forbes-georgia-quote-ka.webp
+    width: 1080
+    height: 1350
+    for: press-forbes-strategic-code
+    alt:
+      en: Forbes Georgia quote card with a studio portrait of Tengo Meskhi in a grey shirt and a Georgian quote about London's tech ecosystem, credited as co-founder of Conceptdigital.
+    used_in_v2: false
+  - id: card-gtw-moderator
+    file: assets/press/global-tech-weekend-2025-forbes-moderator.png
+    width: 768
+    height: 960
+    for: talk-gtw-forbes-2025
+    alt:
+      en: Global Tech Weekend Tbilisi 2025 and Forbes announcement card naming Tengiz Meskhi, CEO at Conceptdigital, as moderator of Creativity Meets Tech on 20 June at the Stamba Hotel rooftop.
+    used_in_v2: false
+  - id: card-def-ai-2025
+    file: assets/press/def-ai-2025-speaker.webp
+    width: 1280
+    height: 1600
+    for: talk-def-ai-2025
+    alt:
+      en: DEF-AI 2025 speaker card for Tengo Meskhi, CEO and Founder of Conceptdigital and CTO of Boon, Tbilisi, 19 September, with a studio portrait.
+    used_in_v2: interim-portrait # crop region only; see SITE-PLAN.md §8
+  - id: card-globalize-uk-2022
+    file: assets/press/globalize-uk-2022-speaker.webp
+    width: 1080
+    height: 1080
+    for: talk-globalize-uk-2022
+    alt:
+      en: Globalize UK Conference speaker card for Tengiz Meskhi, Head of Growth at Pensight, London, 18 November 2022, with partner logos of Georgia's Innovation and Technology Agency, Bank of Georgia Business and USAID.
+    used_in_v2: false
+  - id: card-tevent-talks
+    file: assets/press/tevent-talks-guest.webp
+    width: 1280
+    height: 1280
+    for: int-tevent-talks
+    alt:
+      en: Tevent Talks episode card naming Tengo Meskhi as special guest, with a neon "Talks" sign on a purple background.
+    used_in_v2: false

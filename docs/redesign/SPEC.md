@@ -320,3 +320,7 @@ Mockup: `docs/redesign/mockups/10go-intro.html`.
 - Type: Instrument Serif display + Geist body/mono; Noto Georgian faces for KA. Accent: Tbilisi amber on near-white.
 
 Mockup: `docs/redesign/mockups/home-professional.html` (images resolve from `img/` when published; sources in `assets/photos/`).
+
+## Revision 3 · 2026-10-04 · Site plan written
+
+The definitive v2.0 plan now lives in `docs/redesign/SITE-PLAN.md` and governs over §4–§6 of this document where they differ. Summary: two pages (`/`, `/about/`) in EN and KA plus a 404; hero background = contours with a build-time SVG fallback; no Lenis/ScrollTrigger/custom cursor in v2.0; press cards kept as source only; unknown facts are omitted rather than shown as placeholders. Content source of truth: `assets/media.yaml`. Journal: `docs/journey/03-site-plan.md`.
