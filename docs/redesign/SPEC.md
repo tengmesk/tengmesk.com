@@ -324,3 +324,9 @@ Mockup: `docs/redesign/mockups/home-professional.html` (images resolve from `img
 ## Revision 3 · 2026-10-04 · Site plan written
 
 The definitive v2.0 plan now lives in `docs/redesign/SITE-PLAN.md` and governs over §4–§6 of this document where they differ. Summary: two pages (`/`, `/about/`) in EN and KA plus a 404; hero background = contours with a build-time SVG fallback; no Lenis/ScrollTrigger/custom cursor in v2.0; press cards kept as source only; unknown facts are omitted rather than shown as placeholders. Content source of truth: `assets/media.yaml`. Journal: `docs/journey/03-site-plan.md`.
+
+## Revision 4 · 2026-10-04 · Hosting target: Cloudflare
+
+- Long-term host: **Cloudflare** (Workers static assets / Pages), for Workers features (contact form → email), bot protection (Turnstile, Bot Fight) and crawler controls (AI-crawler blocking, robots.txt management).
+- Until cutover: GitHub Pages staging via `.github/workflows/deploy.yml`. Build stays host-agnostic (static `dist/`, `SITE_URL`/`BASE_PATH` env, no adapter); `public/_headers` already in Cloudflare format.
+- Cutover steps (later): connect repo to Cloudflare, set `SITE_URL=https://tengmesk.com`, move DNS to Cloudflare, remove the CNAME from `tengmesk/tengmesk.github.io`, add 301s (`/ka.html` → `/ka/`).
