@@ -1,0 +1,35 @@
+{
+  "name": "tengmesk.com",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Personal site of Tengo Meskhi — Astro, static, EN + KA.",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "build:preview": "PREVIEW=1 astro build --outDir dist-preview && node scripts/relativize.mjs dist-preview",
+    "check": "astro check",
+    "og": "node scripts/og.mjs",
+    "shots": "node scripts/shots.mjs",
+    "weights": "node scripts/weights.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource/geist-mono": "^5.3.0",
+    "@fontsource/geist-sans": "^5.3.0",
+    "@fontsource/instrument-serif": "^5.3.0",
+    "@fontsource/noto-sans-georgian": "^5.3.0",
+    "@fontsource/noto-serif-georgian": "^5.3.0",
+    "astro": "^7.3.5",
+    "sharp": "^0.35.5",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "~5.9.0"
+  }
+}
