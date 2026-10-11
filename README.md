@@ -4,6 +4,8 @@ Personal site of Tengo Meskhi, v2.0: a light, editorial, bilingual (English + áƒ
 
 The plan that governs the site is [`docs/redesign/SITE-PLAN.md`](docs/redesign/SITE-PLAN.md); the build journal is in [`docs/journey/`](docs/journey/).
 
+The **Inspiration** gallery (inspiration.tengmesk.com) is a second, separate Astro project in [`inspiration/`](inspiration/) with its own README; it shares `shared/styles/` with this site and is linked from the nav (`INSPIRATION_URL`, default `https://inspiration.tengmesk.com/`). `npm run inspiration:build` / `inspiration:check` / `inspiration:preview` run its scripts from here.
+
 ## Run
 
 ```sh

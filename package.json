@@ -12,7 +12,10 @@
     "check": "astro check",
     "og": "node scripts/og.mjs",
     "shots": "node scripts/shots.mjs",
-    "weights": "node scripts/weights.mjs"
+    "weights": "node scripts/weights.mjs",
+    "inspiration:build": "npm --prefix inspiration run build",
+    "inspiration:check": "npm --prefix inspiration run check",
+    "inspiration:preview": "npm --prefix inspiration run build:preview"
   },
   "engines": {
     "node": ">=22"
