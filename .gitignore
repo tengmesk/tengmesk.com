@@ -4,3 +4,6 @@ dist-preview/
 .astro/
 .DS_Store
 *.log
+inspiration/public/demo/
+inspiration/public/sites/
+inspiration/.cache/

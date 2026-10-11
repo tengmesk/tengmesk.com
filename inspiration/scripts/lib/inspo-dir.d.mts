@@ -1,0 +1,10 @@
+export const INSPIRATION_DIR: string;
+export const CACHE_DIR: string;
+export const SIBLING_DIR: string;
+export const INSPO_REPO: string;
+export const INSPO_REF: string;
+export function cacheDir(base?: string): string;
+export function siblingDir(base?: string): string;
+export function candidates(base?: string): { dir: string; why: string }[];
+export function findInspoDir(base?: string): string | null;
+export function resolveInspoDir(base?: string): string;
