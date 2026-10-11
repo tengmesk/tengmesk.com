@@ -1,0 +1,33 @@
+---
+/**
+ * Resources: the curated external entries, libraries vs galleries. A quieter
+ * area than Sites and Components; both of those link here. If the owner
+ * prefers these inside the two main sections, change `sectionOf()` in
+ * src/content/inspo.ts and retire this page.
+ */
+import Layout from '../../layouts/Layout.astro';
+import ResourceList from '../../components/ResourceList.astro';
+import { library } from '../../content/inspo';
+
+const lib = library();
+const libraries = lib.resources.filter((r) => r.group === 'libraries');
+const galleries = lib.resources.filter((r) => r.group === 'galleries');
+const description = 'Curated component libraries, primitives and design galleries that this gallery leans on: shadcn/ui, Radix, Uiverse, Mobbin, Land-book, Collect UI and more.';
+---
+
+<Layout title="Resources" description={description} path="/resources/" nav="resources" ogImage="/og/resources.png">
+  <div class="wrap page-hero">
+    <ol class="crumbs" aria-label="Breadcrumb">
+      <li><a href="/">Inspiration</a></li>
+      <li>Resources</li>
+    </ol>
+    <h1>Resources</h1>
+    <p class="lead">The external places worth knowing: libraries to build with and galleries to browse. Short on purpose; only what gets used.</p>
+  </div>
+  <div class="wrap" style="padding-bottom: var(--section)">
+    <div class="rgroups">
+      <ResourceList title="Libraries" intro="Component libraries, primitives, templates and themes. Things you install or copy into a codebase." items={libraries} />
+      <ResourceList title="Galleries" intro="Collections of screens, flows and landing pages kept by other people. For direction, not code." items={galleries} />
+    </div>
+  </div>
+</Layout>

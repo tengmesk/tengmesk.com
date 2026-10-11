@@ -1,0 +1,30 @@
+---
+/**
+ * The three Sites categories as an editorial trio. Used on /sites/ while
+ * the section has no entries (so the page explains what will appear rather
+ * than showing an empty grid) and as the overview on the home page.
+ */
+import { SITE_CATEGORY, SITE_CATEGORY_META, type SiteItem } from '../content/inspo';
+
+interface Props {
+  items: SiteItem[];
+  /** Link each category to the filtered list. */
+  linked?: boolean;
+}
+const { items, linked = false } = Astro.props;
+const count = (c: string) => items.filter((i) => i.category === c).length;
+---
+
+<ol class="cats">
+  {
+    SITE_CATEGORY.map((c, n) => (
+      <li>
+        <span class="n">0{n + 1}</span>
+        <h3>{linked ? <a href={`/sites/?cat=${c}`}>{SITE_CATEGORY_META[c].label}</a> : SITE_CATEGORY_META[c].label}</h3>
+        <p>{SITE_CATEGORY_META[c].blurb}</p>
+        <span class="ex">e.g. {SITE_CATEGORY_META[c].examples}</span>
+        <span class="count">{count(c) === 0 ? 'none yet' : `${count(c)} listed`}</span>
+      </li>
+    ))
+  }
+</ol>

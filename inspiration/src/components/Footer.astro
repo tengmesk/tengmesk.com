@@ -1,0 +1,45 @@
+---
+/**
+ * Footer on every page: links, the content repository and the licence line
+ * docs/CONSUMERS.md asks for wherever demos are embedded (we show it on
+ * every page, which is simpler and never wrong).
+ */
+import { REPO_URL } from '../content/inspo';
+import { MAIN_SITE, OWNER, SITE_NAME } from '../lib/site';
+---
+
+<footer class="footer">
+  <div class="wrap">
+    <div>
+      <a class="brand" href="/">{SITE_NAME}<b>.</b></a>
+      <p class="footer__tag">UI recreations, component libraries and design resources, kept by {OWNER}.</p>
+    </div>
+    <div>
+      <h2>Browse</h2>
+      <ul>
+        <li><a href="/sites/">Sites</a></li>
+        <li><a href="/components/">Components</a></li>
+        <li><a href="/resources/">Resources</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Elsewhere</h2>
+      <ul>
+        <li><a href={MAIN_SITE}>tengmesk.com <span aria-hidden="true">↗</span></a></li>
+        <li>
+          <a href={REPO_URL} target="_blank" rel="noopener">
+            Source: webdesigninspo <span aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <p class="footer__licence">
+      Recreation code is released under the <a href={`${REPO_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">MIT licence</a>. The sites credited on each
+      entry own their designs; the recreations are studies of technique, not redistributions of their assets.
+    </p>
+    <div class="footer__small">
+      <span>© 2026 <a href={MAIN_SITE}>{OWNER}</a></span>
+      <span>Tbilisi</span>
+    </div>
+  </div>
+</footer>

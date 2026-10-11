@@ -1,0 +1,67 @@
+---
+/** Sticky header: brand, section links, a way back to tengmesk.com, mobile dialog menu. */
+import type { Nav } from '../layouts/Layout.astro';
+import { MAIN_SITE, OWNER, SITE_NAME } from '../lib/site';
+
+interface Props {
+  nav: Nav;
+}
+const { nav } = Astro.props;
+const links: { id: Nav; href: string; label: string }[] = [
+  { id: 'sites', href: '/sites/', label: 'Sites' },
+  { id: 'components', href: '/components/', label: 'Components' },
+  { id: 'resources', href: '/resources/', label: 'Resources' },
+];
+const current = (id: Nav) => (nav === id ? 'page' : undefined);
+---
+
+<header class="nav" id="nav">
+  <div class="wrap nav__in">
+    <a class="brand" href="/" aria-label={`${SITE_NAME} home`}>{SITE_NAME}<b>.</b></a>
+    <nav class="nav__links" aria-label="Main">
+      {links.map((l) => <a href={l.href} aria-current={current(l.id)}>{l.label}</a>)}
+      <a class="nav__home" href={MAIN_SITE}>← {OWNER}</a>
+    </nav>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="menu">
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<dialog class="menu" id="menu" aria-label="Main">
+  <button class="menu__close" id="menu-close" type="button" aria-label="Close menu">×</button>
+  <nav class="menu__links" aria-label="Main">
+    <a href="/" aria-current={current('home')}>Home</a>
+    {links.map((l) => <a href={l.href} aria-current={current(l.id)}>{l.label}</a>)}
+    <a class="menu__home" href={MAIN_SITE}>← Back to tengmesk.com</a>
+  </nav>
+</dialog>
+
+<script>
+  const nav = document.getElementById('nav')!;
+  const onScroll = () => nav.classList.toggle('is-scrolled', scrollY > 10);
+  addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const menu = document.getElementById('menu') as HTMLDialogElement | null;
+  const burger = document.getElementById('burger');
+  if (menu && burger && typeof menu.showModal === 'function') {
+    const root = document.documentElement;
+    burger.addEventListener('click', () => {
+      menu.showModal();
+      root.classList.add('menu-open');
+      burger.setAttribute('aria-expanded', 'true');
+    });
+    document.getElementById('menu-close')?.addEventListener('click', () => menu.close());
+    menu.addEventListener('close', () => {
+      root.classList.remove('menu-open');
+      burger.setAttribute('aria-expanded', 'false');
+    });
+    menu.addEventListener('click', (e) => {
+      if ((e.target as Element).closest('a')) menu.close();
+    });
+    matchMedia('(min-width: 900px)').addEventListener('change', (e) => {
+      if (e.matches && menu.open) menu.close();
+    });
+  }
+</script>

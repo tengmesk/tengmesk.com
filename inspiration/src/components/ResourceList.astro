@@ -1,0 +1,46 @@
+---
+/** Ruled list of external resources for one group (libraries or galleries). */
+import type { ResourceItem } from '../content/inspo';
+
+interface Props {
+  title: string;
+  intro: string;
+  items: ResourceItem[];
+}
+const { title, intro, items } = Astro.props;
+---
+
+<section class="rgroup">
+  <h3>{title}</h3>
+  <p>{intro}</p>
+  {items.length === 0 && <p class="meta">Nothing here yet.</p>}
+  <ul class="rlist">
+    {
+      items.map((r) => (
+        <li>
+          <a href={r.url} target="_blank" rel="noopener">
+            <span class="mono" aria-hidden="true">
+              {r.title.slice(0, 1).toUpperCase()}
+            </span>
+            <span class="t">
+              {r.title} <span class="ext" aria-hidden="true">↗</span>
+              <span class="vh"> (opens in a new tab)</span>
+            </span>
+            <span class="k">{r.kindLabel}</span>
+            <span class="d">{r.summary}</span>
+            {(r.audience.length > 0 || r.tags.length > 0) && (
+              <span class="tags">
+                {r.audience.map((a) => (
+                  <span class="tag tag--aud">{a}</span>
+                ))}
+                {r.tags.map((t) => (
+                  <span class="tag">{t}</span>
+                ))}
+              </span>
+            )}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>

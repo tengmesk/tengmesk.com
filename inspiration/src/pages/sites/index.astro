@@ -1,0 +1,52 @@
+---
+/**
+ * Sites: whole-site inspiration in three categories. With no entries yet the
+ * page states the categories and what will appear, instead of an empty grid.
+ */
+import Layout from '../../layouts/Layout.astro';
+import Gallery from '../../components/Gallery.astro';
+import SiteCategories from '../../components/SiteCategories.astro';
+import { library, REPO_URL, SITE_CATEGORY, SITE_CATEGORY_META } from '../../content/inspo';
+
+const lib = library();
+const items = lib.sites;
+const categories = SITE_CATEGORY.map((c) => ({ value: c, label: SITE_CATEGORY_META[c].label }));
+const description = 'Whole-site inspiration filed as Portfolio, Personality or Product, with tags such as B2B and B2C. Filter by category and tag.';
+---
+
+<Layout title="Sites" description={description} path="/sites/" nav="sites" ogImage="/og/sites.png">
+  <div class="wrap page-hero">
+    <ol class="crumbs" aria-label="Breadcrumb">
+      <li><a href="/">Inspiration</a></li>
+      <li>Sites</li>
+    </ol>
+    <h1>Sites</h1>
+    <p class="lead">Whole sites worth a careful look, filed by what the site is for: a portfolio, a personality or a product.</p>
+    <p class="also">For whole-page galleries kept by other people, see the galleries under <a href="/resources/">Resources</a>.</p>
+  </div>
+
+  <div class="wrap" style="padding-bottom: var(--section)">
+    {
+      items.length > 0 ? (
+        <Gallery id="sites" items={items} categories={categories} noun="site" />
+      ) : (
+        <div class="empty">
+          <div class="empty__note" data-reveal>
+            <span class="n" aria-hidden="true">0</span>
+            <p>
+              <strong>No sites listed yet.</strong> The categories below are fixed; entries arrive through the{' '}
+              <a href={REPO_URL} target="_blank" rel="noopener">
+                content repository
+              </a>{' '}
+              as external links with a screenshot, a category and tags. When the first one lands this page becomes a filterable gallery, like{' '}
+              <a href="/components/">Components</a>.
+            </p>
+          </div>
+          <div data-reveal>
+            <SiteCategories items={items} />
+          </div>
+        </div>
+      )
+    }
+  </div>
+</Layout>

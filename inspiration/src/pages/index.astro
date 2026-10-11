@@ -1,0 +1,115 @@
+---
+/** Home: what this is, then the three sections in brief. */
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import ResourceList from '../components/ResourceList.astro';
+import SectionHead from '../components/SectionHead.astro';
+import SiteCategories from '../components/SiteCategories.astro';
+import { library, REPO_URL } from '../content/inspo';
+
+const lib = library();
+const latest = lib.components.slice(0, 6);
+const libraries = lib.resources.filter((r) => r.group === 'libraries');
+const galleries = lib.resources.filter((r) => r.group === 'galleries');
+const description =
+  'A gallery of web UI worth learning from: effects and layouts recreated by hand from sites in the wild, the component libraries behind good interfaces, and the galleries to browse next.';
+---
+
+<Layout description={description} path="/" nav="home">
+  <section class="hero-i">
+    <div class="wrap hero-i__in">
+      <span class="eyebrow" style="--i:0">Kept by Tengo Meskhi</span>
+      <h1 style="--i:1">Inspiration<b>.</b></h1>
+      <p class="lead" style="--i:2">
+        Web UI worth learning from: effects and layouts recreated by hand, the libraries behind good interfaces, and the galleries to browse next.
+      </p>
+      <div class="ctas" style="--i:3">
+        <a class="btn btn--primary" href="/components/">Browse components<span class="arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--ghost" href="/sites/">See the site categories</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap">
+      <ul class="tiles" data-reveal>
+        <li>
+          <a class="tile" href="/sites/">
+            <span class="tile__n">{lib.sites.length}<small>sites</small></span>
+            <h3>Sites</h3>
+            <p>Whole sites, filed as Portfolio, Personality or Product. The categories are set; the first entries are on their way.</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="tile" href="/components/">
+            <span class="tile__n">{lib.components.length}<small>components</small></span>
+            <h3>Components</h3>
+            <p>Effects and sections recreated in one self-contained HTML file each, with notes on the technique and a credit to the source.</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+        <li>
+          <a class="tile" href="/resources/">
+            <span class="tile__n">{lib.resources.length}<small>resources</small></span>
+            <h3>Resources</h3>
+            <p>Component libraries to build with and galleries to browse. Curated, short, and only what gets used.</p>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="s" id="components">
+    <div class="wrap">
+      <SectionHead eyebrow="Components" title="Recreated by hand" count={lib.components.length} intro="Each one is a study: what the original does, how it is built, and what is worth keeping. The code is MIT; the credited site owns the design." more={{ href: '/components/', label: 'All components' }} />
+      <ul class="grid grid--wide">
+        {
+          latest.map((item, n) => (
+            <li class="item" data-reveal style={`--d:${(n % 3) * 50}ms`}>
+              <Card item={item} eager={n < 3} />
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section class="s" id="sites">
+    <div class="wrap">
+      <SectionHead eyebrow="Sites" title="Three kinds of site" count={lib.sites.length} intro="Whole-site inspiration, filed by what the site is for. The first entries arrive with the next content update." more={{ href: '/sites/', label: 'Sites' }} />
+      <div data-reveal>
+        <SiteCategories items={lib.sites} />
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="resources">
+    <div class="wrap">
+      <SectionHead eyebrow="Resources" title="Libraries and galleries" count={lib.resources.length} intro="The external places this gallery leans on: libraries worth building with, galleries worth a browse." more={{ href: '/resources/', label: 'All resources' }} />
+      <div class="rgroups" data-reveal>
+        <ResourceList title="Libraries" intro="Component and primitive libraries." items={libraries.slice(0, 4)} />
+        <ResourceList title="Galleries" intro="Screenshots and flows, by other people." items={galleries.slice(0, 4)} />
+      </div>
+    </div>
+  </section>
+
+  <section class="s">
+    <div class="wrap two">
+      <div>
+        <span class="eyebrow">How it works</span>
+      </div>
+      <div class="prose" style="display:grid;gap:14px">
+        <p>
+          Everything here is published from one repository, <a href={REPO_URL} target="_blank" rel="noopener">webdesigninspo</a>, where each recreation is a single HTML file with
+          inline CSS and JavaScript, no build step and no dependencies, next to a NOTES file that explains the technique and what was borrowed.
+        </p>
+        <p>
+          Nothing appears until its notes say it is publishable; anything that still carries copied artwork or copy stays in review. This site rebuilds from the manifest, screenshots
+          what has no thumbnail, and sandboxes every demo.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>

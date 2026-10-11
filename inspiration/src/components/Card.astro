@@ -1,0 +1,68 @@
+---
+/**
+ * Gallery card for a Component or a Site. Always has an image (the adapter
+ * refuses to build without one). Recreations credit their source on the
+ * card; external items open in a new tab with rel=noopener.
+ */
+import type { ComponentItem, SiteItem } from '../content/inspo';
+import { PLACEMENT_LABEL, SITE_CATEGORY_META } from '../content/inspo';
+
+interface Props {
+  item: ComponentItem | SiteItem;
+  eager?: boolean;
+}
+const { item, eager = false } = Astro.props;
+const external = item.section === 'sites' || item.external;
+const href = item.section === 'sites' ? item.url : item.href;
+const cats = item.section === 'sites' ? [SITE_CATEGORY_META[item.category].label] : item.categories.map((c) => PLACEMENT_LABEL[c]);
+const sizes = '(min-width: 1240px) 380px, (min-width: 900px) 33vw, (min-width: 600px) 50vw, 100vw';
+---
+
+<article class="gcard">
+  <a class="gcard__media" href={href} tabindex="-1" aria-hidden="true" target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
+    <img
+      src={item.image.webp}
+      srcset={`${item.image.webp640} 640w, ${item.image.webp} 1200w`}
+      sizes={sizes}
+      width={item.image.width}
+      height={item.image.height}
+      alt=""
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+    <span class="gcard__cats">{cats.map((c) => <span>{c}</span>)}</span>
+  </a>
+  <div class="gcard__body">
+    <h3>
+      <a href={href} target={external ? '_blank' : undefined} rel={external ? 'noopener' : undefined}>
+        {item.title}
+        {external && <span class="ext" aria-hidden="true">↗</span>}
+        {external && <span class="vh"> (opens in a new tab)</span>}
+      </a>
+    </h3>
+    <p>{item.summary}</p>
+    {
+      item.section === 'components' && item.source && (
+        <p class="gcard__credit">
+          Recreated from{' '}
+          <a href={item.source.url} target="_blank" rel="noopener">
+            {item.source.name}
+            <span class="vh"> (opens in a new tab)</span>
+          </a>
+        </p>
+      )
+    }
+    {
+      (item.audience.length > 0 || item.tags.length > 0) && (
+        <ul class="gcard__tags" aria-label="Tags">
+          {item.audience.map((a) => (
+            <li class="tag tag--aud">{a}</li>
+          ))}
+          {item.tags.map((t) => (
+            <li class="tag">{t}</li>
+          ))}
+        </ul>
+      )
+    }
+  </div>
+</article>

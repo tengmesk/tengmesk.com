@@ -163,28 +163,6 @@
   color: var(--ink-2);
 }
 
-/* Sections */
-.s {
-  padding-block: var(--section);
-  border-bottom: 1px solid var(--line);
-}
-.s-head {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
-  gap: 20px 48px;
-  align-items: end;
-  margin-bottom: clamp(28px, 4vw, 48px);
-}
-.s-head h2 {
-  font: var(--w-display) var(--fs-h2) / var(--lh-h2) var(--f-display);
-  letter-spacing: var(--ls-h2);
-}
-.s-head__intro {
-  color: var(--ink-2);
-  max-width: 52ch;
-  margin-top: 14px;
-}
-
 /* Now: ruled list (no one-liners yet) or cards */
 .now-list {
   border-top: 1px solid var(--rule);
@@ -710,13 +688,9 @@
 }
 
 @media (max-width: 899px) {
-  .s-head,
   .teaser,
   .two {
     grid-template-columns: 1fr;
-  }
-  .s-head__intro {
-    margin-top: 4px;
   }
   .timeline li,
   .timeline--dated li,

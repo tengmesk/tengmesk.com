@@ -1,0 +1,30 @@
+---
+/** Components: recreations (and external components) filtered by placement category and tag. */
+import Layout from '../../layouts/Layout.astro';
+import Gallery from '../../components/Gallery.astro';
+import { library, PLACEMENT, PLACEMENT_LABEL } from '../../content/inspo';
+
+const lib = library();
+const items = lib.components;
+const categories = PLACEMENT.map((p) => ({ value: p, label: PLACEMENT_LABEL[p] }));
+const description =
+  'Web UI effects and sections recreated by hand as single self-contained HTML files: heroes, features, CTAs, backgrounds, cards and more. Each credits its source and explains the technique.';
+---
+
+<Layout title="Components" description={description} path="/components/" nav="components" ogImage="/og/components.png">
+  <div class="wrap page-hero">
+    <ol class="crumbs" aria-label="Breadcrumb">
+      <li><a href="/">Inspiration</a></li>
+      <li>Components</li>
+    </ol>
+    <h1>Components</h1>
+    <p class="lead">
+      Effects and sections rebuilt from sites in the wild, one self-contained file each. Filter by where it sits on a page and by tag; open one for the live demo, the notes and
+      the source.
+    </p>
+    <p class="also">Looking for libraries to build with instead? They are under <a href="/resources/">Resources</a>.</p>
+  </div>
+  <div class="wrap" style="padding-bottom: var(--section)">
+    <Gallery id="components" items={items} categories={categories} noun="component" />
+  </div>
+</Layout>

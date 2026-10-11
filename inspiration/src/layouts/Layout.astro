@@ -1,0 +1,100 @@
+---
+/**
+ * Page shell: head (SEO, OG, fonts), skip link, header, footer and the
+ * reveal script. English only; same tokens, fonts and base as tengmesk.com
+ * via ../../shared/styles/.
+ */
+import '../styles/fonts.css';
+import '../../../shared/styles/tokens.css';
+import '../../../shared/styles/base.css';
+import '../styles/site.css';
+import instrumentSerif from '@fontsource/instrument-serif/files/instrument-serif-latin-400-normal.woff2?url';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { absolute, pageTitle } from '../lib/site';
+
+export type Nav = 'home' | 'sites' | 'components' | 'resources' | 'none';
+
+interface Props {
+  /** Page title without the site suffix; omit on the home page. */
+  title?: string;
+  description: string;
+  /** Site-relative canonical path, e.g. `/components/`. Omit for noindex pages. */
+  path?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  nav: Nav;
+  noindex?: boolean;
+}
+
+const { title, description, path, ogImage = '/og/inspiration.png', ogType = 'website', nav, noindex = false } = Astro.props;
+const site = Astro.site;
+const fullTitle = pageTitle(title);
+const canonical = path ? absolute(path, site) : undefined;
+const ogAbs = absolute(ogImage, site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex" />}
+    {canonical && <link rel="canonical" href={canonical} />}
+    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#FAFAF8" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="preload" href={instrumentSerif} as="font" type="font/woff2" crossorigin />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Inspiration · Tengo Meskhi" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta property="og:image" content={ogAbs} />
+    <meta property="og:locale" content="en_GB" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@tengmesk" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogAbs} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <Header nav={nav} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+    <script>
+      // Scroll reveals, once, at 15% visibility. The `js` class that enables
+      // the hiding is added here, after everything already in view is marked,
+      // so blocked scripts, file:// or reduced motion all show the final state.
+      if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const els = [...document.querySelectorAll('[data-reveal]')];
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const e of entries) {
+              if (e.isIntersecting) {
+                e.target.classList.add('in');
+                io.unobserve(e.target);
+              }
+            }
+          },
+          { threshold: 0.15 },
+        );
+        const vh = innerHeight;
+        for (const el of els) {
+          const r = el.getBoundingClientRect();
+          if (r.top < vh && r.bottom > 0) el.classList.add('in');
+          else io.observe(el);
+        }
+        document.documentElement.classList.add('js');
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,6 @@
+/*
+ * The Inspiration site is English only, so it needs exactly the Latin faces
+ * the main site uses: Instrument Serif 400, Geist Sans 400/500, Geist Mono
+ * 400. They are declared once, in shared/styles/fonts-latin.css.
+ */
+@import '../../../shared/styles/fonts-latin.css';

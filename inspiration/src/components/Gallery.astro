@@ -1,0 +1,98 @@
+---
+/**
+ * Filterable grid. Every item is in the HTML; filtering is CSS-only via
+ * radio chips and `:has()`, so it works with scripts blocked. The script in
+ * src/scripts/filters.ts adds URL query state (?cat=…&tag=…), a live count
+ * and an empty-state message. Radios are keyboard-native: Tab to a group,
+ * arrows to move, Space to choose.
+ */
+import type { ComponentItem, SiteItem } from '../content/inspo';
+import { tagIndex } from '../content/inspo';
+import { plural, token } from '../lib/site';
+import Card from './Card.astro';
+
+interface Category {
+  value: string;
+  label: string;
+}
+interface Props {
+  id: string;
+  items: (ComponentItem | SiteItem)[];
+  /** Category vocabulary in display order; only values that occur are shown. */
+  categories: Category[];
+  noun: string;
+  nounPlural?: string;
+}
+const { id, items, categories, noun, nounPlural = `${noun}s` } = Astro.props;
+
+const catsOf = (i: ComponentItem | SiteItem): string[] => (i.section === 'sites' ? [i.category] : i.categories);
+const catCount = new Map<string, number>();
+for (const i of items) for (const c of catsOf(i)) catCount.set(c, (catCount.get(c) ?? 0) + 1);
+const cats = categories.filter((c) => catCount.has(c.value)).map((c) => ({ ...c, count: catCount.get(c.value) ?? 0 }));
+const tags = tagIndex(items).map((t) => ({ ...t, value: token(t.tag) }));
+
+const sel = (name: string, v: string) => `[data-gallery="${id}"]:has(input[name="${name}"][value="${v}"]:checked)`;
+const css = [
+  ...cats.map((c) => `${sel('cat', c.value)} .item:not([data-cat~="${c.value}"]){display:none}`),
+  ...tags.map((t) => `${sel('tag', t.value)} .item:not([data-tags~="${t.value}"]){display:none}`),
+].join('\n');
+---
+
+<div class="gallery" data-gallery={id}>
+  <Fragment set:html={`<style>${css}</style>`} />
+  <div class="filters">
+    <fieldset class="chipset">
+      <legend>Category</legend>
+      <div class="chipset__row">
+        <label class="chip"><input type="radio" name="cat" value="" checked /><span>All</span></label>
+        {
+          cats.map((c) => (
+            <label class="chip">
+              <input type="radio" name="cat" value={c.value} />
+              <span>{c.label}</span>
+              <small>{c.count}</small>
+            </label>
+          ))
+        }
+      </div>
+    </fieldset>
+    {
+      tags.length > 0 && (
+        <fieldset class="chipset">
+          <legend>Tag</legend>
+          <div class="chipset__row">
+            <label class="chip">
+              <input type="radio" name="tag" value="" checked />
+              <span>Any</span>
+            </label>
+            {tags.map((t) => (
+              <label class:list={['chip', { 'chip--aud': t.audience }]}>
+                <input type="radio" name="tag" value={t.value} />
+                <span>{t.tag}</span>
+                <small>{t.count}</small>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )
+    }
+    <p class="filters__status" data-status aria-live="polite">
+      <span data-count>{plural(items.length, noun, nounPlural)}</span>
+      <a href="?" data-reset hidden>Reset</a>
+    </p>
+  </div>
+  <ul class="grid grid--wide" data-items>
+    {
+      items.map((item, n) => (
+        <li class="item" data-cat={catsOf(item).join(' ')} data-tags={[...item.audience, ...item.tags].map(token).join(' ')} data-reveal style={`--d:${(n % 3) * 50}ms`}>
+          <Card item={item} eager={n < 3} />
+        </li>
+      ))
+    }
+  </ul>
+  <p class="filters__empty" data-empty hidden>
+    Nothing matches that combination. <a href="?" data-reset>Show every {noun}</a>.
+  </p>
+</div>
+
+<script src="../scripts/filters.ts"></script>

@@ -1,6 +1,6 @@
 /*
  * Base styles shared by tengmesk.com and inspiration.tengmesk.com: reset,
- * utilities, text roles, buttons, header + mobile menu, footer, reveals and
+ * utilities, text roles, buttons, header + mobile menu, section heads, footer, reveals and
  * the reduced-motion rules. Requires tokens.css first.
  */
 
@@ -411,6 +411,28 @@ strong {
   color: var(--on-ink-muted);
 }
 
+/* Sections */
+.s {
+  padding-block: var(--section);
+  border-bottom: 1px solid var(--line);
+}
+.s-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: 20px 48px;
+  align-items: end;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+.s-head h2 {
+  font: var(--w-display) var(--fs-h2) / var(--lh-h2) var(--f-display);
+  letter-spacing: var(--ls-h2);
+}
+.s-head__intro {
+  color: var(--ink-2);
+  max-width: 52ch;
+  margin-top: 14px;
+}
+
 /* Reveal (IO-driven, no-op without JS and under reduced motion) */
 .js [data-reveal] {
   opacity: 0;
@@ -441,8 +463,12 @@ strong {
   .burger {
     display: grid;
   }
+  .s-head,
   .footer .wrap {
     grid-template-columns: 1fr;
+  }
+  .s-head__intro {
+    margin-top: 4px;
   }
 }
 @media (min-width: 900px) {

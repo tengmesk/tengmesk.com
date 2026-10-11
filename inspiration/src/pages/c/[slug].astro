@@ -1,0 +1,130 @@
+---
+/**
+ * Recreation detail: live demo in a sandboxed iframe (allow-scripts only),
+ * the credit, the rendered NOTES.md, the source, tags and the licence.
+ */
+import Layout from '../../layouts/Layout.astro';
+import { demoSource, library, PLACEMENT_LABEL, REPO_URL, type ComponentItem } from '../../content/inspo';
+import { renderNotes } from '../../lib/notes';
+import { date, token } from '../../lib/site';
+
+export function getStaticPaths() {
+  return library()
+    .components.filter((c) => c.kind === 'recreation')
+    .map((item) => ({ params: { slug: item.slug }, props: { item } }));
+}
+
+interface Props {
+  item: ComponentItem;
+}
+const { item } = Astro.props;
+const demo = item.demo!;
+const source = item.source!;
+const raw = demoSource(item);
+const notesHtml = renderNotes(raw.notes);
+const bytes = Buffer.byteLength(raw.html, 'utf8');
+const description = `${item.summary} Recreated from ${source.name}; live demo, technique notes and MIT-licensed source.`;
+---
+
+<Layout title={item.title} description={description} path={item.href} nav="components" ogImage={item.image.png} ogType="article">
+  <div class="wrap detail-head">
+    <div>
+      <ol class="crumbs" aria-label="Breadcrumb">
+        <li><a href="/">Inspiration</a></li>
+        <li><a href="/components/">Components</a></li>
+        <li>{item.categories.map((c) => PLACEMENT_LABEL[c]).join(' · ')}</li>
+      </ol>
+      <h1>{item.title}</h1>
+      <p class="lead">{item.summary}</p>
+    </div>
+    <div class="credit">
+      <span>
+        Recreated from <a href={source.url} target="_blank" rel="noopener">{source.name} <span aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a>
+      </span>
+      <span>Captured <b>{date(item.date)}</b></span>
+      <span>Single file, <b>{(bytes / 1024).toFixed(1)} KB</b>, no dependencies</span>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <figure class="frame">
+      <figcaption class="frame__bar">
+        <span><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>Live demo, sandboxed</span>
+        <span class="frame__links">
+          <a href={demo.path} target="_blank" rel="noopener">Open full screen <span aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a>
+          <a href={`${demo.path}index.html`} download={`${item.slug}.html`}>Download .html</a>
+          <a href={demo.sourceUrl} target="_blank" rel="noopener">Source on GitHub <span aria-hidden="true">↗</span><span class="vh"> (opens in a new tab)</span></a>
+        </span>
+      </figcaption>
+      <iframe src={demo.path} title={`Live demo: ${item.title}`} sandbox="allow-scripts" loading="lazy" referrerpolicy="no-referrer"></iframe>
+      <p class="frame__note">
+        Scroll inside the frame for scroll-driven effects. The demo runs with scripts only, no network and no access to this page; it honours your reduced-motion setting.
+      </p>
+    </figure>
+  </div>
+
+  <div class="wrap detail">
+    <article>
+      <h2>Notes</h2>
+      <div class="notes" set:html={notesHtml} />
+      <p class="meta" style="margin-top:24px">
+        From <a href={demo.notesUrl} target="_blank" rel="noopener" style="color:var(--amber-ink)">NOTES.md</a> in the content repository.
+      </p>
+      <details class="src" style="margin-top:32px">
+        <summary>View source ({(bytes / 1024).toFixed(1)} KB)</summary>
+        <pre tabindex="0"><code>{raw.html}</code></pre>
+      </details>
+    </article>
+    <aside class="facts" aria-label="Details">
+      <dl>
+        <div>
+          <dt>Category</dt>
+          <dd class="chips-dd">
+            {item.categories.map((c) => <a class="tag" href={`/components/?cat=${c}`}>{PLACEMENT_LABEL[c]}</a>)}
+          </dd>
+        </div>
+        {
+          (item.audience.length > 0 || item.tags.length > 0) && (
+            <div>
+              <dt>Tags</dt>
+              <dd class="chips-dd">
+                {item.audience.map((a) => (
+                  <a class="tag tag--aud" href={`/components/?tag=${token(a)}`}>
+                    {a}
+                  </a>
+                ))}
+                {item.tags.map((t) => (
+                  <a class="tag" href={`/components/?tag=${token(t)}`}>
+                    {t}
+                  </a>
+                ))}
+              </dd>
+            </div>
+          )
+        }
+        {
+          item.tech.length > 0 && (
+            <div>
+              <dt>Built with</dt>
+              <dd>{item.tech.join(', ')}</dd>
+            </div>
+          )
+        }
+        <div>
+          <dt>Source</dt>
+          <dd>
+            <a href={source.url} target="_blank" rel="noopener">{source.name}</a>, captured {date(item.date)}
+          </dd>
+        </div>
+        <div>
+          <dt>Licence</dt>
+          <dd class="licence">
+            The code is <a href={`${REPO_URL}/blob/main/LICENSE`} target="_blank" rel="noopener">MIT licensed</a>. {source.name} owns the design; this is a study of
+            technique with markup, artwork and copy rebuilt, not a redistribution of their assets.
+          </dd>
+        </div>
+      </dl>
+      <a class="btn btn--ghost" href="/components/">← All components</a>
+    </aside>
+  </div>
+</Layout>

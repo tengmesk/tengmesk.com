@@ -1,0 +1,33 @@
+---
+/** Section heading with eyebrow, optional count and a "see all" link. */
+interface Props {
+  eyebrow: string;
+  title: string;
+  intro?: string;
+  count?: number;
+  more?: { href: string; label: string };
+  id?: string;
+}
+const { eyebrow, title, intro, count, more, id } = Astro.props;
+---
+
+<div class:list={['s-head', { 's-head--row': Boolean(more) }]}>
+  <div>
+    <span class="eyebrow">{eyebrow}</span>
+    <h2 id={id}>
+      {title}
+      {count !== undefined && <span class="s-head__count">{count}</span>}
+    </h2>
+    {intro && <p class="s-head__intro">{intro}</p>}
+  </div>
+  {
+    more && (
+      <a class="s-head__more" href={more.href}>
+        {more.label}
+        <span class="arrow" aria-hidden="true">
+          →
+        </span>
+      </a>
+    )
+  }
+</div>
