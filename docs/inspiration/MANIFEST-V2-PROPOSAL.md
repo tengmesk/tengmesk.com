@@ -28,6 +28,7 @@ All optional on every entry, so an unchanged v1 manifest keeps validating under 
 | `site_category` | string | `portfolio` · `personality` · `product` | required when `section: sites` |
 | `component_category` | string or string[] | the `placement` vocabulary | `section: components`; defaults to `placement` on recreations |
 | `audience` | string[] | `B2B` · `B2C` | any entry |
+| `resource_type` | string | `library` · `gallery` | `section: resources`; overrides the v1 inference from `category` |
 | `tags` | string[] | free text, lower-case, no spaces (use hyphens) | any entry; on recreations it replaces `tone ∪ tech` as the displayed tags when present |
 | `thumbnail` | string or null | path inside the repo, e.g. `links/<slug>.png` | now also valid on `kind: external` entries; **required** for `section: sites` and for external entries in `section: components` (every card needs an image) |
 

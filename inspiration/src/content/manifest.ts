@@ -12,6 +12,7 @@ export const PUBLISH = ['true', 'review', 'false'] as const;
 export const SECTION = ['sites', 'components', 'resources'] as const;
 export const SITE_CATEGORY = ['portfolio', 'personality', 'product'] as const;
 export const AUDIENCE = ['B2B', 'B2C'] as const;
+export const RESOURCE_TYPE = ['library', 'gallery'] as const;
 
 export type Placement = (typeof PLACEMENT)[number];
 export type Section = (typeof SECTION)[number];
@@ -27,6 +28,7 @@ const v2 = {
   site_category: z.enum(SITE_CATEGORY).optional(),
   component_category: oneOrMany(z.enum(PLACEMENT)).optional(),
   audience: z.array(z.enum(AUDIENCE)).optional(),
+  resource_type: z.enum(RESOURCE_TYPE).optional(),
   tags: z.array(z.string().min(1)).optional(),
 };
 

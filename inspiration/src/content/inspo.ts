@@ -251,7 +251,7 @@ function toResource(e: Entry): ResourceItem {
     tags: tagsOf(e),
     audience: audienceOf(e),
     date: e.added,
-    group: e.category === 'inspiration' ? 'galleries' : 'libraries',
+    group: e.resource_type ? (e.resource_type === 'gallery' ? 'galleries' : 'libraries') : e.category === 'inspiration' ? 'galleries' : 'libraries',
     kindLabel: V1_KIND_LABEL[e.category],
     url: e.url,
   };
