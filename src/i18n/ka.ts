@@ -8,6 +8,8 @@ export const ka: Record<Key, string> = {
   'nav.stage': 'გამოსვლები',
   'nav.press': 'მედია',
   'nav.about': 'ჩემ შესახებ',
+  // The Inspiration gallery is English only; the label stays English (lang="en" in the nav).
+  'nav.inspiration': 'Inspiration',
   'nav.contact': 'დამიკავშირდით',
   'nav.menu.open': 'მენიუს გახსნა',
   'nav.menu.close': 'მენიუს დახურვა',

@@ -1,4 +1,4 @@
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 /**
@@ -27,6 +27,13 @@ export default defineConfig({
     defaultLocale: 'en',
     locales: ['en', 'ka'],
     routing: { prefixDefaultLocale: false },
+  },
+  env: {
+    schema: {
+      // Where the Inspiration gallery lives (inspiration/ in this repo,
+      // deployed as its own Cloudflare project). Linked from the nav.
+      INSPIRATION_URL: envField.string({ context: 'server', access: 'public', default: 'https://inspiration.tengmesk.com/' }),
+    },
   },
   integrations: [
     sitemap({

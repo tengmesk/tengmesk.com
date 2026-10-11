@@ -114,17 +114,26 @@ for (const [name, path] of pages) {
   }
 }
 
-// KA nav must fit between the breakpoint and the container width.
-for (const width of [900, 1024, 1180]) {
+// KA nav: burger up to 1023 px, then the row must fit on one line up to the container width.
+{
+  const ctx = await browser.newContext({ viewport: { width: 1000, height: 800 } });
+  const page = await ctx.newPage();
+  await page.goto(base + '/ka/', { waitUntil: 'networkidle' });
+  const r = await page.evaluate(() => ({ burger: getComputedStyle(document.querySelector('.burger')).display, links: getComputedStyle(document.querySelector('.nav__links')).display }));
+  note(r.burger === 'grid' && r.links === 'none', `home-ka at 1000px: burger menu (burger=${r.burger}, row=${r.links})`);
+  await ctx.close();
+}
+for (const width of [1024, 1100, 1180, 1240]) {
   const ctx = await browser.newContext({ viewport: { width, height: 800 } });
   const page = await ctx.newPage();
   await page.goto(base + '/ka/', { waitUntil: 'networkidle' });
   const r = await page.evaluate(() => {
     const n = document.querySelector('.nav__in');
     const links = document.querySelector('.nav__links');
-    return { fits: n.scrollWidth <= n.clientWidth && links.getBoundingClientRect().right <= innerWidth, w: n.scrollWidth, c: n.clientWidth };
+    const h = links.getBoundingClientRect().height;
+    return { fits: n.scrollWidth <= n.clientWidth && links.getBoundingClientRect().right <= innerWidth && h < 50, w: n.scrollWidth, c: n.clientWidth, h };
   });
-  note(r.fits, `home-ka nav fits at ${width}px (${r.w} ≤ ${r.c})`);
+  note(r.fits, `home-ka nav fits on one line at ${width}px (${r.w} ≤ ${r.c}, row ${Math.round(r.h)} px)`);
   await ctx.close();
 }
 

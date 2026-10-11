@@ -768,6 +768,32 @@
   }
 }
 
+/*
+ * KA nav: seven Mkhedruli labels (with Inspiration) do not fit beside the
+ * brand below 1024 px, so Georgian pages keep the burger menu up to 1023 px
+ * (EN switches at 900) and run a tighter row from 1024 to 1179 px.
+ */
+@media (min-width: 900px) and (max-width: 1023px) {
+  :root:lang(ka) .nav__links {
+    display: none;
+  }
+  :root:lang(ka) .burger {
+    display: grid;
+  }
+  :root:lang(ka) .menu[open] {
+    display: flex !important;
+  }
+}
+@media (min-width: 1024px) and (max-width: 1179px) {
+  :root:lang(ka) .nav__links {
+    gap: 12px;
+    font-size: 13px;
+  }
+  :root:lang(ka) .nav__links a {
+    white-space: nowrap;
+  }
+}
+
 /* Reduced motion: static hero (the generic rules live in shared/styles/base.css) */
 @media (prefers-reduced-motion: reduce) {
   .hero__in > * {

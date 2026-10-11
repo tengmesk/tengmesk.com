@@ -1,4 +1,5 @@
 ---
+import { INSPIRATION_URL } from 'astro:env/server';
 import LangSwitch from './LangSwitch.astro';
 import { useT, type Lang } from '../i18n';
 import { homeAnchor, href, route, type PageId } from '../lib/url';
@@ -21,6 +22,10 @@ const aboutHref = href(route('about', lang));
 const contactHref = homeAnchor('contact', lang, onHome);
 const brandHref = href(route('home', lang));
 const anchor = (id: string) => (onHome ? `#${id}` : href(homeAnchor(id, lang, false)));
+// The Inspiration gallery is a separate English-only site on a subdomain
+// (INSPIRATION_URL, astro.config); on KA pages the link keeps its English
+// label and declares it.
+const inspoLang = lang === 'ka' ? 'en' : undefined;
 ---
 
 <header class="nav" id="nav">
@@ -29,6 +34,7 @@ const anchor = (id: string) => (onHome ? `#${id}` : href(homeAnchor(id, lang, fa
     <nav class="nav__links" aria-label={t('nav.label')}>
       {links.map((l) => <a href={anchor(l.id)}>{l.label}</a>)}
       <a href={aboutHref} aria-current={page === 'about' ? 'page' : undefined}>{t('nav.about')}</a>
+      <a href={INSPIRATION_URL} lang={inspoLang} hreflang={inspoLang}>{t('nav.inspiration')}</a>
       <a class="nav__cta" href={onHome ? contactHref : href(contactHref)}>{t('nav.contact')}</a>
     </nav>
     <button class="burger" id="burger" type="button" aria-label={t('nav.menu.open')} aria-expanded="false" aria-controls="menu">
@@ -42,6 +48,7 @@ const anchor = (id: string) => (onHome ? `#${id}` : href(homeAnchor(id, lang, fa
   <nav class="menu__links" aria-label={t('nav.label')}>
     {links.map((l) => <a href={anchor(l.id)}>{l.label}</a>)}
     <a href={aboutHref} aria-current={page === 'about' ? 'page' : undefined}>{t('nav.about')}</a>
+    <a href={INSPIRATION_URL} lang={inspoLang} hreflang={inspoLang}>{t('nav.inspiration')}</a>
     <a class="nav__cta" href={onHome ? contactHref : href(contactHref)}>{t('nav.contact')}</a>
   </nav>
   <LangSwitch lang={lang} page={page} />
@@ -71,7 +78,9 @@ const anchor = (id: string) => (onHome ? `#${id}` : href(homeAnchor(id, lang, fa
     menu.addEventListener('click', (e) => {
       if ((e.target as Element).closest('a')) menu.close();
     });
-    matchMedia('(min-width: 900px)').addEventListener('change', (e) => {
+    // KA pages keep the burger up to 1023 px (see global.css).
+    const desktopFrom = document.documentElement.lang === 'ka' ? 1024 : 900;
+    matchMedia(`(min-width: ${desktopFrom}px)`).addEventListener('change', (e) => {
       if (e.matches && menu.open) menu.close();
     });
   }

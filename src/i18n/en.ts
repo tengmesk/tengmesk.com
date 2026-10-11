@@ -7,6 +7,7 @@ export const en = {
   'nav.stage': 'Speaking',
   'nav.press': 'Press',
   'nav.about': 'About',
+  'nav.inspiration': 'Inspiration',
   'nav.contact': 'Get in touch',
   'nav.menu.open': 'Open menu',
   'nav.menu.close': 'Close menu',
