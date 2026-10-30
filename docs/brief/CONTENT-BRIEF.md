@@ -56,7 +56,7 @@ Status legend: ✅ confirmed by Tengo · ⚠️ needs confirmation
   - **What:** London-based software development and technology consulting company. Builds digital products, internal tools, automations and AI systems, and extends clients' software teams.
   - **Services:** software & product builds (web/mobile apps, MVPs, internal platforms, portals, integrations) · websites & growth (marketing sites, landing pages, SEO, paid social, conversion) · internal ops & automation (dashboards, reporting, workflow automation, process digitisation) · AI systems (AI features, AI agents, AI app support) · enterprise consulting (banking & fintech, digital transformation, platform architecture) · talent (staff augmentation, outstaffing, specialist tech hiring).
   - **Who:** banking & fintech, healthcare, real estate, retail & FMCG, logistics, manufacturing, legal, media, travel & booking, e-commerce. From seed startups (Rex, Theneo YC W22) through mid-size (Halocarbon) to enterprises and a central bank (National Bank of Georgia).
-  - **Scale:** 50+ projects, 15+ industries, 4 continents, 98% client satisfaction (as reported by Forbes Georgia). ~two dozen people (employees + contractors). Registered office 128 City Road, London EC1V 2NX.
+  - **Scale:** 50+ projects, 15+ industries, 4 continents, **97%** client satisfaction. ~two dozen people (employees + contractors). Registered office 128 City Road, London EC1V 2NX.
   - **Clients that CAN be named:** Forbes, National Bank of Georgia, Bank of Georgia, Credo Bank, ProCredit Bank, Aversi Pharmacy, Tbilisi Holding Company, Schirnhofer, GPI Holding, SEU University, Rex, Halocarbon, Children's Hospital Colorado / University of Colorado, Todd Bartos Group, Arte Development, Transiberia, Boon, Theneo, Atlas Metrics, BoxLock.
   - **NEVER name:** Medlabtests (Mrcheveli Medical Centre), the US radio group podcast-analytics MVP, Breezy, Fintex, Centre for Surgery. ⚠️ Not cleared (don't name): Aluframe, NICUVerse (Cincinnati Children's), Dr Todd Ponsky's AI projects, Kus Tba Padel, DineSpace, Casa Calda. Never name proposal-stage prospects.
   - **Results:**
@@ -67,7 +67,7 @@ Status legend: ✅ confirmed by Tengo · ⚠️ needs confirmation
     - Fore Hadley (health charity): pro-bono SEO raised site scores **25/26 → 92/100**.
   - **Founded:** brand 2020; CONCEPTDIGITAL LTD incorporated 2 Aug 2022 (UK 14270819). Tengo = **founder & CEO**. ⚠️ Zurab Dzagania (joined via ZD Consulting acquisition, 2025) and Ioane Chikovani are listed internally as co-founders; wording to confirm.
   - **Tengo full-time on Conceptdigital since 2024.**
-  - **conceptdigital.com (live site) ✅:** hero "LET'S GROW YOUR BOTTOM LINE FASTER"; service pillars Custom Software Development · Staff Augmentation · Data & BI Solutions; talent network 20,000+ tech professionals from 13 countries (incl. ex-MAANG); office listed as Floor 30, The Leadenhall Building, 122 Leadenhall St, London. ⚠️ Satisfaction figure differs: site says **97%**, Forbes Georgia **98%** → use "97%+" or pick one.
+  - **conceptdigital.com (live site) ✅:** hero "LET'S GROW YOUR BOTTOM LINE FASTER"; service pillars Custom Software Development · Staff Augmentation · Data & BI Solutions; talent network 20,000+ tech professionals from 13 countries (incl. ex-MAANG); office listed as Floor 30, The Leadenhall Building, 122 Leadenhall St, London. Satisfaction figure ✅: use **97%**.
   - **Book a call:** https://cal.com/tengmesk/strategy (30-min strategy call) ← site's primary CTA.
 - **Halocarbon** ✅ Fractional CMO since ~June 2026. Halocarbon: US fluorochemical company, 75+ years; engineered fluids, electronics solutions and high-purity fluorochemistry for life sciences (e.g. anesthesia/sevoflurane); serves aerospace, automotive, biotech, electronics, energy, pharma, water treatment and more; HQ Alpharetta GA, plant North Augusta SC; tagline "Let's create your next Breakthrough". Also a Conceptdigital client (website + e-commerce redevelopment).
 - **Health venture: Lozano Health / Jani.bio** ✅ early-stage, stealth, exploratory. On the site: at most a teaser ("something new in health"); no product details. Seeking partners & investors.
@@ -86,7 +86,7 @@ Status legend: ✅ confirmed by Tengo · ⚠️ needs confirmation
 | Aug 2021 – Dec 2023 | **Pensight** (creator-economy / edtech startup, London) | Head of Growth | grew users **382 → 18,000+**; grew the company from the 2 founders + Tengo to **12 people**, recruiting and managing a team of four (social, partnerships, data). **Do not mention Pensight's SaaS revenue / ARR / GMV.** |
 | Sep 2019 – Aug 2021 | **Bank of Georgia** (Tbilisi) | Deputy CIO, Head of Agile | managed 5 agile coaches + 10 programme managers; redesigned the digital product delivery model; ran the organisation-wide agile transformation (feedback culture, continuous improvement) |
 | Oct 2017 – Jul 2019 | **McKinsey & Co.** (London) | Digital Business Analyst | bridged execs and data scientists on an **AI tool to optimise clinical trials** for a large European pharma; agile transformation of a large UK bank; mapped IT architecture for a primary-healthcare landscape; **designed the agile transformation for Bank of Georgia** (→ McKinsey case study) and helped run its first QBR; financial model for a public-sector ministry supplier negotiation, coached senior civil servants; defined flagship product end-state + roadmap for a **fintech unicorn** |
-| Mar – Sep 2016 | **Apadmi** (Manchester) | Software Engineer | BBC Music Android app (Java); cross-platform test automation |
+| Mar – Sep 2016 | **Apadmi** (Manchester) | Software Engineer | BBC iPlayer Android app (Java); cross-platform test automation |
 | Sep 2015 – Mar 2016 | **Money&Co.** (London) | Portfolio Manager | fund of 30 clients / 33 portfolios, **£4.6M+**, ~8% blended interest |
 | (Aug 2015 – Sep 2016) | Tikit | Co-founder | **omit from site** (owner decision) |
 | Oct 2013 – Jun 2018 | **University of Cambridge** | BA Bio- and Information Engineering (2:1) | |
@@ -128,7 +128,8 @@ Story arc: engineer (Cambridge, wrote production code) → finance (Money&Co) �
   - **Do not use:** the podcasting-network review (Chris Tuff) — that client is on the private list; Boon's CEO review (Boon is Tengo's own venture).
 - **Signature talk topics ✅:** Digital Transformation · AI · Growth.
 - **Speaking history ✅:** complete as listed in media.yaml (Global Tech Weekend × Forbes 2025 moderator, DEF-AI 2025, Globalize UK 2022, guest lectures at KIU and Grigol Robakidze University). Nothing else to add.
-- **Proudest win ✅:** during/after the agile transformation he led, **Bank of Georgia won Global Finance's Best Digital Bank award three years in a row** (⚠️ exact award name + years, e.g. "Best Consumer Digital Bank in Georgia 20XX–20XX"). Frame carefully: the bank won; Tengo led the agile transformation of how digital products were delivered.
+- **Bank of Georgia recognition ✅:** Global Finance named Bank of Georgia **"World's Best Digital Bank" in 2024 and 2025**; in **2026** it won **"World's Best AI Bank"** and **"World's Best Consumer Digital Bank"**.
+  - ⚠️ **Framing rule:** Tengo designed the bank's agile transformation at McKinsey (2017–19) and ran it as Deputy CIO / Head of Agile (2019–21). The awards came **after** he left. Say e.g. "helped lay the agile foundations of a bank that went on to be named World's Best Digital Bank (Global Finance, 2024 & 2025)". Never say or imply he won the awards.
 - **Logos ✅:** showing client and employer logos is encouraged (Conceptdigital "can be named" list + Cambridge, McKinsey, Bank of Georgia, Pensight, Halocarbon). Logo files still need sourcing.
 - **Opinions / point of view:**
   - ✅ "AI is still underhyped (and overhyped)."
@@ -142,12 +143,20 @@ Story arc: engineer (Cambridge, wrote production code) → finance (Money&Co) �
 
 - **Name:** Tengo is the standard Georgian short form of Tengiz. (10go = playful written form; fine for the About story.)
 - **Origin:** Georgian family; **born and raised in Manchester**, UK.
-- **Why tech:** engineering *is* tech, so it made sense. Out of university he worked as a programmer on a BBC Android app (⚠️ CV says BBC **Music** app at Apadmi; interview said BBC iPlayer — confirm), then in finance as a portfolio manager.
+- **Why tech:** engineering *is* tech, so it made sense. Out of university he worked as a programmer on the **BBC iPlayer** Android app (at Apadmi; the app was then BBC Music, later folded into iPlayer → say iPlayer), then in finance as a portfolio manager.
 - **Business bug since his teens:** idolised Silicon Valley and Elon Musk; **sold sweets in the school playground to fund his World Challenge expedition to Argentina**.
 - **Why consulting:** curious about the world, different industries and business functions → McKinsey, broad experience incl. banks.
 - **Bank of Georgia story:** the transformation went so well that **the CEO took him aside after the final presentation and asked him to join**.
 - **Startups:** built Tikit with friends during university (story only; not listed as a venture); after Bank of Georgia returned to startups in 2021 at Pensight to help it grow.
 - **Outside work:** plays bits of piano (Grade 8), still lifts, occasionally hikes, enjoys **padel**, travels far more than most, **big foodie**.
-- **Hidden gems:** London: Brasserie Zédel, Dal Fiorentino, ⚠️ "a bar with shapes as its name" (name tbc). Tbilisi: has a whole Notion doc (⚠️ could become a page/list later). Miami: too new.
+- **Hidden gems:** London: Brasserie Zédel, Dal Fiorentino, and a bar literally called **"Bar with shapes as a name"**. Tbilisi: has a whole Notion doc (⚠️ could become a page/list later). Miami: too new.
 - **Values:** **curiosity, adventure, excellence.**
 - **Personal photos:** to be shared later (⚠️ pending; also the cropped headshots from the conference-deck session).
+
+## 7. Voice, look, features, contact (interview round 5, 2026-10-30) ✅
+
+- **Voice:** the site talks about **Tengo in the third person** ("Tengo helps…"). Tone inspired by **Mark Twain and Alex Hormozi**: plain words, short sentences, wit, confident, concrete numbers, no corporate jargon, no fluff.
+- **Look:** **forest-y palette**: deep rich green, brown, nice off-whites. (Overrides the earlier amber-on-white direction in SITE-PLAN.md; contour/terrain motifs still fit.) Reference sites: skipped for now (see SPEC revisions for the 4 shared earlier).
+- **Features wanted:** city tracker (Now / Coming up), book a call (cal.com), newsletter signup, blog / writing section, short video intro, downloadable CV, speaker kit (bio, photos, talk topics), Tbilisi hidden-gems guide. ⚠️ Content still missing for: video, updated CV (current PDF ends 2023), newsletter provider, first posts, Tbilisi guide (Notion doc).
+- **Public email ✅:** tmmeskhi@gmail.com
+- **Bake-off deliverable ✅:** the **homepage** of tengmesk.com.
