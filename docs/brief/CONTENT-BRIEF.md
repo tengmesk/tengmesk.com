@@ -52,19 +52,33 @@ Status legend: ✅ confirmed by Tengo · ⚠️ needs confirmation
 ## 3. Ventures & roles (interview round 2, 2026-10-30)
 
 ### Current
-- **Conceptdigital** ✅ his company. Details to be sourced from conceptdigital.com and the Conceptdigital working session (⚠️ pending: services, clients, results, founder/co-founder, year).
-- **Halocarbon** ✅ Fractional CMO. https://halocarbon.com (⚠️ pending: what Halocarbon does, scope of the role, since when, results).
+- **Conceptdigital** ✅ (source: Conceptdigital working session, 2026-10-30)
+  - **What:** London-based software development and technology consulting company. Builds digital products, internal tools, automations and AI systems, and extends clients' software teams.
+  - **Services:** software & product builds (web/mobile apps, MVPs, internal platforms, portals, integrations) · websites & growth (marketing sites, landing pages, SEO, paid social, conversion) · internal ops & automation (dashboards, reporting, workflow automation, process digitisation) · AI systems (AI features, AI agents, AI app support) · enterprise consulting (banking & fintech, digital transformation, platform architecture) · talent (staff augmentation, outstaffing, specialist tech hiring).
+  - **Who:** banking & fintech, healthcare, real estate, retail & FMCG, logistics, manufacturing, legal, media, travel & booking, e-commerce. From seed startups (Rex, Theneo YC W22) through mid-size (Halocarbon) to enterprises and a central bank (National Bank of Georgia).
+  - **Scale:** 50+ projects, 15+ industries, 4 continents, 98% client satisfaction (as reported by Forbes Georgia). ~two dozen people (employees + contractors). Registered office 128 City Road, London EC1V 2NX.
+  - **Clients that CAN be named:** Forbes, National Bank of Georgia, Bank of Georgia, Credo Bank, ProCredit Bank, Aversi Pharmacy, Tbilisi Holding Company, Schirnhofer, GPI Holding, SEU University, Rex, Halocarbon, Children's Hospital Colorado / University of Colorado, Todd Bartos Group, Arte Development, Transiberia, Boon, Theneo, Atlas Metrics, BoxLock.
+  - **NEVER name:** Medlabtests (Mrcheveli Medical Centre), the US radio group podcast-analytics MVP, Breezy, Fintex, Centre for Surgery. ⚠️ Not cleared (don't name): Aluframe, NICUVerse (Cincinnati Children's), Dr Todd Ponsky's AI projects, Kus Tba Padel, DineSpace, Casa Calda. Never name proposal-stage prospects.
+  - **Results:**
+    - Rex (Berlin vet clinics): built the full MVP; client raised a **€5M seed** shortly after launch.
+    - Tbilisi Holding Company: inventory system cut overstock by **$3M** ($11M → $8M).
+    - Transiberia (rail freight): automated wagon tracking cut call-operator costs by **65%**.
+    - Arte Development (real estate): ERP manages **1,124+ apartments**, **$13M+** portfolio.
+    - Fore Hadley (health charity): pro-bono SEO raised site scores **25/26 → 92/100**.
+  - **Founded:** brand 2020; CONCEPTDIGITAL LTD incorporated 2 Aug 2022 (UK 14270819). Tengo = **founder & CEO**. ⚠️ Zurab Dzagania (joined via ZD Consulting acquisition, 2025) and Ioane Chikovani are listed internally as co-founders; wording to confirm.
+  - **Tengo full-time on Conceptdigital since 2024.**
+  - **Book a call:** https://cal.com/tengmesk/strategy (30-min strategy call) ← site's primary CTA.
+- **Halocarbon** ✅ Fractional CMO since ~June 2026. Also a Conceptdigital client. (⚠️ company description pending: www.halocarbon.com blocked from the build sandbox.)
 - **Health venture: Lozano Health / Jani.bio** ✅ early-stage, stealth, exploratory. On the site: at most a teaser ("something new in health"); no product details. Seeking partners & investors.
 
-### Past ventures ✅ (3 in total; ⚠️ third one not yet named)
+### Past ventures ✅
 - **Boon**: blockchain-based social gamification platform. Closed.
 - **Digital Institute**: tech school taught by MAANG lecturers; students went on to work at Tesla, Google and other top companies. Closed.
-- ⚠️ Third past venture: name + one line.
-- Older projects (e.g. Tikit, a restaurant): ⚠️ include or omit?
+- Older projects (Tikit, restaurant, etc.): **omit**.
 
 ### Past roles
-- **Pensight** (https://pensight.com), Head of Growth ✅. Grew the team from 2 founders + Tengo to **12 people**; grew users from **~1,600 to 18,000+**. (⚠️ years)
-- Bank of Georgia (Deputy CIO, Head of Agile), Digital McKinsey, Cambridge bioengineering: see media.yaml (⚠️ years).
+- **Pensight** (https://pensight.com), Head of Growth ✅. Pensight: all-in-one platform for creators, coaches and educators to sell digital products, courses, memberships and 1:1 sessions (link-in-bio store; 30,000+ creators today). Grew the team from 2 founders + Tengo to **12 people**; grew users from **~1,600 to 18,000+**. (⚠️ years)
+- Bank of Georgia (Deputy CIO, Head of Agile), Digital McKinsey, Cambridge bioengineering: see media.yaml (⚠️ years: from CV up to 2023; CV PDF pending upload).
 
 ## 4. Whereabouts tracker ✅
 
@@ -78,4 +92,4 @@ Status legend: ✅ confirmed by Tengo · ⚠️ needs confirmation
   next:
     - { city: tbc, from: tbc, to: tbc, note: "" }
   ```
-  ⚠️ Granularity of dates shown publicly (exact dates vs month only).
+- **UI ✅:** show "Now: <city>"; on hover/focus reveal "Coming up: <city>, <city>, <city>". (Must also work on touch + keyboard.)
