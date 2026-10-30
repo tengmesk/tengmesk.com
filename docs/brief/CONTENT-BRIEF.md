@@ -82,7 +82,7 @@ Status legend: ✅ confirmed by Tengo · ⚠️ needs confirmation
 |---|---|---|---|
 | 2024 → now | **Conceptdigital** (London) | Founder & CEO, full-time | see above (brand since 2020) |
 | Jun 2026 → now | **Halocarbon** | Fractional CMO | ⚠️ remit/results |
-| Aug 2021 → ⚠️ end 2023/24 | **Pensight** (creator-economy / edtech startup, London) | Head of Growth | grew users **382 → 20,000+** (CV) / ~1,600 → 18,000+ (interview) ⚠️ reconcile; team: CV "recruited & managed a team of four", interview "grew company from 2 founders + me to 12" ⚠️ reconcile; introduced a SaaS plan → **ARR $110k+**, projected annual **GMV > $1.5M** |
+| Aug 2021 – Dec 2023 | **Pensight** (creator-economy / edtech startup, London) | Head of Growth | grew users **382 → 18,000+**; grew the company from the 2 founders + Tengo to **12 people**, recruiting and managing a team of four (social, partnerships, data). **Do not mention Pensight's SaaS revenue / ARR / GMV.** |
 | Sep 2019 – Aug 2021 | **Bank of Georgia** (Tbilisi) | Deputy CIO, Head of Agile | managed 5 agile coaches + 10 programme managers; redesigned the digital product delivery model; ran the organisation-wide agile transformation (feedback culture, continuous improvement) |
 | Oct 2017 – Jul 2019 | **McKinsey & Co.** (London) | Digital Business Analyst | bridged execs and data scientists on an **AI tool to optimise clinical trials** for a large European pharma; agile transformation of a large UK bank; mapped IT architecture for a primary-healthcare landscape; **designed the agile transformation for Bank of Georgia** (→ McKinsey case study) and helped run its first QBR; financial model for a public-sector ministry supplier negotiation, coached senior civil servants; defined flagship product end-state + roadmap for a **fintech unicorn** |
 | Mar – Sep 2016 | **Apadmi** (Manchester) | Software Engineer | BBC Music Android app (Java); cross-platform test automation |
@@ -113,3 +113,14 @@ Story arc: engineer (Cambridge, wrote production code) → finance (Money&Co) �
     - { city: tbc, from: tbc, to: tbc, note: "" }
   ```
 - **UI ✅:** show "Now: <city>"; on hover/focus reveal "Coming up: <city>, <city>, <city>". (Must also work on touch + keyboard.)
+
+## 5. Proof, speaking, opinions (interview round 3, 2026-10-30)
+
+- **Testimonials:** source = Conceptdigital's Clutch profile https://clutch.co/profile/conceptdigital (⚠️ blocked from the build sandbox; quotes to be pasted in). Use reviewer name, title, company as published there.
+- **Signature talk topics ✅:** Digital Transformation · AI · Growth.
+- **Speaking history ✅:** complete as listed in media.yaml (Global Tech Weekend × Forbes 2025 moderator, DEF-AI 2025, Globalize UK 2022, guest lectures at KIU and Grigol Robakidze University). Nothing else to add.
+- **Proudest win ✅:** during/after the agile transformation he led, **Bank of Georgia won Global Finance's Best Digital Bank award three years in a row** (⚠️ exact award name + years, e.g. "Best Consumer Digital Bank in Georgia 20XX–20XX"). Frame carefully: the bank won; Tengo led the agile transformation of how digital products were delivered.
+- **Logos ✅:** showing client and employer logos is encouraged (Conceptdigital "can be named" list + Cambridge, McKinsey, Bank of Georgia, Pensight, Halocarbon). Logo files still need sourcing.
+- **Opinions / point of view:**
+  - ✅ "AI is still underhyped (and overhyped)."
+  - Candidates proposed to Tengo (⚠️ pick/edit): see interview round 3 reply.
