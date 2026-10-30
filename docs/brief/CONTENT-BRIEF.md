@@ -67,8 +67,9 @@ Status legend: ✅ confirmed by Tengo · ⚠️ needs confirmation
     - Fore Hadley (health charity): pro-bono SEO raised site scores **25/26 → 92/100**.
   - **Founded:** brand 2020; CONCEPTDIGITAL LTD incorporated 2 Aug 2022 (UK 14270819). Tengo = **founder & CEO**. ⚠️ Zurab Dzagania (joined via ZD Consulting acquisition, 2025) and Ioane Chikovani are listed internally as co-founders; wording to confirm.
   - **Tengo full-time on Conceptdigital since 2024.**
+  - **conceptdigital.com (live site) ✅:** hero "LET'S GROW YOUR BOTTOM LINE FASTER"; service pillars Custom Software Development · Staff Augmentation · Data & BI Solutions; talent network 20,000+ tech professionals from 13 countries (incl. ex-MAANG); office listed as Floor 30, The Leadenhall Building, 122 Leadenhall St, London. ⚠️ Satisfaction figure differs: site says **97%**, Forbes Georgia **98%** → use "97%+" or pick one.
   - **Book a call:** https://cal.com/tengmesk/strategy (30-min strategy call) ← site's primary CTA.
-- **Halocarbon** ✅ Fractional CMO since ~June 2026. Also a Conceptdigital client. (⚠️ company description pending: www.halocarbon.com blocked from the build sandbox.)
+- **Halocarbon** ✅ Fractional CMO since ~June 2026. Halocarbon: US fluorochemical company, 75+ years; engineered fluids, electronics solutions and high-purity fluorochemistry for life sciences (e.g. anesthesia/sevoflurane); serves aerospace, automotive, biotech, electronics, energy, pharma, water treatment and more; HQ Alpharetta GA, plant North Augusta SC; tagline "Let's create your next Breakthrough". Also a Conceptdigital client (website + e-commerce redevelopment).
 - **Health venture: Lozano Health / Jani.bio** ✅ early-stage, stealth, exploratory. On the site: at most a teaser ("something new in health"); no product details. Seeking partners & investors.
 
 ### Past ventures ✅
@@ -116,11 +117,37 @@ Story arc: engineer (Cambridge, wrote production code) → finance (Money&Co) �
 
 ## 5. Proof, speaking, opinions (interview round 3, 2026-10-30)
 
-- **Testimonials:** source = Conceptdigital's Clutch profile https://clutch.co/profile/conceptdigital (⚠️ blocked from the build sandbox; quotes to be pasted in). Use reviewer name, title, company as published there.
+- **Testimonials ✅** (Conceptdigital: **Clutch 5.0 / 5 from 14 reviews**, https://clutch.co/profile/conceptdigital; named quotes from conceptdigital.com). Recommended set:
+  - "They were extremely professional, stayed within budget, and delivered with excellence." Garrett Gravesen, CEO, Contrarian Technologies
+  - "They were super pragmatic, very open-minded and easy to talk to, and always quick to respond. We were able to launch our MVP within 4 months." Jonathan Loesing, CEO, Rex (veterinary clinics; ⚠️ confirm Rex = Jonathan's company)
+  - "Their ability to quickly understand our business case and develop according to that case was impressive." Head of Department, Forbes Georgia
+  - "They took my ideas and somehow turned it into an amazing app." Physician, University of Colorado (neonatology education app)
+  - "Every interaction with their team demonstrates their expertise and commitment to delivering innovative solutions." Tea Goguadze, Commercial Director (Schirnhofer)
+  - "The team has been very professional, accommodating, and easy to work with." Mike Glass, Co-Founder & COO (BoxLock)
+  - "Conceptdigital delivers on time. Even when our instructions are unclear and unfocused, the team is able to adapt and be flexible." B2B Marketing Specialist, Halocarbon
+  - **Do not use:** the podcasting-network review (Chris Tuff) — that client is on the private list; Boon's CEO review (Boon is Tengo's own venture).
 - **Signature talk topics ✅:** Digital Transformation · AI · Growth.
 - **Speaking history ✅:** complete as listed in media.yaml (Global Tech Weekend × Forbes 2025 moderator, DEF-AI 2025, Globalize UK 2022, guest lectures at KIU and Grigol Robakidze University). Nothing else to add.
 - **Proudest win ✅:** during/after the agile transformation he led, **Bank of Georgia won Global Finance's Best Digital Bank award three years in a row** (⚠️ exact award name + years, e.g. "Best Consumer Digital Bank in Georgia 20XX–20XX"). Frame carefully: the bank won; Tengo led the agile transformation of how digital products were delivered.
 - **Logos ✅:** showing client and employer logos is encouraged (Conceptdigital "can be named" list + Cambridge, McKinsey, Bank of Georgia, Pensight, Halocarbon). Logo files still need sourcing.
 - **Opinions / point of view:**
   - ✅ "AI is still underhyped (and overhyped)."
-  - Candidates proposed to Tengo (⚠️ pick/edit): see interview round 3 reply.
+  - ✅ "AI is underhyped in the back office and overhyped in the boardroom." The boring workflows (invoices, reporting, ops) pay back first.
+  - ✅ "Mid-sized companies have the AI advantage now." Fewer layers and faster decisions beat bigger budgets.
+  - ✅ "Build vs buy has flipped." With AI, a custom internal tool often costs less than another 50 SaaS seats.
+  - ✅ "The most expensive thing in tech isn't developers, it's slow decisions."
+  - ✅ "Growth is an engineering problem now." The teams that win at go-to-market instrument everything and test weekly.
+
+## 6. Personal / About (interview round 4, 2026-10-30) ✅
+
+- **Name:** Tengo is the standard Georgian short form of Tengiz. (10go = playful written form; fine for the About story.)
+- **Origin:** Georgian family; **born and raised in Manchester**, UK.
+- **Why tech:** engineering *is* tech, so it made sense. Out of university he worked as a programmer on a BBC Android app (⚠️ CV says BBC **Music** app at Apadmi; interview said BBC iPlayer — confirm), then in finance as a portfolio manager.
+- **Business bug since his teens:** idolised Silicon Valley and Elon Musk; **sold sweets in the school playground to fund his World Challenge expedition to Argentina**.
+- **Why consulting:** curious about the world, different industries and business functions → McKinsey, broad experience incl. banks.
+- **Bank of Georgia story:** the transformation went so well that **the CEO took him aside after the final presentation and asked him to join**.
+- **Startups:** built Tikit with friends during university (story only; not listed as a venture); after Bank of Georgia returned to startups in 2021 at Pensight to help it grow.
+- **Outside work:** plays bits of piano (Grade 8), still lifts, occasionally hikes, enjoys **padel**, travels far more than most, **big foodie**.
+- **Hidden gems:** London: Brasserie Zédel, Dal Fiorentino, ⚠️ "a bar with shapes as its name" (name tbc). Tbilisi: has a whole Notion doc (⚠️ could become a page/list later). Miami: too new.
+- **Values:** **curiosity, adventure, excellence.**
+- **Personal photos:** to be shared later (⚠️ pending; also the cropped headshots from the conference-deck session).
