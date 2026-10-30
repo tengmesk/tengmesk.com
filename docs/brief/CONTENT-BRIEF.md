@@ -44,6 +44,38 @@ Status legend: ✅ confirmed by Tengo · ⚠️ needs confirmation
 ## 2. Status changes vs earlier material ✅
 
 - **Boon: closed.** Remove from the site entirely (hero chips, Now, timeline, JSON-LD).
-- **Digital Institute: closed.** Not a current venture; treat as past or omit (⚠️ how to present: round 2).
+- **Digital Institute: closed.** Shown as a past venture (see §3).
 - **Location is London, not Tbilisi.** Fix "based in Tbilisi" copy, footer tagline, JSON-LD address.
-- **New:** upcoming health venture, Lozano Health / Jani.bio (⚠️ details: round 2).
+- **New:** upcoming health venture, Lozano Health / Jani.bio (see §3).
+- **New:** Fractional CMO at Halocarbon.
+
+## 3. Ventures & roles (interview round 2, 2026-10-30)
+
+### Current
+- **Conceptdigital** ✅ his company. Details to be sourced from conceptdigital.com and the Conceptdigital working session (⚠️ pending: services, clients, results, founder/co-founder, year).
+- **Halocarbon** ✅ Fractional CMO. https://halocarbon.com (⚠️ pending: what Halocarbon does, scope of the role, since when, results).
+- **Health venture: Lozano Health / Jani.bio** ✅ early-stage, stealth, exploratory. On the site: at most a teaser ("something new in health"); no product details. Seeking partners & investors.
+
+### Past ventures ✅ (3 in total; ⚠️ third one not yet named)
+- **Boon**: blockchain-based social gamification platform. Closed.
+- **Digital Institute**: tech school taught by MAANG lecturers; students went on to work at Tesla, Google and other top companies. Closed.
+- ⚠️ Third past venture: name + one line.
+- Older projects (e.g. Tikit, a restaurant): ⚠️ include or omit?
+
+### Past roles
+- **Pensight** (https://pensight.com), Head of Growth ✅. Grew the team from 2 founders + Tengo to **12 people**; grew users from **~1,600 to 18,000+**. (⚠️ years)
+- Bank of Georgia (Deputy CIO, Head of Agile), Digital McKinsey, Cambridge bioengineering: see media.yaml (⚠️ years).
+
+## 4. Whereabouts tracker ✅
+
+- Site shows **current city** and **what's next** (London base, frequent Tbilisi, currently Miami).
+- Updated **weekly by Roger** (Tengo's assistant agent), who asks Tengo and writes the data.
+- Data contract (proposal): `assets/whereabouts.yaml`
+  ```yaml
+  updated: 2026-10-30
+  base: London
+  now:  { city: Miami, country: US, until: 2026-11-tbc }
+  next:
+    - { city: tbc, from: tbc, to: tbc, note: "" }
+  ```
+  ⚠️ Granularity of dates shown publicly (exact dates vs month only).
