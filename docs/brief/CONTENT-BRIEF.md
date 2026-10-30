@@ -76,9 +76,29 @@ Status legend: ✅ confirmed by Tengo · ⚠️ needs confirmation
 - **Digital Institute**: tech school taught by MAANG lecturers; students went on to work at Tesla, Google and other top companies. Closed.
 - Older projects (Tikit, restaurant, etc.): **omit**.
 
-### Past roles
-- **Pensight** (https://pensight.com), Head of Growth ✅. Pensight: all-in-one platform for creators, coaches and educators to sell digital products, courses, memberships and 1:1 sessions (link-in-bio store; 30,000+ creators today). Grew the team from 2 founders + Tengo to **12 people**; grew users from **~1,600 to 18,000+**. (⚠️ years)
-- Bank of Georgia (Deputy CIO, Head of Agile), Digital McKinsey, Cambridge bioengineering: see media.yaml (⚠️ years: from CV up to 2023; CV PDF pending upload).
+### Career timeline ✅ (source: CV updated Aug 2023 + interview)
+
+| Years | Organisation | Role | Highlights |
+|---|---|---|---|
+| 2024 → now | **Conceptdigital** (London) | Founder & CEO, full-time | see above (brand since 2020) |
+| Jun 2026 → now | **Halocarbon** | Fractional CMO | ⚠️ remit/results |
+| Aug 2021 → ⚠️ end 2023/24 | **Pensight** (creator-economy / edtech startup, London) | Head of Growth | grew users **382 → 20,000+** (CV) / ~1,600 → 18,000+ (interview) ⚠️ reconcile; team: CV "recruited & managed a team of four", interview "grew company from 2 founders + me to 12" ⚠️ reconcile; introduced a SaaS plan → **ARR $110k+**, projected annual **GMV > $1.5M** |
+| Sep 2019 – Aug 2021 | **Bank of Georgia** (Tbilisi) | Deputy CIO, Head of Agile | managed 5 agile coaches + 10 programme managers; redesigned the digital product delivery model; ran the organisation-wide agile transformation (feedback culture, continuous improvement) |
+| Oct 2017 – Jul 2019 | **McKinsey & Co.** (London) | Digital Business Analyst | bridged execs and data scientists on an **AI tool to optimise clinical trials** for a large European pharma; agile transformation of a large UK bank; mapped IT architecture for a primary-healthcare landscape; **designed the agile transformation for Bank of Georgia** (→ McKinsey case study) and helped run its first QBR; financial model for a public-sector ministry supplier negotiation, coached senior civil servants; defined flagship product end-state + roadmap for a **fintech unicorn** |
+| Mar – Sep 2016 | **Apadmi** (Manchester) | Software Engineer | BBC Music Android app (Java); cross-platform test automation |
+| Sep 2015 – Mar 2016 | **Money&Co.** (London) | Portfolio Manager | fund of 30 clients / 33 portfolios, **£4.6M+**, ~8% blended interest |
+| (Aug 2015 – Sep 2016) | Tikit | Co-founder | **omit from site** (owner decision) |
+| Oct 2013 – Jun 2018 | **University of Cambridge** | BA Bio- and Information Engineering (2:1) | |
+| 2006 – 2013 | Altrincham Grammar School for Boys | A-levels 2 A*, 4 A; GCSE 11 A*, 2 A | probably too much detail for the site |
+
+Story arc: engineer (Cambridge, wrote production code) → finance (Money&Co) → strategy (McKinsey) → inside an enterprise (Bank of Georgia) → startup growth (Pensight, London) → founder (Conceptdigital). This is the "every side of the table" proof.
+
+### Skills, languages, interests ✅ (CV)
+- Code: HTML, CSS, JS, Java, Python, Git, C++, SQL, Bash.
+- Languages: English, Georgian (fluent), French (intermediate), German & Spanish (beginner).
+- Music: piano Grade 8 (Merit); competed nationally as first alto sax (Grade 7 Merit).
+- Leisure: lifting, hiking, travel, culture, discovering hidden gems.
+- Privacy: the CV's phone number and personal email are **not** for the site. The CV PDF is not committed to the repo.
 
 ## 4. Whereabouts tracker ✅
 
