@@ -104,7 +104,7 @@ Story arc: engineer (Cambridge, wrote production code) → finance (Money&Co) �
 
 - Site shows **current city** and **what's next** (London base, frequent Tbilisi, currently Miami).
 - Updated **weekly by Roger** (Tengo's assistant agent), who asks Tengo and writes the data.
-- Data contract (proposal): `assets/whereabouts.yaml`
+- Data ✅: `assets/whereabouts.yaml` (first update from Roger, 2026-10-30). Format:
   ```yaml
   updated: 2026-10-30
   base: London
