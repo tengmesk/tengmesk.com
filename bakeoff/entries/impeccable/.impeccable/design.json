@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T19:30:00Z",
+  "title": "Design System: tengmesk.com",
+  "extensions": {
+    "colorMeta": {
+      "board-green": { "role": "primary", "displayName": "Board Green", "canonical": "#12301f", "tonalRamp": ["#07140d", "#0b2016", "#12301f", "#183b28", "#214a33", "#2e6446", "#5f8f74", "#c9dccf"] },
+      "timber-brown": { "role": "secondary", "displayName": "Timber Brown", "canonical": "#5a3a1f", "tonalRamp": ["#2a1a0c", "#3d2613", "#4b3019", "#5a3a1f", "#70492a", "#8a5d37", "#b8946a", "#e6d6c0"] },
+      "ochre-blaze": { "role": "tertiary", "displayName": "Ochre Blaze", "canonical": "#e0b458", "tonalRamp": ["#4a3a12", "#7a5e1c", "#a67f2b", "#c99c3e", "#e0b458", "#e9c97e", "#f2dfae", "#faf1da"] },
+      "bone-paper": { "role": "neutral", "displayName": "Bone Paper", "canonical": "#f2ecdf", "tonalRamp": ["#1d1a14", "#4a4030", "#8a7a5c", "#b8a98a", "#ddd2ba", "#e9e1cf", "#f2ecdf", "#f7f1e4"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "The routed h1 on the trailhead board." },
+      "headline": { "displayName": "Headline", "purpose": "Section headings on boards (cream, routed) and paper (ink)." },
+      "title": { "displayName": "Title", "purpose": "Finger and stop headings, buttons." },
+      "body": { "displayName": "Body", "purpose": "Reading copy, 66ch max, pretty wrapping." },
+      "label": { "displayName": "Label", "purpose": "Tracker labels, chart column heads, logo-group heading. Uppercase, tracked." }
+    },
+    "shadows": [
+      { "name": "print", "value": "inset 0 0 0 1px #b8946a, 0 18px 40px -22px rgba(0,0,0,.75)", "purpose": "A photograph pinned proud of the board." },
+      { "name": "button-primary", "value": "inset 0 0 0 3px #f7f1e4, inset 0 0 0 4px #8a5d37, 0 6px 16px -8px rgba(0,0,0,.6)", "purpose": "The cream call board with its routed inner line." },
+      { "name": "post-edge", "value": "inset -2px 0 0 #3d2613", "purpose": "The shaded edge of a timber post." },
+      { "name": "rail-edge", "value": "inset 0 -3px 0 #3d2613", "purpose": "The shaded underside of the header rail." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "Exponential ease-out for every transition." },
+      { "name": "t", "value": "320ms", "purpose": "Standard duration (hover light, finger swing)." },
+      { "name": "reveal", "value": "420ms", "purpose": "Tracker grid-row reveal." },
+      { "name": "route-draw", "value": "1400ms", "purpose": "The route line drawing on once." },
+      { "name": "entrance", "value": "700ms", "purpose": "Prints and boards settling in by 14px." }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "480px" },
+      { "name": "chart-stack", "value": "640px" },
+      { "name": "rail-collapse", "value": "760px" },
+      { "name": "two-column", "value": "900px" },
+      { "name": "blaze-span", "value": "1000px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The cream call board: the page's one primary action.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Book a 30-minute call</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; font-family: Besley, Georgia, serif; font-weight: 700; font-size: 1.05rem; line-height: 1; padding: 14px 22px; text-decoration: none; background: #f7f1e4; color: #0b2016; border: 2px solid #5a3a1f; box-shadow: inset 0 0 0 3px #f7f1e4, inset 0 0 0 4px #8a5d37, 0 6px 16px -8px rgba(0,0,0,.6); transition: background-color 320ms cubic-bezier(.16,1,.3,1), transform 320ms cubic-bezier(.16,1,.3,1); } .ds-btn-primary:hover { background: #fffaf0; transform: translateY(-1px); } .ds-btn-primary:focus-visible { outline: 3px solid #e0b458; outline-offset: 3px; }"
+    },
+    {
+      "name": "Rail Button",
+      "kind": "button",
+      "refersTo": "button-rail",
+      "description": "The green call button on the brown rail.",
+      "html": "<a class=\"ds-btn-rail\" href=\"#\">Book a call</a>",
+      "css": ".ds-btn-rail { display: inline-flex; font-family: Besley, Georgia, serif; font-weight: 700; font-size: .95rem; padding: 10px 16px; background: #12301f; color: #f7f1e4; border: 2px solid #214a33; text-decoration: none; transition: background-color 320ms cubic-bezier(.16,1,.3,1); } .ds-btn-rail:hover { background: #214a33; } .ds-btn-rail:focus-visible { outline: 3px solid #e0b458; outline-offset: 3px; }"
+    },
+    {
+      "name": "Arrow Link",
+      "kind": "custom",
+      "refersTo": "finger",
+      "description": "Underlined link with a drawn chevron.",
+      "html": "<a class=\"ds-link-arrow\" href=\"#\">See Conceptdigital</a>",
+      "css": ".ds-link-arrow { font-family: Signika, system-ui, sans-serif; font-weight: 600; color: #1d1a14; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; border-bottom: 2px solid currentColor; padding-bottom: 1px; } .ds-link-arrow::after { content: ''; width: 10px; height: 10px; border-top: 2px solid currentColor; border-right: 2px solid currentColor; transform: rotate(45deg); transition: transform 320ms cubic-bezier(.16,1,.3,1); } .ds-link-arrow:hover::after { transform: rotate(45deg) translate(2px,-2px); }"
+    },
+    {
+      "name": "Finger",
+      "kind": "card",
+      "refersTo": "finger",
+      "description": "An arrow-ended green board hanging off a timber post.",
+      "html": "<div class=\"ds-fingerpost\"><article class=\"ds-finger\"><h3>Advice that ends in a decision</h3><p>Digital transformation, AI strategy, platform architecture, go-to-market.</p></article></div>",
+      "css": ".ds-fingerpost { position: relative; padding-left: 36px; } .ds-fingerpost::before { content: ''; position: absolute; left: 0; top: -12px; bottom: -12px; width: 8px; background: #5a3a1f; box-shadow: inset -2px 0 0 #3d2613; } .ds-finger { background: #12301f; color: #f7f1e4; padding: 26px 96px 26px 36px; clip-path: polygon(0 0, calc(100% - 34px) 0, 100% 50%, calc(100% - 34px) 100%, 0 100%); box-shadow: inset 0 0 0 2px #214a33; transition: background-color 320ms cubic-bezier(.16,1,.3,1); } .ds-finger:hover { background: #183b28; } .ds-finger h3 { font-family: Besley, Georgia, serif; font-weight: 700; font-size: 1.35rem; margin: 0 0 .5rem; text-shadow: 0 1px 0 rgba(0,0,0,.45); } .ds-finger p { font-family: Signika, system-ui, sans-serif; color: #d9d2c0; margin: 0; }"
+    },
+    {
+      "name": "Print",
+      "kind": "card",
+      "refersTo": "print",
+      "description": "A photograph on a cream mat in a timber frame.",
+      "html": "<figure class=\"ds-print\"><div class=\"ds-print__img\"></div><figcaption>Moderating at Global Tech Weekend × Forbes, Stamba, Tbilisi, 2025.</figcaption></figure>",
+      "css": ".ds-print { margin: 0; width: 280px; background: #f7f1e4; padding: 10px 10px 12px; border: 6px solid #5a3a1f; box-shadow: inset 0 0 0 1px #b8946a, 0 18px 40px -22px rgba(0,0,0,.75); } .ds-print__img { aspect-ratio: 3/2; background: #214a33; } .ds-print figcaption { font-family: Signika, system-ui, sans-serif; font-weight: 500; font-size: .86rem; line-height: 1.3; color: #4a4030; padding: 10px 2px 0; }"
+    },
+    {
+      "name": "Fingerpost Tracker",
+      "kind": "custom",
+      "refersTo": "finger",
+      "description": "The 'You are here' post: NOW board, BASE board, COMING UP fingers on hover/focus/tap.",
+      "html": "<div class=\"ds-post\"><p class=\"ds-post__title\">You are here</p><button class=\"ds-post__now\" type=\"button\" aria-expanded=\"false\"><span class=\"ds-post__label\">Now</span><span class=\"ds-post__city\">Miami</span><span class=\"ds-post__when\">until Nov</span></button><p class=\"ds-post__base\"><span class=\"ds-post__label\">Base</span><span class=\"ds-post__city\">London</span></p></div>",
+      "css": ".ds-post { position: relative; padding-left: 26px; background: #12301f; padding-top: 12px; padding-bottom: 12px; } .ds-post::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 8px; background: #5a3a1f; box-shadow: inset -2px 0 0 #3d2613; } .ds-post__title { font-family: Besley, Georgia, serif; font-weight: 700; font-size: .95rem; letter-spacing: .06em; text-transform: uppercase; color: #e0b458; margin: 0 0 8px; } .ds-post__now, .ds-post__base { display: inline-grid; grid-template-columns: auto auto auto; column-gap: 12px; align-items: baseline; padding: 8px 32px 8px 14px; margin: 0 8px 8px 0; font: inherit; text-align: left; clip-path: polygon(0 0, calc(100% - 18px) 0, 100% 50%, calc(100% - 18px) 100%, 0 100%); } .ds-post__now { border: 0; cursor: pointer; background: #f7f1e4; color: #0b2016; box-shadow: inset 0 0 0 2px #8a5d37; } .ds-post__now:hover { background: #fffaf0; } .ds-post__now:focus-visible { outline: 3px solid #e0b458; outline-offset: 3px; } .ds-post__base { background: #183b28; color: #d9d2c0; } .ds-post__label { font-family: Besley, Georgia, serif; font-weight: 700; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; opacity: .85; } .ds-post__city { font-family: Besley, Georgia, serif; font-weight: 700; font-size: 1.35rem; line-height: 1; } .ds-post__when { font-family: Signika, system-ui, sans-serif; font-size: .9rem; opacity: .85; }"
+    },
+    {
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input-text",
+      "description": "Cream field with a timber border, used for the notes sign-up.",
+      "html": "<input class=\"ds-input\" type=\"email\" placeholder=\"you@company.com\">",
+      "css": ".ds-input { font-family: Signika, system-ui, sans-serif; font-size: 1rem; padding: 12px 14px; background: #f7f1e4; color: #1d1a14; border: 2px solid #8a5d37; caret-color: #214a33; } .ds-input::placeholder { color: #6e6450; } .ds-input:focus-visible { outline: 3px solid #e0b458; outline-offset: 3px; }"
+    },
+    {
+      "name": "Rail Navigation",
+      "kind": "nav",
+      "refersTo": "button-rail",
+      "description": "The sticky brown rail with routed name, section links and the call button.",
+      "html": "<header class=\"ds-rail\"><a class=\"ds-rail__name\" href=\"#\">Tengo Meskhi</a><nav class=\"ds-rail__nav\"><a href=\"#\">Help</a><a href=\"#\">Proof</a><a href=\"#\">Route</a></nav><a class=\"ds-rail__btn\" href=\"#\">Book a call</a></header>",
+      "css": ".ds-rail { background: #5a3a1f; color: #f7f1e4; display: flex; align-items: center; gap: 20px; padding: 0 24px; min-height: 60px; box-shadow: inset 0 -3px 0 #3d2613; } .ds-rail__name { font-family: Besley, Georgia, serif; font-weight: 700; font-size: 1.2rem; color: #f7f1e4; text-decoration: none; } .ds-rail__nav { display: flex; gap: 4px; margin-left: auto; } .ds-rail__nav a { font-family: Signika, system-ui, sans-serif; font-weight: 500; padding: 8px 12px; color: #f7f1e4; text-decoration: none; } .ds-rail__nav a:hover { background: #4b3019; } .ds-rail__btn { font-family: Besley, Georgia, serif; font-weight: 700; font-size: .95rem; padding: 10px 16px; background: #12301f; color: #f7f1e4; border: 2px solid #214a33; text-decoration: none; } .ds-rail__btn:hover { background: #214a33; }"
+    },
+    {
+      "name": "Blaze",
+      "kind": "card",
+      "refersTo": "paper",
+      "description": "A trail note: a painted blaze beside a claim on bone paper.",
+      "html": "<div class=\"ds-blaze\"><p class=\"ds-blaze__claim\">Growth is an engineering problem now.</p><p>The teams that win at go-to-market instrument everything and test weekly.</p></div>",
+      "css": ".ds-blaze { position: relative; padding: 22px 22px 18px 54px; border: 2px solid #5a3a1f; background: #f2ecdf; font-family: Signika, system-ui, sans-serif; color: #4a4030; transition: background-color 320ms cubic-bezier(.16,1,.3,1); } .ds-blaze:hover { background: #f7f1e4; } .ds-blaze::before { content: ''; position: absolute; left: 18px; top: 24px; width: 16px; height: 24px; background: #12301f; box-shadow: inset 0 0 0 2px #214a33; } .ds-blaze__claim { font-family: Besley, Georgia, serif; font-weight: 700; font-size: 1.3rem; line-height: 1.3; margin: 0 0 .5rem; color: #0b2016; } .ds-blaze p:last-child { margin: 0; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Trailhead Board",
+    "overview": "The site is a trailhead: painted timber boards with routed lettering, fingerposts pointing at destinations, a distance chart, blazes on the trail, and a register that other walkers signed. Everything a visitor needs to decide fast already exists in that world, so the page borrows its parts rather than the personal-brand template. Two inks on one paper: deep forest green owns the boards (hero, proof, talks, close), bone off-white is the paper of the notices pinned between them, and brown timber is every post, rule and frame at true thickness. There is no grey anywhere; secondary text is tinted cream on green and brown-black on bone.\n\nDensity alternates like a walk: a dense board (the distance chart, the logos), then a quiet paper section (the route, the register). Motion is lit or pinned, never slid: boards backlight on hover, the route draws on once, prints settle in by a few pixels. Under reduced motion the registration locks and nothing is hidden.",
+    "keyCharacteristics": [
+      "Two inks (green #12301f, brown #5a3a1f) on one paper (#f2ecdf); one ochre accent for the blaze that marks \"now\".",
+      "Square corners everywhere; depth comes from posts, rules and frames, not shadows.",
+      "Besley (Clarendon revival) for every heading and number, Signika for reading text.",
+      "Contour lines drawn in code as the boards' ground, never as an illustration.",
+      "The fingerpost: an arrow-ended board on a post, used for the city tracker and the \"ways in\"."
+    ],
+    "rules": [
+      { "name": "The Two-Ink Rule", "body": "Only green and brown carry colour. No grey, no gradients; secondary text is a tint of the ink it sits on.", "section": "colors" },
+      { "name": "The One Blaze Rule", "body": "Ochre appears on at most one element per screen region, and always means \"here\" or \"look here\".", "section": "colors" },
+      { "name": "The Routed Rule", "body": "Headings on a board are cream with text-shadow: 0 1px 0 rgba(0,0,0,.45); on paper they are plain ink. Nothing else gets a text-shadow.", "section": "typography" },
+      { "name": "The Pinned Rule", "body": "A shadow means something physical sits on the board (a print, a button). Containers never cast one.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do put colour in fields that own regions: a whole board green, a whole notice bone.",
+      "Do separate stacked sections with the 8px timber post.",
+      "Do set every number in Besley with tabular figures.",
+      "Do light things on hover (one shade step) rather than move them.",
+      "Do keep the first viewport's action a cream board and the tracker visible beside it."
+    ],
+    "donts": [
+      "Don't introduce grey, gradients, rounded corners or glass.",
+      "Don't fake material: no wood grain, bevels or embossing; posts and boards are flat paint.",
+      "Don't add a kicker above a heading; labels exist only on the tracker, the chart's column heads and the logo group.",
+      "Don't use glyphs or emoji as icons; draw chevrons with borders or ship SVG.",
+      "Don't hot-link fonts, images or scripts; everything ships from the page's own origin."
+    ]
+  }
+}
