@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>OG image source</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="styles.css">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; }
+  body { background: var(--paper); color: var(--ink); display: grid; grid-template-columns: 1fr 420px; }
+  .og-copy { padding: 64px 0 56px 72px; display: flex; flex-direction: column; justify-content: space-between; }
+  .og-copy h1 { font-family: var(--font-display); font-weight: 560; font-size: 54px; line-height: 1.08; letter-spacing: -0.012em; margin: 0; max-width: 640px; }
+  .og-copy p { font-family: var(--font-text); font-size: 24px; margin: 0; color: var(--walnut); }
+  .og-name { font-family: var(--font-display); font-size: 30px; font-weight: 600; }
+  .og-img { position: relative; overflow: hidden; }
+  .og-img img { position: absolute; left: 0; top: 0; width: 100%; height: 100%; object-fit: cover; object-position: top; }
+</style>
+</head>
+<body>
+  <div class="og-copy">
+    <p class="og-name">Tengo Meskhi</p>
+    <h1>Helps companies use tech &amp; AI to accelerate their growth and streamline their operations.</h1>
+    <p>Founder &amp; CEO, Conceptdigital, London. Book a 30-minute call at tengmesk.com</p>
+  </div>
+  <div class="og-img">{{PORTRAIT}}</div>
+</body>
+</html>
