@@ -11,9 +11,9 @@ Everything is in `bakeoff/inputs/` (read-only):
 - `data/whereabouts.yaml`: where Tengo is now and next (for the city tracker).
 - `data/media.yaml`: press, talks, teaching, interviews, socials, photo alt text. Older file: where it conflicts with BRIEF.md (e.g. Boon and Digital Institute are closed, base is London not Tbilisi), BRIEF.md wins.
 - `images/photos/`: event photos (Global Tech Weekend × Forbes 2025, Tbilisi).
-- `images/headshot/`: portraits of Tengo.
+- `images/headshot/`, `images/personal/`: portraits and personal photos of Tengo, described in `images/PHOTOS.md` (headshot-1129 is his preferred headshot).
 - `images/press-cards-source-only/`: third-party event cards. Source material only (you may crop a portrait from them if useful); do not show the cards themselves.
-- `logos/`: client and brand logos that were available. Logos not in this folder (McKinsey, Bank of Georgia, University of Cambridge, Pensight, BBC, Global Finance, etc.) could not be sourced: set those names as clean typographic wordmarks instead. Don't fetch logos from the internet.
+- `logos/`: client, employer and brand logos (see `logos/LOGOS.md`). Use only these; any organisation without a logo here (e.g. Pensight) is set as a clean typographic wordmark. Don't fetch other logos.
 
 ## Must-haves on the homepage
 1. Who Tengo is and what he does, in his own positioning: *"I help companies use tech & AI to accelerate their growth and streamline their operations."* Talk about him in the third person (BRIEF §7), in a Mark Twain / Alex Hormozi tone: plain, punchy, witty, concrete numbers, no jargon.
@@ -29,7 +29,7 @@ Everything is in `bakeoff/inputs/` (read-only):
 - **No invented facts, numbers, quotes, clients or awards.** Use only what the inputs say. Never show anything marked ⚠️ as fact; omit it. Never name clients on the BRIEF's private / not-cleared lists. Follow the Bank of Georgia awards framing rule exactly.
 - **Palette direction:** forest-y: deep rich green, brown, off-whites (BRIEF §7). Light or dark is your call.
 - **Tech:** custom code only, SEO-friendly, editable in Claude Code. Allowed: vanilla HTML/CSS/JS, **Next.js** (App Router, statically exported), or WordPress. Not allowed: a client-only React SPA (Vite/CRA), Webflow, Framer or any site builder. npm libraries are fine (GSAP, Lenis, Three.js, Tailwind, etc.).
-- **Network:** this sandbox can install from npm but most of the web is blocked. Self-host fonts (e.g. `@fontsource/*` or `next/font/local`); don't depend on Google Fonts CDN, remote images or remote video at runtime. Imagery = the inputs + anything you generate in code (SVG, canvas, WebGL, CSS).
+- **Network & media:** internet access is available. Self-host everything the page uses at runtime (fonts via `@fontsource/*` / `next/font` or downloaded files; images and video downloaded into your project) so the page never hot-links a third-party server. You may source extra imagery or video (e.g. stock or your skill's own media library) if it genuinely serves the brief, but photos of Tengo and logos come only from the inputs. Imagery may also be generated in code (SVG, canvas, WebGL, CSS).
 - **SEO & quality:** server-rendered/static HTML with real text, one h1, semantic landmarks, title/description/OG tags, alt text, visible focus, keyboard-operable, `prefers-reduced-motion` respected, no horizontal scroll at 390 px, no console errors, fast (aim LCP < 2.5 s).
 - **Isolation:** read only `bakeoff/inputs/`, your assigned skill folder, and your own entry folder. Do **not** open any other folder under `bakeoff/` (other entries), or the rest of the repository (`src/`, `docs/`, `inspiration/`, `assets/`, git history or branches). Do not run git commands. Do not commit.
 

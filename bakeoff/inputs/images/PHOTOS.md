@@ -1,7 +1,12 @@
 # Photos of Tengo (all usable on the homepage)
 
-## headshot/
-- `interim-headshot-crop.jpg`: studio portrait cropped from an event card (grey shirt, plain background). Low-res stand-in; a professional McKinsey-shoot headshot will replace it at the same path family when available.
+## headshot/ (professional studio shoot, McKinsey, 2018; grey shirt, glasses, light grey seamless background; 2400 px tall-side JPEGs)
+- `headshot-1129.jpg`: **Tengo's preferred headshot.** Three-quarter length, hands in pockets, smiling.
+- `headshot-1144.jpg`: alternate, relaxed smile, slight turn.
+- `headshot-1167.jpg`: alternate, hands clasped in front, centred.
+- `headshot-1175.jpg`: alternate, adjusting glasses (more personality).
+- `headshot-1228.jpg`: alternate, no glasses, closer crop, big smile.
+- `interim-headshot-crop.jpg`: old low-res crop from an event card; superseded, avoid.
 
 ## photos/ (professional / event)
 - `panel-wide-moderating.webp`: moderating the Superstar Panel "Insights on Innovation and Technology", Global Tech Weekend × Forbes, Stamba rooftop, Tbilisi, June 2025.
