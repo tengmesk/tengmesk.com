@@ -1,0 +1,19 @@
+{
+  "name": "tengmesk-homepage",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "tengmesk.com homepage - static build (vanilla HTML/CSS/JS, data injected at build time)",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "assets": "node scripts/prepare-assets.mjs",
+    "dev": "node scripts/build.mjs && npx http-server out -p 8080 -c-1",
+    "shoot": "node scripts/shoot.mjs"
+  },
+  "dependencies": {
+    "@fontsource/instrument-serif": "^5.1.0",
+    "@fontsource/inter": "^5.1.0",
+    "js-yaml": "^4.1.0",
+    "sharp": "^0.33.5"
+  }
+}
