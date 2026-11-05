@@ -1,0 +1,20 @@
+{
+  "name": "tengmesk-hallmark",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "description": "tengmesk.com homepage, Hallmark bake-off entry",
+  "scripts": {
+    "build": "node build.mjs",
+    "serve": "node serve.mjs",
+    "shots": "node shots.mjs"
+  },
+  "dependencies": {
+    "@fontsource/hanken-grotesk": "^5.1.0",
+    "@fontsource/newsreader": "^5.1.0",
+    "@fontsource/vollkorn": "^5.1.0",
+    "puppeteer-core": "^23.11.1",
+    "sharp": "^0.33.5",
+    "yaml": "^2.6.1"
+  }
+}

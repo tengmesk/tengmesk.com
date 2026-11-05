@@ -1,0 +1,40 @@
+[
+ {
+  "shape": "Photographic (hybrid: three full pictures between ruled rows)",
+  "theme": "garden",
+  "axes": "light/roman-serif/chromatic-green",
+  "hero": "Poster",
+  "nav": "banner over a retracting bar",
+  "footer": "index columns",
+  "imagery": "photographs, the owner's own 4",
+  "photos": [
+   "speaking-sunglasses-mic",
+   "panel-wide-moderating",
+   "headshot-1129",
+   "dolomites"
+  ],
+  "entry": "out/index.html",
+  "fingerprint": "Hanging|Asymmetric spans|Hairline|Solid|Full-bleed|None",
+  "sections": [
+   "Hero (Poster)",
+   "Figure + Rows + logos",
+   "Showcase + strip",
+   "Rows + record",
+   "Split",
+   "Statement + quotes",
+   "Rows",
+   "Band photo + plate",
+   "Footer close + index"
+  ],
+  "signature": "the stage photograph full-bleed under an oat plate, with the live city line above the nav",
+  "waived": [
+   "71"
+  ],
+  "prompt": "Personal homepage of Tengo Meskhi, tech and AI advisor, London; forest palette; book a call",
+  "draw": "4656ca",
+  "job": "hire",
+  "genre": "editorial",
+  "date": "2026-11-05",
+  "mode": "build"
+ }
+]
