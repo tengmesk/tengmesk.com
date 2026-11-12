@@ -272,6 +272,8 @@ teaching:
 
 # Written press. Titles are as published (older pieces say Tengiz).
 press:
+  # link_status: ok | broken | unverified. `broken` = keep for the record, mention in text if useful, never link or feature on the site.
+  # Tengo reports some links are broken (which ones: tbc). Checked 2026-11-12: bm.ge and some sites block automated checks, so 'unverified' ≠ broken.
   - id: press-mckinsey-agile-bank
     kind: article
     outlet: McKinsey & Company
@@ -340,11 +342,80 @@ press:
     featured: true
 
 # Video and audio appearances.
+  # --- added 2026-11-12 from web search ---
+  - id: press-informationweek-it-risk
+    kind: article
+    outlet: InformationWeek
+    outlet_short: InformationWeek
+    title: "Who should be on a CIO's IT risk management team?"
+    title_ka: tbc
+    url: https://www.informationweek.com/it-leadership/who-should-be-on-a-cio-s-it-risk-management-team-
+    lang: en
+    date: 2026-11-12
+    image: null
+    about: [conceptdigital, bank-of-georgia]
+    note: "By John Edwards. Quotes Tengo: 'Underestimating the human side is the biggest mistake IT leaders make when building a risk management team.'"
+    featured: true
+    link_status: ok
+  - id: press-forbes-gtw-recap
+    kind: article
+    outlet: Forbes Georgia
+    outlet_short: Forbes Georgia
+    title: "Creativity Meets Tech: Forbes Georgia's exclusive event connected leaders across industries"
+    title_ka: tbc
+    url: https://forbes.ge/en/creativity-meets-tech-forbes-georgia-s-exclusive-event-connected-leaders-across-industries/
+    lang: en
+    date: 2025-07-11
+    image: null
+    about: [talk-gtw-forbes-2025]
+    note: Post-event write-up; names Tengiz Meskhi (Founder & CEO, Conceptdigital) as moderator of the Superstar Panel.
+    featured: false
+    link_status: ok
+  - id: press-forbes-gtw-announcement
+    kind: article
+    outlet: Forbes Georgia
+    outlet_short: Forbes Georgia
+    title: "Creativity Meets Tech: Forbes Georgia to host exclusive event on June 20"
+    title_ka: tbc
+    url: https://forbes.ge/en/creativity-meets-tech-forbes-georgia-to-host-exclusive-event-on-june-20/
+    lang: en
+    date: 2025-06
+    image: null
+    about: [talk-gtw-forbes-2025]
+    featured: false
+    link_status: ok
+  - id: press-under30-profile
+    kind: profile
+    outlet: Under30.ge (Forbes Georgia 30 Under 30)
+    outlet_short: Under30.ge
+    title: Tengiz Meskhi, 30 Under 30 profile
+    title_ka: tbc
+    url: https://under30.ge/en/directory/profile/8/
+    lang: en
+    date: 2020
+    image: null
+    about: [forbes-30u30-2020]
+    featured: false
+    link_status: unverified
+  - id: press-tevent-blog
+    kind: article
+    outlet: Tevent
+    outlet_short: Tevent
+    title: Optimising for Success, with Tengo Meskhi
+    title_ka: tbc
+    url: https://www.tevent.com/blog/optimising-for-success-with-tengo-meskhi
+    lang: en
+    date: tbc
+    image: null
+    about: [int-tevent-talks]
+    note: Blog companion to the Tevent Talks episode.
+    featured: false
+    link_status: unverified
 interviews:
   - id: int-ai-interconnect
     kind: video
     outlet: AI Interconnect
-    title: Interview
+    title: Using AI to Drive Growth at Conceptdigital
     title_ka: ინტერვიუ
     url: https://www.youtube.com/watch?v=EYlAM8VECpE
     lang: en
@@ -354,7 +425,7 @@ interviews:
   - id: int-tevent-talks
     kind: video
     outlet: Tevent Talks
-    title: Special guest
+    title: Optimising For Success, with Tengiz Meskhi (Episode 2)
     title_ka: სპეციალური სტუმარი
     url: https://www.youtube.com/watch?v=xJymHgXDfVo
     lang: en
@@ -364,7 +435,7 @@ interviews:
   - id: int-alexander-mihalcea
     kind: video
     outlet: Alexander Mihalcea
-    title: Interview
+    title: "AI, Fintech & Digital Transformation: Insights from a Tech Leader"
     title_ka: ინტერვიუ
     url: https://www.youtube.com/watch?v=U6JXWmrFQGI
     lang: en
@@ -385,7 +456,7 @@ interviews:
   - id: int-bmg
     kind: video
     outlet: BMG
-    title: Interview
+    title: "#Forbes30under30 – Information technology in Georgia – Tengiz Meskhi (BMG TV)"
     title_ka: ინტერვიუ
     url: https://www.youtube.com/watch?v=02qu5q6Flvw
     lang: ka
@@ -395,7 +466,7 @@ interviews:
   - id: int-lk-podcast
     kind: podcast
     outlet: LK Podcast
-    title: Podcast episode
+    title: "Who is agile not for? The Concept Digital story – Tengo Meskhi"
     title_ka: პოდკასტის ეპიზოდი
     url: https://www.youtube.com/watch?v=2Xv9rY86Dgg
     lang: ka
@@ -404,6 +475,56 @@ interviews:
     featured: true
 
 # Photography. `slots` names where SITE-PLAN.md places each file.
+  # --- added 2026-11-12 from web search ---
+  - id: int-natural-born-coaches-792
+    kind: podcast
+    outlet: Natural Born Coaches
+    title: "792: Tengo Meskhi: A Unique Way to Run Your Coaching Calls"
+    title_ka: tbc
+    url: https://www.naturalborncoaches.com/podcasts/episode-792-tengo-meskhi-a-unique-way-to-run-your-coaching-calls/
+    lang: en
+    date: 2022-11
+    image: null
+    note: As Head of Growth, Pensight.
+    featured: false
+    link_status: ok
+  - id: int-coach-tribe-pensight
+    kind: podcast
+    outlet: The Coach Tribe Podcast (Pensight channel on YouTube)
+    title: "Platform Secrets for Coaches and Creators: Unveiling Pensight's Power"
+    title_ka: tbc
+    url: https://www.youtube.com/watch?v=jfL1lRqZcic
+    also: https://music.amazon.co.uk/podcasts/f7ff3b43-a0b1-49fe-9aaa-dd7d4329b6be/the-coach-tribe
+    lang: en
+    date: 2023-08-24
+    image: null
+    note: As Head of Growth, Pensight.
+    featured: false
+    link_status: ok
+  - id: int-bmg-english-checkpoints
+    kind: video
+    outlet: BMG English
+    title: "#TheCheckpoints: Digital Institute, new education initiative"
+    title_ka: tbc
+    url: https://www.facebook.com/BMGEnglish/videos/thecheckpoints-digital-institute-new-education-initiative/531782657923649/
+    lang: en
+    date: tbc
+    image: null
+    about: [digital-institute]
+    featured: false
+    link_status: unverified
+  - id: int-ai-interconnect-apple
+    kind: podcast
+    outlet: AI InterConnect Podcast (Apple Podcasts show page)
+    title: Using AI to Drive Growth at Conceptdigital
+    title_ka: tbc
+    url: https://podcasts.apple.com/us/podcast/ai-interconnect-podcast/id1805805571
+    lang: en
+    date: tbc
+    image: null
+    about: [int-ai-interconnect]
+    featured: false
+    link_status: ok
 photos:
   - id: photo-gtw-panel-wide
     file: assets/photos/global-tech-weekend-2025/panel-wide-moderating.webp
