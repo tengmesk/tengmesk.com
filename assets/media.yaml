@@ -343,6 +343,20 @@ press:
 
 # Video and audio appearances.
   # --- added 2026-11-12 from web search ---
+  - id: press-business-insight-ai-at-work
+    kind: article
+    outlet: Business Insight
+    outlet_short: Business Insight
+    title: How Real Businesses Are Putting Artificial Intelligence to Work
+    title_ka: tbc
+    url: https://businessinsight.com/how-real-businesses-are-putting-artificial-intelligence-to-work/
+    lang: en
+    date: 2026-11-20
+    image: null
+    about: [conceptdigital]
+    note: "By Matthew Kayser. Features Tengo (CEO, Conceptdigital) using AI as a 'force multiplier': a 426-page website audit cut from a week to a day; 149 personalised website reports generated at a trade show. Quotes: 'The scale and the leverage that we now have [are] just so much higher.' / 'We can do much larger projects or much higher volume. Force multiply is the perfect phrase for it.'"
+    featured: true
+    link_status: ok
   - id: press-informationweek-it-risk
     kind: article
     outlet: InformationWeek
