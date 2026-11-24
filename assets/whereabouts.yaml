@@ -1,9 +1,10 @@
 # Where Tengo is now and next. Updated weekly by Roger (Tengo's assistant agent).
 # Public data: city + dates only. Site shows "Now: <city>"; hover/focus reveals "Coming up: …".
-updated: 2026-10-30
+updated: 2026-11-24
 base: London
-now:  { city: Miami, country: US, until: 2026-11 }
+now:  { city: Los Angeles, country: US, until: 2026-12 }
 next:
-  - { city: San Francisco, country: US, from: 2026-11-04, to: 2026-11-13, note: "" }
-  - { city: Los Angeles, country: US, from: 2026-11-13, to: 2026-12-03, note: "" }
-  - { city: Istanbul, country: TR, from: 2026-12-04, to: "", note: "" }
+  - { city: Istanbul, country: TR, from: 2026-12-05, to: 2026-12-07, note: "" }
+  - { city: Tbilisi, country: GE, from: 2026-12-07, to: 2026-12-15, note: "" }
+  - { city: London, country: GB, from: 2026-12-15, to: 2026-12-21, note: "" }
+  - { city: Chester, country: GB, from: 2026-12-21, to: 2026-12-28, note: "" }
